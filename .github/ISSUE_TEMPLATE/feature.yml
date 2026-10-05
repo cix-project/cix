@@ -1,0 +1,20 @@
+name: Feature request
+description: Propose a focused improvement after repository activation.
+labels: [enhancement, "status: triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and intended users
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed outcome and acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives, compatibility, and tradeoffs

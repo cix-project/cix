@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: develop
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Australia/Melbourne
+    open-pull-requests-limit: 5
+    labels: [dependencies, "type: maintenance"]
+    groups:
+      github-actions:
+        patterns: ["*"]

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private vulnerability report
+    url: https://github.com/cix-project/cix/security/advisories/new
+    about: Report security concerns privately. Never disclose secrets in an issue.
+  - name: Questions and discussion
+    url: https://github.com/cix-project/cix/discussions
+    about: Ask questions or discuss ideas.

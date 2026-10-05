@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible defect after repository activation.
+labels: [bug, "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "For security vulnerabilities use Security → Report a vulnerability. Do not post private data."
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include exact commands and a small sanitized input.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, architecture, toolchain, and relevant limits.
