@@ -6,12 +6,12 @@ invented or checked in without that toolchain.
 
 | Requirement | Exact version | Publisher / authoritative URL | Purpose |
 | --- | --- | --- | --- |
-| Go | 1.20 or newer | [Go downloads](https://go.dev/dl/) | Builds the adapter and plugins. |
+| Go | 1.25.0 or newer | [Go downloads](https://go.dev/dl/) | Builds the adapter and plugins. |
 | Protocol Buffers compiler | 27.3 | [Protocol Buffers v27.3 release](https://github.com/protocolbuffers/protobuf/releases/tag/v27.3) | `protoc`; `make verify-tools` requires the reported `libprotoc 27.3`. |
 | Go protobuf plugin | `google.golang.org/protobuf/cmd/protoc-gen-go` v1.34.2 | [official Go module record](https://pkg.go.dev/google.golang.org/protobuf/cmd/protoc-gen-go@v1.34.2) | Generates message bindings. |
 | Go gRPC plugin | `google.golang.org/grpc/cmd/protoc-gen-go-grpc` v1.5.1 | [official Go module record](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1) | Generates unary service bindings. |
-| gRPC Go runtime | `google.golang.org/grpc` v1.67.1 | [grpc-go v1.67.1](https://github.com/grpc/grpc-go/releases/tag/v1.67.1) | Transport and bufconn host contract. |
-| Go protobuf runtime | `google.golang.org/protobuf` v1.34.2 | [protobuf-go v1.34.2](https://github.com/protocolbuffers/protobuf-go/releases/tag/v1.34.2) | Generated message runtime. |
+| gRPC Go runtime | `google.golang.org/grpc` v1.83.2 | [grpc-go v1.83.2](https://github.com/grpc/grpc-go/releases/tag/v1.83.2) | Transport and bufconn host contract. |
+| Go protobuf runtime | `google.golang.org/protobuf` v1.36.11 | [protobuf-go v1.36.11](https://github.com/protocolbuffers/protobuf-go/releases/tag/v1.36.11) | Generated message runtime. |
 | Installed CIX SDK | matching staged `cix-native.pc` | local staged distribution artifact | Required for cgo and the real native unary contract. |
 
 `grpc/go.mod` and `grpc/tools/go.mod` pin the module versions above. A host
