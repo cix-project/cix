@@ -1,0 +1,71 @@
+#!/bin/busybox sh
+# SPDX-License-Identifier: GPL-2.0-only
+set -eu
+export PATH=/bin:/sbin
+failed=0
+finish() {
+  rc=$?
+  if [ "$rc" -ne 0 ] && [ "$failed" -eq 0 ]; then
+    echo "CIX_VM_FAIL unexpected-exit-$rc"
+  fi
+  poweroff -f
+}
+trap finish EXIT
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t devtmpfs devtmpfs /dev
+mkdir -p /mnt/good /mnt/bad /tmp
+
+fail() { failed=1; echo "CIX_VM_FAIL $*"; exit 1; }
+while read -r module; do
+  test -n "$module" && insmod "/modules/$module" || fail module-dependency
+done </modules.list
+insmod /cix_squashfs.ko || fail module-load
+mount -t cix_squashfs -o ro /dev/vda /mnt/good || fail good-mount
+(cd /mnt/good && sha256sum -c /fixture.sha256) || fail good-hashes
+test -f /mnt/good/fragment || fail fragment
+test -f /mnt/good/incompressible || fail incompressible
+test -f /mnt/good/repeated || fail data
+test -f /mnt/good/sparse || fail sparse
+test -f /mnt/good/tiny/0 || fail metadata
+test -f /mnt/good/empty || fail empty
+cat /mnt/good/fragment /mnt/good/incompressible /mnt/good/repeated >/dev/null || fail read
+/fuse/cix-xattr-check /mnt/good/repeated /mnt/good/tiny/0 || fail kernel-xattrs
+umount /mnt/good || fail good-umount
+echo 'CIX_VM_PASS mount-read-metadata-fragment-empty'
+
+mkdir -p /mnt/fuse
+/fuse/squashfuse -f /dev/vda /mnt/fuse >/tmp/squashfuse.log 2>&1 &
+fuse_pid=$!
+tries=0
+while ! test -f /mnt/fuse/empty; do
+  tries=$((tries + 1))
+  test "$tries" -lt 20 || fail fuse-mount
+  sleep 1
+done
+(cd /mnt/fuse && sha256sum -c /fixture.sha256) || fail fuse-hashes
+/fuse/cix-xattr-check /mnt/fuse/repeated /mnt/fuse/tiny/0 || fail fuse-xattrs
+umount /mnt/fuse || fail fuse-umount
+kill "$fuse_pid" 2>/dev/null || true
+wait "$fuse_pid" || true
+echo 'CIX_VM_PASS fuse-read-xattr'
+
+reject() {
+  label=$1
+  dev=$2
+  if mount -t cix_squashfs -o ro "$dev" /mnt/bad; then
+    # A mounted image is still rejected unless every receipt path restores.
+    if (cd /mnt/bad && sha256sum -c /fixture.sha256 >/dev/null 2>&1); then
+      umount /mnt/bad || true
+      fail accepted-"$label"
+    fi
+    umount /mnt/bad || true
+  fi
+  echo "CIX_VM_REJECT $label"
+}
+reject malformed-version /dev/vdb
+reject truncated-profile-payload /dev/vdc
+reject declared-profile-cap /dev/vdd
+echo 'CIX_VM_PASS reject-corrupt-oversize-truncated-profile-cap'
+sync
+exit 0

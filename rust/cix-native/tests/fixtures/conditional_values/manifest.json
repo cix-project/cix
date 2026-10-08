@@ -1,0 +1,18 @@
+{
+  "field_alphabets": [
+    2,
+    1,
+    1,
+    1
+  ],
+  "field_groups": [
+    3,
+    4,
+    3,
+    3
+  ],
+  "generator": "runtime.cix_runtime.legacy.grid_conditional.transform(context=3,coding=0)",
+  "input_sha256": "c79cd8137ba20c5caf78fe67d9fc83a356f0a22801a73bbf60b865fa692267f1",
+  "raw_sha256": "95fdabb2f41975ba290d1a6030fa726f682deed6ed0f98efc17af5a554ef74d8",
+  "records": 6
+}

@@ -1,0 +1,9 @@
+coordinate fixture
+native
+
+  1  0  0  0  0  0            999 V2000
+    1.0000   -2.0000    0.5000 C   0  0  0
+M  END
+$$$$
+ordinary literal bytes
+$$$$

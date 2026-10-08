@@ -1,0 +1,574 @@
+{
+  "schema": "cix-exact-preserved-source-bytes-v1",
+  "source_tree": "ce71c3b188b7136bf4f8ab65db95c3bd18be86a6",
+  "exceptions": [
+    {
+      "path": "rust/cix-native/packaging/notices/licenses/Highway.txt",
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/ambiguous_source.bin",
+      "sha256": "5173c278d8253a6e258fb313470ca636d601f4935b99fdcbb793fa2cb6cbf16c"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/ambiguous_symbol_load_mode2.raw",
+      "sha256": "52c5a267e3701a997cfe227f3da4e1871c9f7ca95bf14040df6009e779554eb3"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/pdata_mode1.raw",
+      "sha256": "ee6767cdc938f0941c9d66a01182f89566d7a45891f936cee353e409a6edb723"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/pdata_symbols_mode1.raw",
+      "sha256": "6bbdeead6845301c322217e3653f40fcfa7911e11eff8d4d2581210b22d027f2"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/pointer_delta_mode5.raw",
+      "sha256": "0dbae4bdcb34175c5f6a869afa691f66a94f20f098bcec70adf88dada35c4c5a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/section_mode4.raw",
+      "sha256": "6629f4b58e848d41d4b3d146802684f25f200c62cbb0f844afb2750571e70bdc"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/source.bin",
+      "sha256": "77634c99d0c781323b7d72fd004b87cbebaad236b62f98240360b8e526516115"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/address_relations/symbol_load_mode2.raw",
+      "sha256": "80cef6ab006a30c01c2073751af626ce174c4cf305a86bc7053968a295829734"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/bounded_values/input.bin",
+      "sha256": "c79cd8137ba20c5caf78fe67d9fc83a356f0a22801a73bbf60b865fa692267f1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/bounded_values/mode1.raw",
+      "sha256": "980093bfede4a38fc477251786a6ad0c60c0c7c542dda895d6fd0ab1336da1aa"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/bounded_values/mode2.raw",
+      "sha256": "c4559a3b580710144bcd8f211a6db82ad56e706b6b02a626e6452d5ca9d608dc"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/bounded_values/mode3.raw",
+      "sha256": "d8b03a3c9c378630d65f02eb4bbf7e6bb33f4927629266c49b1fa33db84f471d"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/bounded_values/mode4.raw",
+      "sha256": "3213401e0d061c96e39da7a1c7010f4dcc3a4538cd527e1647f8559b8a3591af"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/conditional_values/context3-coding0.raw",
+      "sha256": "95fdabb2f41975ba290d1a6030fa726f682deed6ed0f98efc17af5a554ef74d8"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/conditional_values/input.bin",
+      "sha256": "c79cd8137ba20c5caf78fe67d9fc83a356f0a22801a73bbf60b865fa692267f1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode0-shared0.raw",
+      "sha256": "845b09ab6b627966819283f6a736bf4a89d931d14c6db9d8d4163b2bfb2e364a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode0-shared1.raw",
+      "sha256": "6f3482c331743ace562e90a7651020adbb4867f41a62b9942be7a49707392492"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode1-shared0.raw",
+      "sha256": "2b7a781e6ca20e8eeb8f939452218899047d8f97df1ab6f4ec54f4998f626d84"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode1-shared1.raw",
+      "sha256": "7fa8550e65afc6a4c0a28d7d8fceeebe0f78eaca9203e5f1f387d0041209cb03"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode2-shared0.raw",
+      "sha256": "4386dc18f555abf44fe9c2a7624060644e949cd6d9f16e403a0dfad3e7d21cf3"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode2-shared1.raw",
+      "sha256": "6f67eebd24197f9b2850de49bf53096786524b21c55c4c0893202cc857900452"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode3-shared0.raw",
+      "sha256": "7b81de6fd8923b8bcefd9d185a260587aa7cf79be08f4f176652c2083a96b13f"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode3-shared1.raw",
+      "sha256": "062c3f4d37a5c786d766cab32ea549a9812ec54b1e73043d32b13623af59d0bb"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode4-shared0.raw",
+      "sha256": "27841257aab666fdfccdd9ab5dac50da7a78ff41efd1eebf8094d49c0207d860"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode4-shared1.raw",
+      "sha256": "61c3410df51c2e77e4e421eee594e21ef8bb1bd8d32f8b3431a4106175c23b76"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode5-shared0.raw",
+      "sha256": "033ace5be24fce4eb70abc9ef24f147b0107311966b2653b6f692429193a6a45"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/mode5-shared1.raw",
+      "sha256": "999c0452838a5ddae031498814999f477d9f93df4db4b2e00ce3cfa02faf3a31"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/ecoff_relocated_reference/original.tar",
+      "sha256": "6be6b41c51815ef250165f8b0f19499123edf7625b44680cc78352b2f7193fb5"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/graph-0-0.frame",
+      "sha256": "fbe5f27d198a9ebb6180f75cfe891ed6aeac401adc6853566fd18fdc31c821cb"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/graph-1-0.frame",
+      "sha256": "3e6218a0cfce099468c849a85eff3a52f2402a6f8b1947a8695972a035e72ad8"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/graph-2-0.frame",
+      "sha256": "c7857c71d13961eb3f05a514ce47359147d1d0b4ab5a18890f826f1925fc1a9b"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-0-0.frame",
+      "sha256": "530b200f7e2946ee37ac452ab125b4389678826f748d86b14a9a3dde198ce2e8"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-0-1.frame",
+      "sha256": "98710f8e5605256b2f2400a2846eeb4c1cf82ccd99208607ac9cca6d36571f95"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-0-2.frame",
+      "sha256": "c038c296400b138f145f1c82bd588e45546eacbbe000f64c3f41c27742dda17c"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-0-3.frame",
+      "sha256": "1e6687cfa30e9ed262fef6fbc55032eb9a91ae2a060c5f6c81cb3530a7a58744"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-1-0.frame",
+      "sha256": "3165bd48cffdd4ce16fe898e4595485ab0b940fd3722f1de238bded98798a508"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-1-1.frame",
+      "sha256": "a6a5fb122a21e644e2b3c48bc9a900644b67965bfb29c0624b4ba977cccb6056"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-1-2.frame",
+      "sha256": "36aeed0ab44c450406254d5e214afe3606753625d3b3c7cc8ffb43b3df8e7e58"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-1-3.frame",
+      "sha256": "bb13256109443314c03219495968ceb08d21488dfbff99dc9a09ce14506099de"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-2-0.frame",
+      "sha256": "7645f7eb524aa664c688f8c602e34165ee52a139c93627e5b090c505042b8d64"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-2-1.frame",
+      "sha256": "ded9d4df0175912a5fb097bd176082cafacce2a5f170981a62ee089da6affff7"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-2-2.frame",
+      "sha256": "48aaf6ba84b9625a57095b902e92ae950aac2f751eae712e3c133e4a3887f387"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/hydrogen-2-3.frame",
+      "sha256": "2832ed4c5d38c766252512416aef1ef9a8153cf9041968b5476a03a13d8ff21b"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-0-1.frame",
+      "sha256": "06d62f9bc602a207f5e29310b987a977c96b8656010ebc74e8f3616c44dc21a3"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-0-2.frame",
+      "sha256": "cc246b0d1e700fd438b039e31aa953df4c030673b28ad5218f42f29acd9e7618"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-0-64.frame",
+      "sha256": "a012d582bf443c1d44436a1fb7e555ddebfb56cae0d964d1269358e8ad774fa1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-1-1.frame",
+      "sha256": "092908232988fd937aacaf2693b43efbcdab3b1edb489dc782e03f1e3ea2b095"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-1-2.frame",
+      "sha256": "f39897ae9325be5719dc862b4c9b6a4feded5f7dd4e15cc6c963e0d5ef6162fc"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-1-64.frame",
+      "sha256": "d8e0fa09cfdc3b4a666361bda9e5ae9557ac79ff43450316bd51cfba4162dae9"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-2-1.frame",
+      "sha256": "a2119d64c99e358cb9ded011f6f14ce52ec8a1dbeedebc854d2e53c1934a576a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-2-2.frame",
+      "sha256": "3a28bf4b6440a0affd4ab10a9d2f2fa0b70539811567d162c6fd06560f67c09e"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-2-64.frame",
+      "sha256": "b65178df5dba9e4498b77bd5af78c28bd7bf4f03ba7b87c2c49bb87734cf6f78"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/graph_residual_parity/palette-boundary-0-64.frame",
+      "sha256": "fa0dd3278f0dd0d9339a8229e24b9f2e3196dc2694967322afac03f4a733a027"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/input.bin",
+      "sha256": "a49fde6a721489a39fa65019944354fa90e82615216eef6ce0d244a9fd27ef8d"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc1-mode0.raw",
+      "sha256": "ce5a33a05f62e0aeab93cb274f46906b6a87e758b2ed49304e0a73c008f105c1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc1-mode1.raw",
+      "sha256": "f507442f0e11bdbea16f5ec45d3a51566e9f1a621fd48c4a676526394c2fe4a5"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc1-mode2.raw",
+      "sha256": "3ccc723b54bf66edac93259f6fd91a7a076b5bea330ef83a1dbff2d9d73aef02"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc1-mode3.raw",
+      "sha256": "14bf13ecb873f42a6d15e0a1e6239c6f58f89ef26cb52b58e34f99a18febfbf0"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc1-mode4.raw",
+      "sha256": "d3a1ebe566ede27c79095aa5958a2c4bdd338ec5acdaef0ac3144d1559279754"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context0-coding0.raw",
+      "sha256": "5f53147ec4bd1c414f69f75b7d1fcd297d0b3c9da8e001bde0b4ba8dad1c4821"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context0-coding1.raw",
+      "sha256": "f8ba2aab2ac86aca87186501bef7ac243f65a8f070022103e4258a7eeca48740"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context0-coding2.raw",
+      "sha256": "7cbd2aff1d31d705dc0c1699b362a9c82cfaecfefabc74859980d513ef51c741"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context1-coding0.raw",
+      "sha256": "e65344375260974987ba4a7fefe746253e677a5c2764d7dd9e553587a092528b"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context1-coding1.raw",
+      "sha256": "b25f0f2a08a773356718e0f0a3249574220ae8480853786b7cb98955695bca24"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context1-coding2.raw",
+      "sha256": "62b1bb1a592a0d2d1c527049dc10b5b1380c591ec049311233cd636a4f997da4"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context2-coding0.raw",
+      "sha256": "729b4773a8d37a94ee5bf0eea26f5151d5bebe2c46b1e033b5a9a13c5a15b028"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context2-coding1.raw",
+      "sha256": "fa7b544cf3c72e88a1976cbddb5186ed5641bebfff99df6fca88d269d9f3dc07"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context2-coding2.raw",
+      "sha256": "d6dcdf9049310dd86fd6e9fbdb7f5dab0e1fa3c1b856a6d45ae7f5573b722444"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context3-coding0.raw",
+      "sha256": "938d11799ce08177e03ca8992bc15394e5d3a1bd9eb5c4945b789c9a3a938846"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context3-coding1.raw",
+      "sha256": "742a2f5cdfbe702f23d3a43b2a79b27266f4c01fbc01d446174ddd6b1257ca10"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_counts/sgcc2-context3-coding2.raw",
+      "sha256": "fd35c4e84abb8c65b3d7c1b9cc582b08bedfd6812431ab0384149955d059ac58"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/input.bin",
+      "sha256": "8b70d5744674fb871dc73dc4971c6a6bc610cc429f34845034790a5ddfd7d563"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/mode1-model0.raw",
+      "sha256": "5f4dd036bf27f2b42f52d262979ea632eea2462797d9bed602e05ec0b14d93bf"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/mode1-model1.raw",
+      "sha256": "ba82335265c48b69ab038f87df71ed50cfb4645adc339a53f0c08151f96fc964"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/mode2-model0.raw",
+      "sha256": "d87a4fb4625ffbf445c4dbd29c2bf4f62b057153be132a13c20b9bc9dfc9aee4"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/mode2-model1.raw",
+      "sha256": "df0f45de85e2390a8cf8295116705996a5bed12c45f3dbc1b13fb07b8b6747b1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/mode3-model0.raw",
+      "sha256": "a00b1da304e01f3b91bf631f98c252e86d4291f6c4fced6518cca025f75814ec"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_feedback/mode3-model1.raw",
+      "sha256": "c2a76db9160704044e7eba6987399fd4d3352743efb1a8fda24db81969907e4b"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/boundary256-input.bin",
+      "sha256": "7375f0e9000655a3fd88de22dd5f770ad376638ff875666498c71fee13b372df"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/boundary256-policy1.raw",
+      "sha256": "a18935fc6c07bdd3baa263a2e975033bc31061a2ae29e8b04cacbc3ce1685496"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/boundary256-policy2.raw",
+      "sha256": "4cfb16daf2903efd23b526af3b132314ae903e848d74d4313d1bf20dc5086543"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/boundary256-policy3.raw",
+      "sha256": "07f4bc3f31234f33d06e3ad93b291293ffbb8c5c38f620e504a9ea7c09e96088"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/tiny-input.bin",
+      "sha256": "8b70d5744674fb871dc73dc4971c6a6bc610cc429f34845034790a5ddfd7d563"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/tiny-policy1.raw",
+      "sha256": "dd5f779e21e877e2b4312197ff7af29f2d40fea60f947f8c442371a94705a0f4"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/tiny-policy2.raw",
+      "sha256": "98fb5bc8dfe0d7f58b9ed27b290bdc7d985158757f72abe67d1055699ed1e8c0"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/grid_interval/tiny-policy3.raw",
+      "sha256": "a90dc2f9a0bb7ffb7f1ed5e13e463a963902b0d240a72cd110b87d54ed5448c1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/graph-0-0.frame",
+      "sha256": "fbe5f27d198a9ebb6180f75cfe891ed6aeac401adc6853566fd18fdc31c821cb"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/graph-1-0.frame",
+      "sha256": "3e6218a0cfce099468c849a85eff3a52f2402a6f8b1947a8695972a035e72ad8"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/graph-2-0.frame",
+      "sha256": "c7857c71d13961eb3f05a514ce47359147d1d0b4ab5a18890f826f1925fc1a9b"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/mixed-raw.cix",
+      "sha256": "b129321767b29ea61b45380552c3d8ee5c7f5a6dacef17b08dd24e584e913f5a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-0-1.frame",
+      "sha256": "06d62f9bc602a207f5e29310b987a977c96b8656010ebc74e8f3616c44dc21a3"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-0-2.frame",
+      "sha256": "cc246b0d1e700fd438b039e31aa953df4c030673b28ad5218f42f29acd9e7618"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-0-64.frame",
+      "sha256": "a012d582bf443c1d44436a1fb7e555ddebfb56cae0d964d1269358e8ad774fa1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-1-1.frame",
+      "sha256": "092908232988fd937aacaf2693b43efbcdab3b1edb489dc782e03f1e3ea2b095"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-1-2.frame",
+      "sha256": "f39897ae9325be5719dc862b4c9b6a4feded5f7dd4e15cc6c963e0d5ef6162fc"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-1-64.frame",
+      "sha256": "d8e0fa09cfdc3b4a666361bda9e5ae9557ac79ff43450316bd51cfba4162dae9"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-2-1.frame",
+      "sha256": "a2119d64c99e358cb9ded011f6f14ce52ec8a1dbeedebc854d2e53c1934a576a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-2-2.frame",
+      "sha256": "3a28bf4b6440a0affd4ab10a9d2f2fa0b70539811567d162c6fd06560f67c09e"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/palette-2-64.frame",
+      "sha256": "b65178df5dba9e4498b77bd5af78c28bd7bf4f03ba7b87c2c49bb87734cf6f78"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer-0.frame",
+      "sha256": "73729bc990f14b3e2aa59f7dec715ee18f8c57f9fd7b44d947dd8b9f55c96e8b"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer-1.frame",
+      "sha256": "c1bd83a4613280d88016aaee25735bbfbab39442885f8332000292733cc8ae88"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer-2.frame",
+      "sha256": "de651aedcb5248a87feb68abc48119747798a750565d314f44c71f8b04a6bc36"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer-3.frame",
+      "sha256": "77bb008e60844bd948275d66696ec95bab9b479a12fa8b6f4369737daac9828a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer-4.frame",
+      "sha256": "1f2be5dafaebfe37b11c98f74f26518ee8277911d05c1a31eaa1c1841fcbe60a"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer-5.frame",
+      "sha256": "33a02050dd869c5a8483a5f2a08b7ec0b8f26f730963cab8e2d76687ec51f6d4"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/native_ports/pointer.input",
+      "sha256": "adeeefb4fd9c07411ff26bd59e59f67d3a2d49948122752658bdcde6c3b72beb"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/grid-sagr-mode0.raw",
+      "sha256": "3df4b2e302c96d0c001818a814c44eda9302dff340f79aac7b6289cfd6d5d7a3"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/grid-sagr-mode1.raw",
+      "sha256": "f931baf396be4bdef7aa5db7c90a1bb743d3b3ff61b532c7e9095525cc0de581"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/grid-sagr-mode2.raw",
+      "sha256": "ecf529ab7f74a70190778b4836f27102dae73ef3305a8fd38f6ef013b82f2197"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/grid-sagr-mode3.raw",
+      "sha256": "9d57501d89bcdff57f16c29e606e81b3a59343ab95822d7b1d9981cc6ff9a6f6"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/grid.input",
+      "sha256": "76d37e488f703c9c99d461c23825e07ad2bce41da97bee484b9e7c89021c9362"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycc-mode1.raw",
+      "sha256": "b1191d78ae36355df7345c6c68a9a54948a99e22c1d1ec0081c003e2fbd3f235"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycc-mode2.raw",
+      "sha256": "d93bb303cc8791ca884a5d27b35de6c690f4039e3558fc8d57bc8b73a4c5ee32"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycc-mode3.raw",
+      "sha256": "cc33b9f7e84fa60610c5f5fe9a3cabab907b766fe6b63b414e06780863533552"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycc-mode4.raw",
+      "sha256": "d1ac465d744360f993c0cec268bbb89ef57408d4a0f2ca02d7425ecbdcf1a094"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycs-mode0.raw",
+      "sha256": "c5bf021cc939111d718a1e31710d6bd3a0f6d4a1f2e928a0a5934823bdca52a9"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycs-mode1.raw",
+      "sha256": "3b2a7356ef6028103134fcd1a6e4083a8fb8c57084d7cbf2ddf54646593327dc"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycs-mode2.raw",
+      "sha256": "8a8af927eb5727a78dde53331e67cab72ce49da1f1a05b5933c9b7eb2e9eeff6"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycs-mode3.raw",
+      "sha256": "fd7f8c037964e4b84e49b7c2498895aee8fbdfa6acaf90116c62e723f2af89d1"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record-mycs-mode4.raw",
+      "sha256": "9e5a019dd7ca3223921a61bb5f259c3f96db781e3acb6a17ae976e36bfff1a32"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/record_stride/record.input",
+      "sha256": "4c24726f257b59fb47e22fdad890891ed4db345b909b98cdadedba756e2657c2"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/regions/dicom.bin",
+      "sha256": "1425d810f158d32704234834578fb144eedf143d600fc3bc4160629344dfa6eb"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/regions/elf.bin",
+      "sha256": "7b3504bcf7b6631b0391923453c512392caba3dbd3f6df11f9fd6ae87a22bdb4"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/regions/grid.bin",
+      "sha256": "6abde09a2ff98424606a27d0f73d9bffc6a97242ce9c6851362222e5236d4d14"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/regions/mixed.bin",
+      "sha256": "2926c7dfbeec7c0abc2214fa2883876af9c40654bbf4a56add934a40731f4b80"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/spatial_frames/j2k-input.bin",
+      "sha256": "6c91c4e0f391b8171ada33ec59f8bd1a51ab2d295c9c85b98f4aa8a093235eb5"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/spatial_frames/j2k.cix",
+      "sha256": "2fc2a31dd5337774953444ca4f50c93317719b104139566ee0695cb5a2ae2563"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/spatial_frames/jls-input.bin",
+      "sha256": "810bdbd886b9643ef36ebe2199847c6324bd8ed56688c316f5a02cceb63b8f1c"
+    },
+    {
+      "path": "rust/cix-native/tests/fixtures/spatial_frames/jls.cix",
+      "sha256": "5b20d6a1dccc9c2fb029c2bc329be04dbba68fd9fb43c12375d739fa0b0fece2"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/VERSION",
+      "sha256": "ecc8297cb40c513a0be90f16ca0179717e440f04eb65e4c1c1a6f5ffc1360295"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/adler32/adler32.cpp",
+      "sha256": "c3e5b237ee3cbdc225e02004823e6151c3c3152c1767010d881caa15b911a77e"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/bwt/bwt.cpp",
+      "sha256": "10da4e57acc8e2e6e95839155ecc202ea87e174ee4115f803f064e51fba8a7f5"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/bwt/libsais/libsais.c",
+      "sha256": "60b9e30353edffdd2f22d73b5281f6201db48032d429a355ba8612687bce74b8"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/bwt/libsais/libsais.h",
+      "sha256": "5a855c8f159abf78dafcab96dc20240b81a308f0099f6fa1f7def47450b0f3df"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/coder/common/predictor.h",
+      "sha256": "78d9e7c96bb2b34e7ef6e1b4792db422698c771962be80b55fa79053bc1433d5"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/coder/qlfc/qlfc.cpp",
+      "sha256": "8de01fcbc3485657e9d9bb9b4f5a156acfcf48b6aeae49b24d865477245a6be6"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/lzp/lzp.cpp",
+      "sha256": "2f4ab5c5319bdd06ef0037ce56d966d0fb9813fc227534e73245fa3656a8f0bf"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/platform/platform.cpp",
+      "sha256": "53f37354aac7a5c6af937283644fc8ef6e39693e57107a45414a6e8810415aa3"
+    },
+    {
+      "path": "rust/cix-native/vendor/libbsc/libbsc/platform/platform.h",
+      "sha256": "ef8f41c749b9ce55598f5747df9b94edb0347597ce7df098e1c4e26a7ef9f992"
+    },
+    {
+      "path": "rust/cix-native/vendor/libzpaq715/libzpaq.cpp",
+      "sha256": "11e1025a290c420359def7485422dfa4296045c7cf55f809e1e034cc0855d381"
+    },
+    {
+      "path": "rust/cix-native/vendor/libzpaq715/libzpaq.h",
+      "sha256": "08bd9ce17ce018468e35721e2c6a8bd13c0c5e397ce4e9c90c52aec389662f79"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Generated workspace manifest. Edit the maintained source template before
+# producing a new source export.
+[workspace]
+members = ["rust/cix-native", "rust/cix-portable"]
+resolver = "2"
+
+# Cargo reads custom profiles only from the workspace root. This deliberately
+# matches rust/cix-native/Cargo.toml's qualified standalone release-lto profile.
+[profile.release-lto]
+inherits = "release"
+lto = true
+codegen-units = 1

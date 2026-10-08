@@ -1,0 +1,383 @@
+{
+  "evidence_receipts": {
+    "codec_install": {
+      "sha256": "52a3118f852cb44a2035cb1d09538339a6b941fd0438a854c2182d2681eda1be"
+    },
+    "codec_packages": {
+      "sha256": "b3626dc977ccae48e43e2a9e4bb1aff1abd0de54b87d1a21dbd9e435bd8573c2"
+    },
+    "jxl_install": {
+      "sha256": "81d78ed24fe09ee57cf2c326946bd0e2b315d249283472cf406190cfe91abf09"
+    },
+    "jxl_source": {
+      "sha256": "c2543b2c0314bf807e09bde82cd4f9c9e8fc96431a4af09597e5a1d8347bdce0"
+    },
+    "provider_function": {
+      "sha256": "9a7431d7bcc8e449b26e05ac1d5233bc78377dbd2563825f2e3670e81cff0d16"
+    },
+    "spatial_binary_binding": {
+      "sha256": "b274d649f68f7f2bb753c764937d7ee7ffa42e35a8abc73e71981501bd912f54"
+    },
+    "ubuntu_codec_source_provenance": {
+      "sha256": "a97830d01db307629fde6094fea5b083f9a55a5e7211f31a6e96000555ecb0a3"
+    }
+  },
+  "export_note": "Private evidence paths are excluded from this source export. Selected hashes, public upstream identities, notice mappings, package identities, and unresolved obligations remain visible.",
+  "notice_files": {
+    "licenses/Brotli.txt": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+    "licenses/CharLS-Debian-copyright.txt": "5dff0985c79ec7a0c1cf7af81af2041ed2d63ddbc77820b481a0c8007cfa12e7",
+    "licenses/GPL-2.0.txt": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "licenses/GPL-3.0.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/Highway.txt": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+    "licenses/JPEG-XL.txt": "8405932022a556380c2d8c272eff154a923feb197233f348ce5f7334fb0a5ede",
+    "licenses/OpenJPEG-Debian-copyright.txt": "eee37e01db9d8eabac77a49dbacb9ea8962e5cfc98a35b87ee02cc81eef94f40",
+    "licenses/skcms.txt": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36"
+  },
+  "package_identities": {
+    "charls": {
+      "development": {
+        "architecture": "amd64",
+        "name": "libcharls-dev",
+        "repository_filename": "pool/universe/c/charls/libcharls-dev_2.4.2-2build2_amd64.deb",
+        "sha256": "4896b664cf2c287b08d85cd5fd219d90065b16f3ac902e1d3d4ae901b50b545f",
+        "version": "2.4.2-2build2"
+      },
+      "package_receipts": [
+        "codec_packages",
+        "codec_install"
+      ],
+      "runtime": {
+        "architecture": "amd64",
+        "name": "libcharls2",
+        "repository_filename": "pool/universe/c/charls/libcharls2_2.4.2-2build2_amd64.deb",
+        "sha256": "4e0899b98fe57b5011412bfdb2fa96f2559c746f05bb1604da306642940ceaec",
+        "version": "2.4.2-2build2"
+      },
+      "source_package": {
+        "evidence": "ubuntu_codec_source_provenance",
+        "identity": "charls_ubuntu_source",
+        "status": "immutable_source_archives_identified_not_retained"
+      }
+    },
+    "openjpeg": {
+      "development": {
+        "architecture": "amd64",
+        "name": "libopenjp2-7-dev",
+        "repository_filename": "pool/main/o/openjpeg2/libopenjp2-7-dev_2.5.0-2ubuntu0.5_amd64.deb",
+        "sha256": "817cf65fcce80a3ce9b44f0c870cf8e227f9b035c5aeb7e7c9f30a4f24b9756a",
+        "version": "2.5.0-2ubuntu0.5"
+      },
+      "package_receipts": [
+        "codec_packages",
+        "codec_install"
+      ],
+      "runtime": {
+        "architecture": "amd64",
+        "name": "libopenjp2-7",
+        "repository_filename": "pool/main/o/openjpeg2/libopenjp2-7_2.5.0-2ubuntu0.5_amd64.deb",
+        "sha256": "24b92ce9c4b306f5370e768024d35ec565792001678b510f0d40b6395b43524f",
+        "version": "2.5.0-2ubuntu0.5"
+      },
+      "source_package": {
+        "evidence": "ubuntu_codec_source_provenance",
+        "identity": "openjpeg2_ubuntu_source",
+        "status": "immutable_source_archives_identified_not_retained"
+      }
+    }
+  },
+  "providers": {
+    "CIX_RUNTIME_BROTLICOMMON_LIBRARY": {
+      "artifact_binding": {
+        "path": "lib/libbrotlicommon.so.1.2.0",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/Brotli.txt"
+      ],
+      "sha256": "9c2b2dde573d55e29fc627eb6e3ac6a77ec9a4b5e059875885a17920a5fc36c0",
+      "source": [
+        "brotli"
+      ]
+    },
+    "CIX_RUNTIME_BROTLIDEC_LIBRARY": {
+      "artifact_binding": {
+        "path": "lib/libbrotlidec.so.1.2.0",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/Brotli.txt"
+      ],
+      "sha256": "728d94276cc06b6643c16c541e4177db416901cc88bfa7d89bae9cc4ad7199ef",
+      "source": [
+        "brotli"
+      ]
+    },
+    "CIX_RUNTIME_BROTLIENC_LIBRARY": {
+      "artifact_binding": {
+        "path": "lib/libbrotlienc.so.1.2.0",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/Brotli.txt"
+      ],
+      "sha256": "f0fc8b56a00c29e37c31ece498643963309c6420550eddf54cc5e4cdb26ae31c",
+      "source": [
+        "brotli"
+      ]
+    },
+    "CIX_RUNTIME_CHARLS_LIBRARY": {
+      "artifact_binding": "selected_closure",
+      "notices": [
+        "licenses/CharLS-Debian-copyright.txt"
+      ],
+      "package": "charls",
+      "package_install_evidence": {
+        "path": "usr/lib/x86_64-linux-gnu/libcharls.so.2.4.2",
+        "receipt": "codec_install"
+      },
+      "sha256": "6fc5859988357c676d874fa98509445b8a8c8eee4eac533b5ae3eb884e0b858c",
+      "source_package_evidence": {
+        "binary_package_member": "usr/lib/x86_64-linux-gnu/libcharls.so.2.4.2",
+        "binary_package_member_sha256": "6fc5859988357c676d874fa98509445b8a8c8eee4eac533b5ae3eb884e0b858c",
+        "receipt": "ubuntu_codec_source_provenance",
+        "source_package": "charls",
+        "source_version": "2.4.2-2build2"
+      }
+    },
+    "CIX_RUNTIME_JXL_BRIDGE": {
+      "artifact_binding": {
+        "path": "lib/libcix_jxl_bridge.so",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/JPEG-XL.txt",
+        "licenses/skcms.txt",
+        "licenses/Brotli.txt",
+        "licenses/Highway.txt"
+      ],
+      "sha256": "06557f893f26ce312b97e5e5755d6365046c1616f66a45b3de140fcf04e19b4b",
+      "source": {
+        "third_party": [
+          "libjxl",
+          "brotli",
+          "highway",
+          "skcms"
+        ]
+      }
+    },
+    "CIX_RUNTIME_JXL_CMS_LIBRARY": {
+      "artifact_binding": {
+        "path": "lib/libjxl_cms.so.0.12.0",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/skcms.txt"
+      ],
+      "sha256": "ed665d737095074fc802a5a920c2e2c1d9cd6062120093368192fb91689dbe4a",
+      "source": [
+        "skcms"
+      ]
+    },
+    "CIX_RUNTIME_JXL_LIBRARY": {
+      "artifact_binding": {
+        "path": "lib/libjxl.so.0.12.0",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/JPEG-XL.txt",
+        "licenses/skcms.txt",
+        "licenses/Brotli.txt",
+        "licenses/Highway.txt"
+      ],
+      "sha256": "57cf38e4920052bda1204636b179de9b2b4d79982b6dd45a414db2fe17b960b4",
+      "source": [
+        "libjxl",
+        "brotli",
+        "highway",
+        "skcms"
+      ]
+    },
+    "CIX_RUNTIME_JXL_THREADS_LIBRARY": {
+      "artifact_binding": {
+        "path": "lib/libjxl_threads.so.0.12.0",
+        "receipt": "jxl_install"
+      },
+      "notices": [
+        "licenses/JPEG-XL.txt",
+        "licenses/Highway.txt"
+      ],
+      "sha256": "329b1b8a597d2345fa5b73fc75b820a22a8ed641f8899e4bd58c5a097379573c",
+      "source": [
+        "libjxl",
+        "highway"
+      ]
+    },
+    "CIX_RUNTIME_OPENJPEG_LIBRARY": {
+      "artifact_binding": "selected_closure",
+      "notices": [
+        "licenses/OpenJPEG-Debian-copyright.txt"
+      ],
+      "package": "openjpeg",
+      "package_install_evidence": {
+        "path": "usr/lib/x86_64-linux-gnu/libopenjp2.so.2.5.0",
+        "receipt": "codec_install"
+      },
+      "sha256": "19906c0334e8db2137912f83cceed5a03d954a9c12d9781901a9a27f92ce1c4d",
+      "source_package_evidence": {
+        "binary_package_member": "usr/lib/x86_64-linux-gnu/libopenjp2.so.2.5.0",
+        "binary_package_member_sha256": "19906c0334e8db2137912f83cceed5a03d954a9c12d9781901a9a27f92ce1c4d",
+        "receipt": "ubuntu_codec_source_provenance",
+        "source_package": "openjpeg2",
+        "source_version": "2.5.0-2ubuntu0.5"
+      }
+    },
+    "CIX_RUNTIME_PAQ_JOINT_DISCOUNT_BRIDGE": {
+      "artifact_binding": "selected_closure",
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "8e8b74a7037654bf26d3a2d1c587ab3ff0d2028db68f4a48c387e8a2b925a597",
+      "source": {
+        "fork_derivation_commit": "b2aef743662c3cf51e3c779ef7410ac5cc4412c5",
+        "fork_provenance_sha256": "9b9ed8a588a5b664f2a627e031e2c3c30f440ccdb3899c0469e76837e786eb22",
+        "readme_sha256": "211a9d3a590de44b1b1956b4dc634b28faf2f4c3d600a1d7b617105febf13fdd",
+        "receipt_sha256": "dbcab9f9a962112bc19d2fae4c0e031b1bdfa150db0f6444a2a13cd10bac5cea",
+        "source_identity": "paq_v215",
+        "tree_receipt_sha256": "dbcab9f9a962112bc19d2fae4c0e031b1bdfa150db0f6444a2a13cd10bac5cea"
+      }
+    },
+    "CIX_RUNTIME_PAQ_STORE_STATE_BRIDGE": {
+      "artifact_binding": "selected_closure",
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "57bba97ddbe7d1cde36625a88060f7b2ee06a095d8e0966658b38d05bcb598b2",
+      "source": {
+        "fork_derivation_commit": "b0a5528ce35976e97ae628b6f49a9b88a67eb07a",
+        "fork_provenance_sha256": "716eabd2b87346032b8083acc141ec6b2b3b89b9b6bfcae99f2c8159456b60e3",
+        "readme_sha256": "88134d8f7367e51cbccd3b70a36c113b3f8e453608350e36b5e78819360e76a6",
+        "receipt_sha256": "3eb431a2cdad6b69b2862a55d235b0068e3c5d4995033ea52c5aae59a463399b",
+        "source_identity": "paq_v216",
+        "tree_receipt_sha256": "3eb431a2cdad6b69b2862a55d235b0068e3c5d4995033ea52c5aae59a463399b"
+      }
+    },
+    "CIX_RUNTIME_PAQ_V215_BRIDGE": {
+      "artifact_binding": "selected_closure",
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "645f2f80dbe219465640d4489a219a90ae0787c9c8900d165045fe69b0e43757",
+      "source": {
+        "readme_sha256": "211a9d3a590de44b1b1956b4dc634b28faf2f4c3d600a1d7b617105febf13fdd",
+        "receipt_sha256": "1792dba1dd584111e0a71a49c0748204b310fc7de8468ea96860c2be319860e3",
+        "source_identity": "paq_v215",
+        "tree_receipt_sha256": "1792dba1dd584111e0a71a49c0748204b310fc7de8468ea96860c2be319860e3"
+      }
+    },
+    "CIX_RUNTIME_PAQ_V216_BRIDGE": {
+      "artifact_binding": "selected_closure",
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "fc511f145184396f4cea39ac8281d12c7ac913914a9e2d6da770cf58f4098fb2",
+      "source": {
+        "readme_sha256": "88134d8f7367e51cbccd3b70a36c113b3f8e453608350e36b5e78819360e76a6",
+        "receipt_sha256": "b3471beaf7f1e1549c008401eed3657698231c858d9e333d9eed2fba769b1204",
+        "source_identity": "paq_v216",
+        "tree_receipt_sha256": "b3471beaf7f1e1549c008401eed3657698231c858d9e333d9eed2fba769b1204"
+      }
+    },
+    "CIX_RUNTIME_SPATIAL_BRIDGE": {
+      "artifact_binding": {
+        "engineering_binary_binding_receipt": "spatial_binary_binding",
+        "selected_closure": true
+      },
+      "notices": [
+        "licenses/CharLS-Debian-copyright.txt",
+        "licenses/OpenJPEG-Debian-copyright.txt"
+      ],
+      "sha256": "51636cb3cbd9830d3f869142915d9e86345909a98cc57f38c86f6bf0f15c31cf",
+      "source": {
+        "cix_source_build_receipt": {
+          "cmakelists_sha256": "611063af757bca8f70108abba5cbcefc4700a0ee083c854e353ccb2d684a6ce6",
+          "cpp_sha256": "e54188e999a93b7dffaa13012dfbc5b23d976fab8a861766fb97781d9aefe54c",
+          "head": "4dcdf53312e99d4f8043177403fc5338628653d0",
+          "sha256": "106687b86ad252082df221250b051dc7ffd07cf392cc889a3930bf5652434459"
+        },
+        "install_binding": {
+          "limit": "This is an engineering source-to-installed-binary trace, not byte-identical evidence for later current-source rebuilds.",
+          "selected_installed_sha256": "51636cb3cbd9830d3f869142915d9e86345909a98cc57f38c86f6bf0f15c31cf",
+          "transform": "Recorded CMake installation changes the build artifact RPATH to $ORIGIN; see spatial_binary_binding.",
+          "uninstalled_sha256": "f44ac6c8630a57020b6b70d01d47cd59bb558fca4fdb8f9477b0442e64c05186"
+        },
+        "third_party_packages": [
+          "charls",
+          "openjpeg"
+        ]
+      }
+    }
+  },
+  "schema": "cix-selected-runtime-provider-provenance-v3",
+  "scope": "Deterministic provenance input for the fourteen selected Linux x86_64 runtime providers. It binds selected artifact hashes to local evidence and stages exact notice texts. It does not decide licence compliance, redistribution rights, or source-distribution obligations.",
+  "selected_closure": {
+    "schema": "cix-engineering-provider-closure-v1",
+    "status": "engineering_inputs_selected"
+  },
+  "source_identities": {
+    "brotli": {
+      "commit": "028fb5a23661f123017c060daa546b55cf4bde29",
+      "pinned_as_submodule_of": "libjxl",
+      "source_url": "https://github.com/google/brotli"
+    },
+    "charls_ubuntu_source": {
+      "source_package": "charls",
+      "source_receipt": "ubuntu_codec_source_provenance",
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/universe/c/charls/",
+      "source_version": "2.4.2-2build2"
+    },
+    "highway": {
+      "commit": "457c891775a7397bdb0376bb1031e6e027af1c48",
+      "pinned_as_submodule_of": "libjxl",
+      "source_url": "https://github.com/google/highway"
+    },
+    "libjxl": {
+      "commit": "a7a9c787341cf703dede03c2009fa460cae5e5df",
+      "source_receipt": "jxl_source",
+      "source_url": "https://github.com/libjxl/libjxl.git",
+      "version_tag": "v0.12.0"
+    },
+    "openjpeg2_ubuntu_source": {
+      "source_package": "openjpeg2",
+      "source_receipt": "ubuntu_codec_source_provenance",
+      "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openjpeg2/",
+      "source_version": "2.5.0-2ubuntu0.5"
+    },
+    "paq_v215": {
+      "archive_sha256": "e3a86a08961f90bab73b01cb3db27327471a701b6ac2dde0c972e5b6f78c0737",
+      "commit": "e80eed27ae8a673ccb016f1b158cff1b7150fcf6",
+      "source_url": "https://codeload.github.com/hxim/paq8px/tar.gz/refs/tags/v215",
+      "version_tag": "v215"
+    },
+    "paq_v216": {
+      "archive_sha256": "d231d814a0dc79657a2691ed166692a5dfbfa740388357654253ecadbdf8ef75",
+      "commit": "bf7b658fdcfc045a892920d01e830e6c6a790c21",
+      "source_url": "https://codeload.github.com/hxim/paq8px/tar.gz/refs/tags/v216",
+      "version_tag": "v216"
+    },
+    "skcms": {
+      "commit": "96d9171c94b937a1b5f0293de7309ac16311b722",
+      "pinned_as_submodule_of": "libjxl",
+      "source_url": "https://github.com/google/skcms"
+    }
+  },
+  "staging_direction": "For every selected provider, copy the listed exact notice text(s) with hash verification. Source availability is separately recorded above; this manifest does not infer that any source material must be redistributed.",
+  "unresolved": [
+    "The PAQ canonical base archives and immutable commits are recorded above. Distribution assembly still needs to carry their source identities, exact tree receipts, and fork derivation records with each selected PAQ bridge.",
+    "CharLS and OpenJPEG source descriptors and exact archive SHA-256 values are now recorded, but the four source archives are not yet retained and receipt-verified as staged source trees.",
+    "A final distribution review must determine the applicable legal obligations from the staged texts and package/source evidence. This engineering manifest makes no legal conclusion."
+  ]
+}

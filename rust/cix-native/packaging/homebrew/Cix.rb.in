@@ -1,0 +1,31 @@
+class Cix < Formula
+  desc "Lossless command-line compressor"
+  homepage "RELEASE_HOMEPAGE"
+  url "RELEASE_SOURCE_URL"
+  sha256 "RELEASE_SOURCE_SHA256"
+  license "MIT"
+
+  depends_on "rust" => :build
+  depends_on "cmake" => :build
+  depends_on "bzip2"
+  depends_on "brotli"
+  depends_on "xz"
+  depends_on "zstd"
+  depends_on "lz4"
+  depends_on "snappy"
+
+  def install
+    system "cargo", "build", "--locked", "--release", "--lib", "--bin", "cix"
+    bin.install "target/release/cix"
+    bin.install_symlink "cix" => "uncix"
+    bin.install_symlink "cix" => "cixcat"
+    system "cmake", "-S", "packaging/sdk", "-B", "sdk-build",
+           "-DCIX_NATIVE_LIBRARY=#{buildpath}/target/release/libcix_native.dylib",
+           "-DCIX_NATIVE_STATIC_LIBRARY=#{buildpath}/target/release/libcix_native.a",
+           "-DCMAKE_INSTALL_PREFIX=#{prefix}",
+           "-DCMAKE_INSTALL_LIBDIR=lib",
+           "-DCMAKE_INSTALL_DOCDIR=share/doc/cix"
+    system "cmake", "--install", "sdk-build"
+    man1.install "man/cix.1", "man/uncix.1", "man/cixcat.1"
+  end
+end

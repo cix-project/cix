@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+# Public source exports retain both crates under rust/. Override only for a
+# deliberately direct crate build; Debian source packages use the root layout.
+# This base package excludes full-engine providers. A separately selected
+# full-engine assembly, only after its dependency closure is accepted, must
+# install the GPL-3.0 text, PAQ notices, PAQ SOURCE-IDENTITY, and the applicable
+# PAQ build source with its providers. These base-package rules do not claim
+# that closure or install those providers.
+CIX_SOURCE_ROOT ?= rust/cix-native
+CARGO_TARGET_DIR ?= $(CURDIR)/target
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	CARGO_TARGET_DIR=$(CARGO_TARGET_DIR) cargo build --manifest-path $(CIX_SOURCE_ROOT)/Cargo.toml --release --locked --lib --bin cix
+	cmake -S $(CIX_SOURCE_ROOT)/packaging/sdk -B debian/cix-sdk-build \
+		-DCIX_NATIVE_LIBRARY=$(CURDIR)/target/release/libcix_native.so \
+		-DCIX_NATIVE_STATIC_LIBRARY=$(CURDIR)/target/release/libcix_native.a \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib/$(DEB_HOST_MULTIARCH) \
+		-DCMAKE_INSTALL_DOCDIR=share/doc/cix-dev
+
+override_dh_auto_install:
+	install -D -m 0755 target/release/cix debian/cix/usr/bin/cix
+	ln -s cix debian/cix/usr/bin/uncix
+	ln -s cix debian/cix/usr/bin/cixcat
+	install -D -m 0644 $(CIX_SOURCE_ROOT)/man/cix.1 debian/cix/usr/share/man/man1/cix.1
+	install -D -m 0644 $(CIX_SOURCE_ROOT)/man/uncix.1 debian/cix/usr/share/man/man1/uncix.1
+	install -D -m 0644 $(CIX_SOURCE_ROOT)/man/cixcat.1 debian/cix/usr/share/man/man1/cixcat.1
+	install -D -m 0644 LICENSE debian/cix/usr/share/doc/cix/copyright
+	install -D -m 0644 THIRD_PARTY_NOTICES.txt debian/cix/usr/share/doc/cix/THIRD_PARTY_NOTICES.txt
+	install -D -m 0644 THIRD_PARTY_NOTICES_RUST.md debian/cix/usr/share/doc/cix/THIRD_PARTY_NOTICES_RUST.md
+	DESTDIR=$(CURDIR)/debian/cix-dev cmake --install debian/cix-sdk-build

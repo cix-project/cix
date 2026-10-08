@@ -1,0 +1,67 @@
+[package]
+name = "cix-native"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.98"
+description = "CIX lossless command-line compressor"
+readme = "README.md"
+license = "MIT"
+autobins = false
+# Research microbenchmarks are preserved outside the shipping target set.
+# They have independent harness dependencies and are not product build targets.
+autobenches = false
+autoexamples = false
+keywords = ["compression", "lossless", "archive", "cli"]
+categories = ["command-line-utilities", "compression"]
+
+[features]
+default = []
+# The process-free SDK and ordinary CLI do not link the service runtime.
+server = ["dep:axum", "dep:tokio", "dep:tokio-util", "dep:serde", "dep:serde_json", "dep:schemars", "dep:sqlx", "dep:toml", "dep:uuid", "dep:rmcp", "dep:base64", "dep:tower", "dep:futures-util", "dep:argon2", "dep:zeroize"]
+
+[lib]
+crate-type = ["cdylib", "staticlib", "rlib"]
+
+[[bin]]
+name = "cix"
+path = "src/main.rs"
+
+[[bin]]
+name = "uncix"
+path = "src/uncix.rs"
+
+[[bin]]
+name = "cixcat"
+path = "src/cixcat.rs"
+
+[[example]]
+name = "native_buffer"
+path = "examples/native_buffer.rs"
+
+[dependencies]
+sha2 = "0.10"
+crc32fast = "1"
+flate2 = { version = "1", default-features = false, features = ["zlib"] }
+libc = "0.2"
+ctrlc = { version = "3", features = ["termination"] }
+num-bigint = "0.4"
+num-traits = "0.2"
+axum = { version = "=0.8.9", optional = true, features = ["http2", "ws"] }
+tokio = { version = "1", optional = true, features = ["rt-multi-thread", "macros", "net", "fs", "io-util", "io-std", "process", "signal", "sync", "time"] }
+tokio-util = { version = "0.7", optional = true, features = ["rt", "io"] }
+serde = { version = "1", optional = true, features = ["derive"] }
+serde_json = { version = "1", optional = true }
+schemars = { version = "=1.2.2", optional = true }
+sqlx = { version = "=0.9.0", optional = true, default-features = false, features = ["runtime-tokio", "tls-rustls-ring-native-roots", "sqlite", "postgres", "any"] }
+toml = { version = "0.9", optional = true }
+uuid = { version = "1", optional = true, features = ["v4"] }
+rmcp = { version = "=3.5.0", optional = true, default-features = false, features = ["server", "transport-io", "transport-streamable-http-server"] }
+base64 = { version = "0.22", optional = true }
+tower = { version = "0.5", optional = true, features = ["util", "limit"] }
+futures-util = { version = "0.3", optional = true }
+argon2 = { version = "0.5", optional = true }
+zeroize = { version = "1", optional = true }
+
+[build-dependencies]
+cc = "1"
+

@@ -1,0 +1,11 @@
+{
+  "name": "cix-native-node",
+  "version": "0.1.0",
+  "description": "Type declarations and packaging metadata for the installed CIX native Node-API add-on",
+  "license": "MIT",
+  "main": "cix_node.node",
+  "types": "index.d.ts",
+  "files": ["cix_node.node", "index.d.ts", "README.md"],
+  "engines": { "node": ">=18" },
+  "scripts": { "typecheck": "tsc --noEmit -p test/typed-consumer/tsconfig.json" }
+}

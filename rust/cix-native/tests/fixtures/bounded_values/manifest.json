@@ -1,0 +1,10 @@
+{
+  "generator": "runtime.cix_runtime.legacy.grid_backend.transform",
+  "input_sha256": "c79cd8137ba20c5caf78fe67d9fc83a356f0a22801a73bbf60b865fa692267f1",
+  "raw_sha256": {
+    "mode1.raw": "980093bfede4a38fc477251786a6ad0c60c0c7c542dda895d6fd0ab1336da1aa",
+    "mode2.raw": "c4559a3b580710144bcd8f211a6db82ad56e706b6b02a626e6452d5ca9d608dc",
+    "mode3.raw": "d8b03a3c9c378630d65f02eb4bbf7e6bb33f4927629266c49b1fa33db84f471d",
+    "mode4.raw": "3213401e0d061c96e39da7a1c7010f4dcc3a4538cd527e1647f8559b8a3591af"
+  }
+}

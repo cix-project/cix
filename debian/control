@@ -1,0 +1,28 @@
+Source: cix
+Section: utils
+Priority: optional
+Maintainer: maldous <matthew.aldous@gmail.com>
+Build-Depends: debhelper-compat (= 13), cargo, rustc, cmake, g++, pkg-config, zlib1g-dev, libbz2-dev, liblzma-dev, libzstd-dev, libbrotli-dev, liblz4-dev, libsnappy-dev
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: cix
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: lossless command-line compressor
+ CIX creates and restores lossless, self-describing CIX archives.
+ .
+ This package installs one native executable and its cix, uncix, and cixcat
+ command aliases. Optional host adapters and full-engine bridge providers are
+ not implied by this base package.
+
+Package: cix-dev
+Section: libdevel
+Architecture: any
+Depends: cix (= ${binary:Version}), ${misc:Depends}
+Description: native CIX development headers and libraries
+ CIX headers, shared and static native libraries, CMake package metadata,
+ pkg-config metadata, and a small C embedding example.
+ .
+ This development package exposes the process-free native SDK. It does not
+ provide an unqualified external-host adapter or a full-engine bridge bundle.

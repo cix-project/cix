@@ -1,0 +1,732 @@
+{
+  "coverage": {
+    "constant_coordinate_field": {
+      "coordinate": 7,
+      "offset": 8,
+      "symbols": 1100,
+      "type_class_blocks": [
+        1024,
+        76
+      ]
+    },
+    "coordinate_partition_coverage": "mixed signs, bit lengths and modulo-16 values",
+    "correction_palette": [
+      -1,
+      0,
+      1
+    ],
+    "records": 1100,
+    "tag_zero_fallback": false
+  },
+  "generator": "legacy.grid_context/grid_conditional.transform",
+  "input_bytes": 30828,
+  "input_sha256": "a49fde6a721489a39fa65019944354fa90e82615216eef6ce0d244a9fd27ef8d",
+  "raw": {
+    "sgcc1-mode0.raw": {
+      "bytes": 13220,
+      "sha256": "ce5a33a05f62e0aeab93cb274f46906b6a87e758b2ed49304e0a73c008f105c1",
+      "transform_stats": {
+        "fields": [
+          {
+            "correction_alphabet": 4,
+            "correction_combinatorial_bits": 1822.8385765693622,
+            "correction_payload_bytes": 1100,
+            "offset": 0,
+            "zeros": 248
+          },
+          {
+            "correction_alphabet": 3,
+            "correction_combinatorial_bits": 1013.6849199200714,
+            "correction_payload_bytes": 1100,
+            "offset": 8,
+            "zeros": 0
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2174.3503771684086,
+            "correction_payload_bytes": 1100,
+            "offset": 20,
+            "zeros": 179
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2165.946546975442,
+            "correction_payload_bytes": 1100,
+            "offset": 24,
+            "zeros": 116
+          }
+        ],
+        "mode": 0,
+        "records": 1100
+      }
+    },
+    "sgcc1-mode1.raw": {
+      "bytes": 13219,
+      "sha256": "f507442f0e11bdbea16f5ec45d3a51566e9f1a621fd48c4a676526394c2fe4a5",
+      "transform_stats": {
+        "fields": [
+          {
+            "correction_alphabet": 4,
+            "correction_combinatorial_bits": 1996.3975401820724,
+            "correction_payload_bytes": 1100,
+            "offset": 0,
+            "zeros": 166
+          },
+          {
+            "correction_alphabet": 2,
+            "correction_combinatorial_bits": 1005.1652836672279,
+            "correction_payload_bytes": 1100,
+            "offset": 8,
+            "zeros": 0
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2067.9663445296865,
+            "correction_payload_bytes": 1100,
+            "offset": 20,
+            "zeros": 152
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2082.5766584318576,
+            "correction_payload_bytes": 1100,
+            "offset": 24,
+            "zeros": 148
+          }
+        ],
+        "mode": 1,
+        "records": 1100
+      }
+    },
+    "sgcc1-mode2.raw": {
+      "bytes": 13220,
+      "sha256": "3ccc723b54bf66edac93259f6fd91a7a076b5bea330ef83a1dbff2d9d73aef02",
+      "transform_stats": {
+        "fields": [
+          {
+            "correction_alphabet": 4,
+            "correction_combinatorial_bits": 1822.8385765693622,
+            "correction_payload_bytes": 1100,
+            "offset": 0,
+            "zeros": 248
+          },
+          {
+            "correction_alphabet": 3,
+            "correction_combinatorial_bits": 1013.6849199200714,
+            "correction_payload_bytes": 1100,
+            "offset": 8,
+            "zeros": 0
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2174.3503771684086,
+            "correction_payload_bytes": 1100,
+            "offset": 20,
+            "zeros": 179
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2165.946546975442,
+            "correction_payload_bytes": 1100,
+            "offset": 24,
+            "zeros": 116
+          }
+        ],
+        "mode": 2,
+        "records": 1100
+      }
+    },
+    "sgcc1-mode3.raw": {
+      "bytes": 13219,
+      "sha256": "14bf13ecb873f42a6d15e0a1e6239c6f58f89ef26cb52b58e34f99a18febfbf0",
+      "transform_stats": {
+        "fields": [
+          {
+            "correction_alphabet": 4,
+            "correction_combinatorial_bits": 1996.3975401820724,
+            "correction_payload_bytes": 1100,
+            "offset": 0,
+            "zeros": 166
+          },
+          {
+            "correction_alphabet": 2,
+            "correction_combinatorial_bits": 1005.1652836672279,
+            "correction_payload_bytes": 1100,
+            "offset": 8,
+            "zeros": 0
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2067.9663445296865,
+            "correction_payload_bytes": 1100,
+            "offset": 20,
+            "zeros": 152
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2082.5766584318576,
+            "correction_payload_bytes": 1100,
+            "offset": 24,
+            "zeros": 148
+          }
+        ],
+        "mode": 3,
+        "records": 1100
+      }
+    },
+    "sgcc1-mode4.raw": {
+      "bytes": 13220,
+      "sha256": "d3a1ebe566ede27c79095aa5958a2c4bdd338ec5acdaef0ac3144d1559279754",
+      "transform_stats": {
+        "fields": [
+          {
+            "correction_alphabet": 4,
+            "correction_combinatorial_bits": 1996.3975401820724,
+            "correction_payload_bytes": 1100,
+            "offset": 0,
+            "zeros": 166
+          },
+          {
+            "correction_alphabet": 3,
+            "correction_combinatorial_bits": 1163.5955180388514,
+            "correction_payload_bytes": 1100,
+            "offset": 8,
+            "zeros": 26
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2067.9663445296865,
+            "correction_payload_bytes": 1100,
+            "offset": 20,
+            "zeros": 152
+          },
+          {
+            "correction_alphabet": 5,
+            "correction_combinatorial_bits": 2082.5766584318576,
+            "correction_payload_bytes": 1100,
+            "offset": 24,
+            "zeros": 148
+          }
+        ],
+        "mode": 4,
+        "records": 1100
+      }
+    },
+    "sgcc2-context0-coding0.raw": {
+      "bytes": 13221,
+      "sha256": "5f53147ec4bd1c414f69f75b7d1fcd297d0b3c9da8e001bde0b4ba8dad1c4821",
+      "transform_stats": {
+        "coding": 0,
+        "context": 0,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1106,
+            "groups": 1,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1105,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 1,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 1,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context0-coding1.raw": {
+      "bytes": 9816,
+      "sha256": "f8ba2aab2ac86aca87186501bef7ac243f65a8f070022103e4258a7eeca48740",
+      "transform_stats": {
+        "coding": 1,
+        "context": 0,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 1810.5125716687246,
+            "correction_stream_bytes": 256,
+            "groups": 1,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 152,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 2162.4319201625276,
+            "correction_stream_bytes": 307,
+            "groups": 1,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 2152.2783886449743,
+            "correction_stream_bytes": 305,
+            "groups": 1,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context0-coding2.raw": {
+      "bytes": 9830,
+      "sha256": "7cbd2aff1d31d705dc0c1699b362a9c82cfaecfefabc74859980d513ef51c741",
+      "transform_stats": {
+        "coding": 2,
+        "context": 0,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 1810.5125716687246,
+            "correction_stream_bytes": 259,
+            "groups": 1,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 155,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 2162.4319201625276,
+            "correction_stream_bytes": 311,
+            "groups": 1,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 2152.2783886449743,
+            "correction_stream_bytes": 309,
+            "groups": 1,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context1-coding0.raw": {
+      "bytes": 13221,
+      "sha256": "e65344375260974987ba4a7fefe746253e677a5c2764d7dd9e553587a092528b",
+      "transform_stats": {
+        "coding": 0,
+        "context": 1,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1106,
+            "groups": 21,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1105,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 21,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 21,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context1-coding1.raw": {
+      "bytes": 10242,
+      "sha256": "b25f0f2a08a773356718e0f0a3249574220ae8480853786b7cb98955695bca24",
+      "transform_stats": {
+        "coding": 1,
+        "context": 1,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 1490.590826770854,
+            "correction_stream_bytes": 409,
+            "groups": 21,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 152,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1696.7930805658204,
+            "correction_stream_bytes": 439,
+            "groups": 21,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1712.4823185795594,
+            "correction_stream_bytes": 446,
+            "groups": 21,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context1-coding2.raw": {
+      "bytes": 10321,
+      "sha256": "62b1bb1a592a0d2d1c527049dc10b5b1380c591ec049311233cd636a4f997da4",
+      "transform_stats": {
+        "coding": 2,
+        "context": 1,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 1490.590826770854,
+            "correction_stream_bytes": 434,
+            "groups": 21,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 155,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1696.7930805658204,
+            "correction_stream_bytes": 464,
+            "groups": 21,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1712.4823185795594,
+            "correction_stream_bytes": 472,
+            "groups": 21,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context2-coding0.raw": {
+      "bytes": 13221,
+      "sha256": "729b4773a8d37a94ee5bf0eea26f5151d5bebe2c46b1e033b5a9a13c5a15b028",
+      "transform_stats": {
+        "coding": 0,
+        "context": 2,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1106,
+            "groups": 142,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1105,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 142,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 142,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context2-coding1.raw": {
+      "bytes": 12846,
+      "sha256": "fa7b544cf3c72e88a1976cbddb5186ed5641bebfff99df6fca88d269d9f3dc07",
+      "transform_stats": {
+        "coding": 1,
+        "context": 2,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 995.7860347631901,
+            "correction_stream_bytes": 1291,
+            "groups": 142,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 152,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1063.351838519561,
+            "correction_stream_bytes": 1298,
+            "groups": 142,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1076.7849874236992,
+            "correction_stream_bytes": 1309,
+            "groups": 142,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context2-coding2.raw": {
+      "bytes": 13276,
+      "sha256": "d6dcdf9049310dd86fd6e9fbdb7f5dab0e1fa3c1b856a6d45ae7f5573b722444",
+      "transform_stats": {
+        "coding": 2,
+        "context": 2,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 995.7860347631901,
+            "correction_stream_bytes": 1433,
+            "groups": 142,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 155,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1063.351838519561,
+            "correction_stream_bytes": 1440,
+            "groups": 142,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1076.7849874236992,
+            "correction_stream_bytes": 1452,
+            "groups": 142,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context3-coding0.raw": {
+      "bytes": 13221,
+      "sha256": "938d11799ce08177e03ca8992bc15394e5d3a1bd9eb5c4945b789c9a3a938846",
+      "transform_stats": {
+        "coding": 0,
+        "context": 3,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1106,
+            "groups": 142,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1105,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 142,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": null,
+            "correction_stream_bytes": 1107,
+            "groups": 142,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context3-coding1.raw": {
+      "bytes": 12846,
+      "sha256": "742a2f5cdfbe702f23d3a43b2a79b27266f4c01fbc01d446174ddd6b1257ca10",
+      "transform_stats": {
+        "coding": 1,
+        "context": 3,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 995.7860347631904,
+            "correction_stream_bytes": 1291,
+            "groups": 142,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 152,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1063.3518385195619,
+            "correction_stream_bytes": 1298,
+            "groups": 142,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1076.7849874236997,
+            "correction_stream_bytes": 1309,
+            "groups": 142,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    },
+    "sgcc2-context3-coding2.raw": {
+      "bytes": 13276,
+      "sha256": "fd35c4e84abb8c65b3d7c1b9cc582b08bedfd6812431ab0384149955d059ac58",
+      "transform_stats": {
+        "coding": 2,
+        "context": 3,
+        "fields": [
+          {
+            "alphabet": 4,
+            "conditional_log_cardinality_bits": 995.7860347631904,
+            "correction_stream_bytes": 1433,
+            "groups": 142,
+            "offset": 0,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 3,
+            "conditional_log_cardinality_bits": 1010.2630307479011,
+            "correction_stream_bytes": 155,
+            "groups": 1,
+            "offset": 8,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1063.3518385195619,
+            "correction_stream_bytes": 1440,
+            "groups": 142,
+            "offset": 20,
+            "raw_fallback": false
+          },
+          {
+            "alphabet": 5,
+            "conditional_log_cardinality_bits": 1076.7849874236997,
+            "correction_stream_bytes": 1452,
+            "groups": 142,
+            "offset": 24,
+            "raw_fallback": false
+          }
+        ],
+        "records": 1100
+      }
+    }
+  }
+}

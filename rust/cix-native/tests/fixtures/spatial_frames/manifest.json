@@ -1,0 +1,11 @@
+{
+  "fixture_family": "historical-cixi1-spatial",
+  "provenance": "Four checked-in, bounded compatibility vectors. They are retained solely to test CIXI1 spatial-frame restoration and require no acquisition, generator, Python runtime, or private checkout.",
+  "reference_encoder": "historical lossless spatial-frame contract",
+  "files": {
+    "jls.cix": {"sha256": "5b20d6a1dccc9c2fb029c2bc329be04dbba68fd9fb43c12375d739fa0b0fece2"},
+    "jls-input.bin": {"sha256": "810bdbd886b9643ef36ebe2199847c6324bd8ed56688c316f5a02cceb63b8f1f3"},
+    "j2k.cix": {"sha256": "2fc2a31dd5337774953444ca4f50c93317719b104139566ee0695cb5a2ae2563"},
+    "j2k-input.bin": {"sha256": "6c91c4e0f391b8171ada33ec59f8bd1a51ab2d295c9c85b98f4aa8a093235eb5"}
+  }
+}
