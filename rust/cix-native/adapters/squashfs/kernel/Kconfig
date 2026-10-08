@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: GPL-2.0-only
+config CIX_SQUASHFS
+	tristate "CIX experimental SquashFS reader"
+	depends on BLOCK
+	depends on SQUASHFS
+	select SQUASHFS_XATTR
+	help
+	  Build the separately named cix_squashfs reader.  It accepts only the
+	  private CIX compressor id 65001 and never extends the stock squashfs
+	  filesystem.  This is experimental and not an upstream format claim.

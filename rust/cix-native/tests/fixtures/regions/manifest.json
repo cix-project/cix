@@ -1,0 +1,85 @@
+{
+  "cases": {
+    "dicom.bin": [
+      {
+        "end": 42,
+        "kind": "dicom-implicit-vr",
+        "start": 0
+      }
+    ],
+    "elf.bin": [
+      {
+        "end": 120,
+        "kind": "elf",
+        "start": 0
+      }
+    ],
+    "grid.bin": [
+      {
+        "end": 56,
+        "kind": "wcstools-sao-28",
+        "start": 0
+      }
+    ],
+    "mixed.bin": [
+      {
+        "end": 15,
+        "kind": "generic",
+        "start": 0
+      },
+      {
+        "end": 121,
+        "kind": "sdf-v2000",
+        "start": 15
+      },
+      {
+        "end": 124,
+        "kind": "generic",
+        "start": 121
+      },
+      {
+        "end": 180,
+        "kind": "wcstools-sao-28",
+        "start": 124
+      },
+      {
+        "end": 184,
+        "kind": "generic",
+        "start": 180
+      },
+      {
+        "end": 226,
+        "kind": "dicom-implicit-vr",
+        "start": 184
+      },
+      {
+        "end": 230,
+        "kind": "generic",
+        "start": 226
+      },
+      {
+        "end": 350,
+        "kind": "elf",
+        "start": 230
+      },
+      {
+        "end": 351,
+        "kind": "generic",
+        "start": 350
+      }
+    ],
+    "sdf.bin": [
+      {
+        "end": 8,
+        "kind": "generic",
+        "start": 0
+      },
+      {
+        "end": 114,
+        "kind": "sdf-v2000",
+        "start": 8
+      }
+    ]
+  },
+  "generator": "runtime.cix_runtime.regions"
+}

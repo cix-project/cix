@@ -1,0 +1,13 @@
+prefix=${pcfiledir}/@CIX_PC_PREFIX_FROM_PCDIR@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: CIX Native Buffer API
+Description: CIX process-free complete-buffer lossless compression ABI
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lcix_native
+Cflags: -I${includedir}
+# Linux static consumers must also resolve the selected target's codec, Rust runtime, and build.rs C++ runtime links.
+Requires.private: zlib libzstd libbrotlienc libbrotlidec
+Libs.private: -lbz2 -llzma -llz4 -lsnappy -lstdc++ -lm -ldl -lpthread -lrt -lutil

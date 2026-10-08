@@ -1,0 +1,7 @@
+/target/
+/stage/
+/dist/
+/.scannerwork/
+*.cix
+*.tmp
+*.swp

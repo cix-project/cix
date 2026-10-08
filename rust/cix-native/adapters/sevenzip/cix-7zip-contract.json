@@ -1,0 +1,70 @@
+{
+  "contract_version": 1,
+  "adapter": "CIX-owned 7-Zip SDK ICompressCoder adapter",
+  "method": {
+    "name": "CIX-EXPERIMENTAL-v1",
+    "development_method_id_hex": "0xC1580001",
+    "version": 1,
+    "status": "private development identifier only; no upstream allocation or stock registration"
+  },
+  "wire_format": {
+    "encoder": "native independent CIXG1 stream via cix_stream.h ABI v1",
+    "decoder": "the matching CIX-owned experimental decoder is required",
+    "not_supported": [
+      "ZIP method",
+      "stock 7-Zip decoder",
+      "full-engine CIX routes",
+      "retained-history CIX streams"
+    ],
+    "coder_properties": {
+      "bytes_hex": "43 49 58 37 01",
+      "meaning": "CIX7 wire-property ABI and method version only",
+      "excludes": [
+        "memory limit",
+        "output limit",
+        "worker count",
+        "encoder profile"
+      ]
+    }
+  },
+  "bounds": {
+    "input": "required non-zero input_limit; known 7-Zip inSize is checked before reads",
+    "output": "required non-zero output_limit; decoder requires known outSize and checks it before writes and at completion",
+    "memory": "required non-zero CIX memory_limit; this is a CIX admission limit, not a process-RSS cap",
+    "streaming": "64 KiB adapter buffers; every partial Read and Write is looped; no caller buffer is retained",
+    "decoder_policy": "Archive coder properties cannot raise deployment-local decoder limits."
+  },
+  "errors": {
+    "malformed_or_truncated_cix": "S_FALSE",
+    "resource_or_output_bound": "E_OUTOFMEMORY",
+    "invalid_contract": "E_INVALIDARG",
+    "input_or_output_stream_error": "original HRESULT",
+    "progress_abort": "original SetRatioInfo HRESULT, including E_ABORT"
+  },
+  "distribution": {
+    "required": [
+      "selected libcix_native with cix_stream ABI v1",
+      "CIX experimental 7-Zip adapter built against the same pinned SDK interfaces",
+      "method/version metadata in the containing format or deployment manifest"
+    ],
+    "prohibited_claim": "This does not make ordinary .7z or .zip archives readable by stock tools."
+  },
+  "module": {
+    "exports": [
+      "GetNumberOfMethods",
+      "GetMethodProperty",
+      "CreateDecoder",
+      "CreateEncoder",
+      "GetModuleProp"
+    ],
+    "implementation": "CIX-owned registry globals plus unchanged official 7-Zip SDK 26.03 CodecExports.cpp",
+    "host_discovery": "not installed or qualified by this source"
+  },
+  "qualification": [
+    "module enumeration and method ID",
+    "encoder/decoder factories and QueryInterface property paths",
+    "partial I/O and progress cancellation",
+    "empty, corrupt and trailing payloads",
+    "actual pinned 7zr/7zz host discovery and archive interoperability"
+  ]
+}

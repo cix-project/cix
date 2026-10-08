@@ -1,0 +1,65 @@
+{
+  "files": {
+    "grid-sagr-mode0.raw": {
+      "bytes": 120,
+      "sha256": "3df4b2e302c96d0c001818a814c44eda9302dff340f79aac7b6289cfd6d5d7a3"
+    },
+    "grid-sagr-mode1.raw": {
+      "bytes": 186,
+      "sha256": "f931baf396be4bdef7aa5db7c90a1bb743d3b3ff61b532c7e9095525cc0de581"
+    },
+    "grid-sagr-mode2.raw": {
+      "bytes": 203,
+      "sha256": "ecf529ab7f74a70190778b4836f27102dae73ef3305a8fd38f6ef013b82f2197"
+    },
+    "grid-sagr-mode3.raw": {
+      "bytes": 208,
+      "sha256": "9d57501d89bcdff57f16c29e606e81b3a59343ab95822d7b1d9981cc6ff9a6f6"
+    },
+    "grid.input": {
+      "bytes": 112,
+      "sha256": "76d37e488f703c9c99d461c23825e07ad2bce41da97bee484b9e7c89021c9362"
+    },
+    "record-mycc-mode1.raw": {
+      "bytes": 161,
+      "sha256": "b1191d78ae36355df7345c6c68a9a54948a99e22c1d1ec0081c003e2fbd3f235"
+    },
+    "record-mycc-mode2.raw": {
+      "bytes": 161,
+      "sha256": "d93bb303cc8791ca884a5d27b35de6c690f4039e3558fc8d57bc8b73a4c5ee32"
+    },
+    "record-mycc-mode3.raw": {
+      "bytes": 166,
+      "sha256": "cc33b9f7e84fa60610c5f5fe9a3cabab907b766fe6b63b414e06780863533552"
+    },
+    "record-mycc-mode4.raw": {
+      "bytes": 167,
+      "sha256": "d1ac465d744360f993c0cec268bbb89ef57408d4a0f2ca02d7425ecbdcf1a094"
+    },
+    "record-mycs-mode0.raw": {
+      "bytes": 119,
+      "sha256": "c5bf021cc939111d718a1e31710d6bd3a0f6d4a1f2e928a0a5934823bdca52a9"
+    },
+    "record-mycs-mode1.raw": {
+      "bytes": 145,
+      "sha256": "3b2a7356ef6028103134fcd1a6e4083a8fb8c57084d7cbf2ddf54646593327dc"
+    },
+    "record-mycs-mode2.raw": {
+      "bytes": 153,
+      "sha256": "8a8af927eb5727a78dde53331e67cab72ce49da1f1a05b5933c9b7eb2e9eeff6"
+    },
+    "record-mycs-mode3.raw": {
+      "bytes": 153,
+      "sha256": "fd7f8c037964e4b84e49b7c2498895aee8fbdfa6acaf90116c62e723f2af89d1"
+    },
+    "record-mycs-mode4.raw": {
+      "bytes": 137,
+      "sha256": "9e5a019dd7ca3223921a61bb5f259c3f96db781e3acb6a17ae976e36bfff1a32"
+    },
+    "record.input": {
+      "bytes": 96,
+      "sha256": "4c24726f257b59fb47e22fdad890891ed4db345b909b98cdadedba756e2657c2"
+    }
+  },
+  "generator": "runtime legacy reference modules; tiny deterministic fixtures"
+}

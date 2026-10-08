@@ -1,0 +1,164 @@
+.TH CIX 1 "CIX 0.1.0" "CIX" "User Commands"
+.SH NAME
+cix \- create a lossless CIX archive
+.SH SYNOPSIS
+.B cix
+.RB [ \-1 " ... " \-9 " | " \-\-fast " | " \-\-best ]
+.RB [ \-c ]
+.RB [ \-f ]
+.RB [ \-k ]
+.RB [ \-o
+.IR file ]
+.RI [ file ]
+.SH DESCRIPTION
+.B cix
+compresses one file or standard input into a self-describing CIX archive. With
+a named input, the default output name appends
+.BR .cix .
+Inputs are retained by default. Use
+.B \-
+as FILE for standard input; use
+.B \-c
+for standard output. CIX stores one byte stream per invocation; use an
+archiver such as tar when preserving a directory tree.
+.SH EFFORT AND RESOURCES
+.TP
+.B \-1 " ... " \-9
+Set compression effort. The default is
+.BR \-6 .
+.TP
+.B \-\-fast
+Use effort 1 for lower compression latency.
+.TP
+.B \-\-best
+Use effort 9 for the broadest bounded archive search. With no explicit
+.BR \-\-memory ,
+BEST raises the accounted memory-admission limit to 6 GiB. Decoding, testing,
+and listing also start at 6 GiB unless an explicit limit is supplied. This is
+not an aggregate-process RSS guarantee. Eligible
+whole-file native BEST work can use a 15-minute allowance plus up to 45 minutes
+based on input size. Direct external-library calls can add time and are not
+preemptible, so this is not a total wall-time limit.
+.TP
+.BR \-\-memory " " \fISIZE\fR
+Set the maximum admitted working memory. SIZE accepts the size syntax accepted
+by the command, such as
+.BR 512MiB .
+FAST and the default profile start at 512 MiB. An explicit value is never
+raised automatically.
+.TP
+.BR \-\-threads " " \fIN\fR
+Set the worker limit from 1 through 20. The default is up to four available
+CPUs. More than one worker is supported only for native CIXG1/CIXG2 block or
+candidate selection.
+.TP
+.BR \-\-parallelism " " \fIblocks\fR | \fIcandidates\fR
+Choose parallel work across ordered blocks or among candidate trials within a
+block.
+.SH BASIC OPTIONS
+.TP
+.B \-c
+Write the archive to standard output.
+.TP
+.BR \-o " " \fIFILE\fR
+Write the archive to FILE.
+.TP
+.B \-f
+Replace an existing output file.
+.TP
+.B \-k
+Accepted for compatibility. Inputs are retained by default.
+.TP
+.BR \-h , " " \-\-help
+Show command usage.
+.TP
+.B \-\-version
+Show the version and supported container identifiers.
+.SH FORMAT AND EXPERT CONTROLS
+These controls constrain the encoder and can exclude otherwise eligible
+candidates. They are intended for diagnosis and controlled integration.
+.TP
+.BR \-\-format " " \fIauto\fR | \fIcixg1\fR | \fIcixg2\fR | \fIcixm6\fR | \fIcixf1\fR
+Select or constrain the output container. The default,
+.BR auto ,
+selects among eligible native containers. CIXM6 and CIXF1 are encoding-only
+formats and cannot be combined with route selection, external candidates, or
+portfolio selection. CIXF1 requires a named input so its basename can be
+stored. An explicit non-auto format forces a compatible whole-container wire
+and excludes unrelated automatic carriers.
+.TP
+.BR \-\-route " " \fIauto\fR | \fIraw\fR | \fIruns\fR | \fIcomposition\fR | \fIlz\fR | \fIpredictor\fR | \fIbwt\fR | \fIstride\fR | \fIphrases\fR | \fIppm\fR | \fImixture\fR | \fIdeflate\fR
+Constrain the native route. Some routes need more memory: LZ and mixture need
+at least 16 MiB, and PPM needs at least 64 MiB.
+.TP
+.BR \-\-backend " " \fINAME\fR
+Constrain the nested substream backend. Supported names are
+.BR cix ,
+.BR raw ,
+.BR runs ,
+.BR ppm ,
+.BR mixture ,
+.BR deflate ,
+.BR hybrid ,
+.BR range ,
+.BR count-range ,
+.BR context-range-o1-b4 ,
+.BR context-range-o1-b8 ,
+.BR context-range-o2-b8 ,
+and
+.BR huffman .
+Some versioned substream coders require CIXG2 or automatic format selection.
+This is native-container tuning: without an explicit non-auto
+.BR --format ,
+independent automatic candidates remain eligible and do not claim to use the
+selected nested backend.
+.TP
+.BR \-\-block-size " " \fISIZE\fR
+Set the maximum uncompressed block size. CIXG1 frames are limited to 65536
+bytes; larger requests are reduced to that limit with a diagnostic. The legacy
+.B \-\-block
+form accepts a byte count. This is native-container tuning; it restricts native
+block candidates without forcing the automatic search to one container wire.
+.TP
+.BR \-\-history " " \fISIZE\fR
+Request retained model history. The current native routes do not support a
+nonzero value and reject it.
+.TP
+.B \-\-independent-blocks
+Request model reset boundaries. It conflicts with retained history and is not
+available for CIXM6/CIXF1 or external/portfolio encoding.
+.TP
+.B \-\-stream
+Require streaming operation. Streaming uses bounded framed candidates; it
+cannot be used with whole-input external or portfolio selection.
+.TP
+.BR \-\-flush-interval " " \fIDURATION\fR
+Flush framed partial blocks after an idle interval while encoding. It is not a
+decoding option. For non-seekable input, it requires Unix poll support.
+.TP
+.BR \-\-profile " " \fIfast\fR | \fIdefault\fR | \fIsize\fR
+Choose an external profile or map a native auto/CIXG1/CIXG2 encode to effort
+1, 6, or 9. It cannot be combined with a numeric effort option.
+.TP
+.BR \-\-portfolio " " \fIfast\fR | \fIdefault\fR | \fIsize\fR
+Use bounded whole-input CIXB1 portfolio selection, comparing eligible native
+and direct external candidates before choosing one completed archive. This is
+whole-input portfolio selection, not per-symbol predictive mixing. It requires
+a named bounded input and conflicts with streaming, route, external, and
+profile controls.
+.TP
+.BR \-\-external " " \fICODEC\fR
+Explicitly wrap a direct external codec in CIXB1. It is an encoding-only,
+named-input operation and conflicts with streaming and route selection.
+.TP
+.B \-\-explain
+Report candidate costs and decisions.
+.TP
+.B \-\-verbose
+Report aggregate search statistics and resource exclusions.
+.SH EXIT STATUS
+0 indicates success. A nonzero status indicates invalid arguments, I/O failure,
+resource admission failure, interruption, or compression failure.
+.SH SEE ALSO
+.BR uncix (1),
+.BR cixcat (1)

@@ -1,0 +1,58 @@
+/* SPDX-License-Identifier: GPL-2.0-only */
+/* CIX-owned symbol namespace for unchanged pinned SquashFS reader TUs. */
+#ifndef CIX_SQUASHFS_PREFIX_H
+#define CIX_SQUASHFS_PREFIX_H
+
+#include <linux/fs.h>
+#include <linux/module.h>
+#include "cix_squashfs_register.h"
+
+#define register_filesystem cix_squashfs_register_filesystem
+#define unregister_filesystem cix_squashfs_unregister_filesystem
+#undef MODULE_ALIAS_FS
+#define MODULE_ALIAS_FS(name) MODULE_ALIAS("fs-cix_squashfs")
+
+#define squashfs_read_data cix_squashfs_read_data
+#define squashfs_cache_init cix_squashfs_cache_init
+#define squashfs_cache_delete cix_squashfs_cache_delete
+#define squashfs_cache_get cix_squashfs_cache_get
+#define squashfs_cache_put cix_squashfs_cache_put
+#define squashfs_copy_data cix_squashfs_copy_data
+#define squashfs_read_metadata cix_squashfs_read_metadata
+#define squashfs_get_fragment cix_squashfs_get_fragment
+#define squashfs_get_datablock cix_squashfs_get_datablock
+#define squashfs_read_table cix_squashfs_read_table
+#define squashfs_lookup_decompressor cix_squashfs_lookup_decompressor
+#define squashfs_decompressor_setup cix_squashfs_decompressor_setup
+#define squashfs_decompressor_single cix_squashfs_decompressor_single
+#define squashfs_decompressor_multi cix_squashfs_decompressor_multi
+#define squashfs_decompressor_percpu cix_squashfs_decompressor_percpu
+#define squashfs_read_inode_lookup_table cix_squashfs_read_inode_lookup_table
+#define squashfs_frag_lookup cix_squashfs_frag_lookup
+#define squashfs_read_fragment_index_table cix_squashfs_read_fragment_index_table
+#define squashfs_fill_page cix_squashfs_fill_page
+#define squashfs_copy_cache cix_squashfs_copy_cache
+#define squashfs_readpage_block cix_squashfs_readpage_block
+#define squashfs_get_id cix_squashfs_get_id
+#define squashfs_read_id_index_table cix_squashfs_read_id_index_table
+#define squashfs_iget cix_squashfs_iget
+#define squashfs_read_inode cix_squashfs_read_inode
+#define squashfs_listxattr cix_squashfs_listxattr
+#define squashfs_dir_ops cix_squashfs_dir_ops
+#define squashfs_export_ops cix_squashfs_export_ops
+#define squashfs_aops cix_squashfs_aops
+#define squashfs_inode_ops cix_squashfs_inode_ops
+#define squashfs_dir_inode_ops cix_squashfs_dir_inode_ops
+#define squashfs_symlink_aops cix_squashfs_symlink_aops
+#define squashfs_symlink_inode_ops cix_squashfs_symlink_inode_ops
+#define squashfs_xattr_handlers cix_squashfs_xattr_handlers
+#define squashfs_read_xattr_id_table cix_squashfs_read_xattr_id_table
+#define squashfs_xattr_lookup cix_squashfs_xattr_lookup
+#define squashfs_page_actor_init cix_squashfs_page_actor_init
+#define squashfs_page_actor_init_special cix_squashfs_page_actor_init_special
+#define squashfs_first_page cix_squashfs_first_page
+#define squashfs_next_page cix_squashfs_next_page
+#define squashfs_finish_page cix_squashfs_finish_page
+#define squashfs_actor_nobuff cix_squashfs_actor_nobuff
+
+#endif

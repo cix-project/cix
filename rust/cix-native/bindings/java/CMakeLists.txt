@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.21)
+project(CIXJavaJNI LANGUAGES C)
+
+set(CIX_NATIVE_LIBRARY "" CACHE FILEPATH "Absolute path to the qualified installed libcix_native shared library")
+set(CIX_NATIVE_INCLUDE_DIR "" CACHE PATH "Absolute installed directory containing cix.h and cix_stream.h")
+if(NOT IS_ABSOLUTE "${CIX_NATIVE_LIBRARY}" OR NOT EXISTS "${CIX_NATIVE_LIBRARY}")
+    message(FATAL_ERROR "Set CIX_NATIVE_LIBRARY to an existing absolute qualified native library")
+endif()
+if(NOT IS_ABSOLUTE "${CIX_NATIVE_INCLUDE_DIR}" OR NOT EXISTS "${CIX_NATIVE_INCLUDE_DIR}/cix.h" OR NOT EXISTS "${CIX_NATIVE_INCLUDE_DIR}/cix_stream.h")
+    message(FATAL_ERROR "Set CIX_NATIVE_INCLUDE_DIR to installed public headers containing cix.h and cix_stream.h")
+endif()
+find_package(JNI REQUIRED)
+
+add_library(cix_jni SHARED src/main/c/cix_jni.c)
+target_include_directories(cix_jni PRIVATE "${CIX_NATIVE_INCLUDE_DIR}" ${JNI_INCLUDE_DIRS})
+target_link_libraries(cix_jni PRIVATE "${CIX_NATIVE_LIBRARY}")
+set_target_properties(cix_jni PROPERTIES OUTPUT_NAME cix_jni)

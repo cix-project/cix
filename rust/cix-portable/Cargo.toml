@@ -1,0 +1,15 @@
+[package]
+name = "cix-portable"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.98"
+description = "Bounded pure-Rust CIXG1 portable subset"
+license = "MIT"
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+sha2 = "0.10"
+num-bigint = "0.4"
+num-traits = "0.2"

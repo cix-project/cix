@@ -1,0 +1,59 @@
+.TH UNCIX 1 "CIX 0.1.0" "CIX" "User Commands"
+.SH NAME
+uncix \- restore, test, or inspect a CIX archive
+.SH SYNOPSIS
+.B uncix
+.RB [ \-c ]
+.RB [ \-f ]
+.RB [ \-k ]
+.RB [ \-t | \-l ]
+.RB [ \-o
+.IR file ]
+.RI [ archive ]
+.SH DESCRIPTION
+.B uncix
+restores a CIX archive to its original byte stream. With a named archive, the
+default output name removes a final
+.B .cix
+suffix when present. Existing outputs are not replaced unless
+.B \-f
+is supplied. Omit ARCHIVE or use
+.B \-
+to read an archive from standard input.
+.SH OPTIONS
+.TP
+.B \-c
+Write restored bytes to standard output.
+.TP
+.BR \-o " " \fIFILE\fR
+Write restored bytes to FILE.
+.TP
+.B \-f
+Replace an existing output file.
+.TP
+.B \-k
+Accepted for compatibility. Input archives are retained by default.
+.TP
+.B \-t
+Test archive integrity without writing restored bytes.
+.TP
+.B \-l
+List archive information on standard error while restoring.
+.TP
+.BR \-h , " " \-\-help
+Show command usage.
+.TP
+.B \-\-version
+Show the CIX version and supported container identifiers.
+.SH RESOURCE LIMITS
+The decoder starts with a 6 GiB accounted working-memory admission limit unless an explicit limit is supplied. This
+is not an aggregate-process RSS guarantee; use ordinary operating-system process limits when restoring untrusted archives. Compression
+options, including effort, route, format, block-size, profile, and parallelism,
+are rejected while decoding.
+.SH SECURITY
+Archives from untrusted sources are untrusted input. Use
+.B uncix -t
+when an integrity check is needed without writing restored bytes.
+.SH SEE ALSO
+.BR cix (1),
+.BR cixcat (1)
