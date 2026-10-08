@@ -1,0 +1,12 @@
+{
+  "format": "cix-squashfs-userspace-overlay-v1",
+  "compression_id": 65001,
+  "profile": "../profile/SPEC.md",
+  "source_packages": {
+    "squashfs-tools-ng": {"version": "1.2.0-1", "development_package_sha256": "51a9cafd02b8fb0dbeb76fa3650f1c191ae3ea0de369b9a984db13916fb53473"},
+    "squashfuse": {"version": "0.5.0-2build1", "require_source_artifact_sha256_receipt": true}
+  },
+  "required_block_classes": ["data", "fragment", "metadata", "xattr"],
+  "stock_compatible": false,
+  "kernel_compatible": false
+}

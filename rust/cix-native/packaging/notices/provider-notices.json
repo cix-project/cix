@@ -1,0 +1,118 @@
+{
+  "export_note": "Private evidence locations are excluded from this source export. Provider identities, notice hashes, and unresolved items are retained.",
+  "notice_files": {
+    "licenses/Brotli.txt": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+    "licenses/CharLS-Debian-copyright.txt": "5dff0985c79ec7a0c1cf7af81af2041ed2d63ddbc77820b481a0c8007cfa12e7",
+    "licenses/GPL-2.0.txt": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "licenses/GPL-3.0.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "licenses/Highway.txt": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+    "licenses/JPEG-XL.txt": "8405932022a556380c2d8c272eff154a923feb197233f348ce5f7334fb0a5ede",
+    "licenses/OpenJPEG-Debian-copyright.txt": "eee37e01db9d8eabac77a49dbacb9ea8962e5cfc98a35b87ee02cc81eef94f40",
+    "licenses/skcms.txt": "e59bb5c5c6ba426a9ac4ba9fe667ad14c5166b12aa25be8af1d122b14fbe2e36"
+  },
+  "providers": {
+    "CIX_RUNTIME_BROTLICOMMON_LIBRARY": {
+      "notices": [
+        "licenses/Brotli.txt"
+      ],
+      "sha256": "9c2b2dde573d55e29fc627eb6e3ac6a77ec9a4b5e059875885a17920a5fc36c0"
+    },
+    "CIX_RUNTIME_BROTLIDEC_LIBRARY": {
+      "notices": [
+        "licenses/Brotli.txt"
+      ],
+      "sha256": "728d94276cc06b6643c16c541e4177db416901cc88bfa7d89bae9cc4ad7199ef"
+    },
+    "CIX_RUNTIME_BROTLIENC_LIBRARY": {
+      "notices": [
+        "licenses/Brotli.txt"
+      ],
+      "sha256": "f0fc8b56a00c29e37c31ece498643963309c6420550eddf54cc5e4cdb26ae31c"
+    },
+    "CIX_RUNTIME_CHARLS_LIBRARY": {
+      "notices": [
+        "licenses/CharLS-Debian-copyright.txt"
+      ],
+      "sha256": "6fc5859988357c676d874fa98509445b8a8c8eee4eac533b5ae3eb884e0b858c"
+    },
+    "CIX_RUNTIME_JXL_BRIDGE": {
+      "notices": [
+        "licenses/JPEG-XL.txt",
+        "licenses/skcms.txt",
+        "licenses/Brotli.txt",
+        "licenses/Highway.txt"
+      ],
+      "sha256": "06557f893f26ce312b97e5e5755d6365046c1616f66a45b3de140fcf04e19b4b"
+    },
+    "CIX_RUNTIME_JXL_CMS_LIBRARY": {
+      "notices": [
+        "licenses/skcms.txt"
+      ],
+      "sha256": "ed665d737095074fc802a5a920c2e2c1d9cd6062120093368192fb91689dbe4a"
+    },
+    "CIX_RUNTIME_JXL_LIBRARY": {
+      "notices": [
+        "licenses/JPEG-XL.txt",
+        "licenses/skcms.txt",
+        "licenses/Brotli.txt",
+        "licenses/Highway.txt"
+      ],
+      "sha256": "57cf38e4920052bda1204636b179de9b2b4d79982b6dd45a414db2fe17b960b4"
+    },
+    "CIX_RUNTIME_JXL_THREADS_LIBRARY": {
+      "notices": [
+        "licenses/JPEG-XL.txt",
+        "licenses/Highway.txt"
+      ],
+      "sha256": "329b1b8a597d2345fa5b73fc75b820a22a8ed641f8899e4bd58c5a097379573c"
+    },
+    "CIX_RUNTIME_OPENJPEG_LIBRARY": {
+      "notices": [
+        "licenses/OpenJPEG-Debian-copyright.txt"
+      ],
+      "sha256": "19906c0334e8db2137912f83cceed5a03d954a9c12d9781901a9a27f92ce1c4d"
+    },
+    "CIX_RUNTIME_PAQ_JOINT_DISCOUNT_BRIDGE": {
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "8e8b74a7037654bf26d3a2d1c587ab3ff0d2028db68f4a48c387e8a2b925a597"
+    },
+    "CIX_RUNTIME_PAQ_STORE_STATE_BRIDGE": {
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "57bba97ddbe7d1cde36625a88060f7b2ee06a095d8e0966658b38d05bcb598b2"
+    },
+    "CIX_RUNTIME_PAQ_V215_BRIDGE": {
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "645f2f80dbe219465640d4489a219a90ae0787c9c8900d165045fe69b0e43757"
+    },
+    "CIX_RUNTIME_PAQ_V216_BRIDGE": {
+      "notices": [
+        "licenses/GPL-2.0.txt",
+        "licenses/GPL-3.0.txt"
+      ],
+      "sha256": "fc511f145184396f4cea39ac8281d12c7ac913914a9e2d6da770cf58f4098fb2"
+    },
+    "CIX_RUNTIME_SPATIAL_BRIDGE": {
+      "notices": [
+        "licenses/CharLS-Debian-copyright.txt",
+        "licenses/OpenJPEG-Debian-copyright.txt"
+      ],
+      "sha256": "51636cb3cbd9830d3f869142915d9e86345909a98cc57f38c86f6bf0f15c31cf"
+    }
+  },
+  "schema": "cix-selected-runtime-provider-notices-v1",
+  "scope": "Deterministic engineering staging input for the selected Linux x86_64 provider closure. It records source texts and identities only; it is not legal clearance or release acceptance.",
+  "unresolved": [
+    "Selected libjxl/Brotli runtime binary hashes are bound by the closure, but this input has no source-archive receipt for every selected binary.",
+    "CharLS/OpenJPEG notices are exact Debian package copyright texts; selected source-package provenance and redistribution closure remain required.",
+    "PAQ source receipts and GPL-2/GPL-3 texts are staged identity inputs; the closure explicitly leaves PAQ source/build and distribution closure for final review."
+  ]
+}

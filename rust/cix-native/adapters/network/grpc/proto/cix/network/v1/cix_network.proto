@@ -1,0 +1,36 @@
+syntax = "proto3";
+package cix.network.v1;
+option go_package = "example.invalid/cix/network/grpc/gen/cix/network/v1;cixnetworkv1";
+
+enum StandardEncoding {
+  STANDARD_ENCODING_IDENTITY = 0;
+  STANDARD_ENCODING_GZIP = 1;
+  STANDARD_ENCODING_BROTLI = 2;
+  STANDARD_ENCODING_ZSTD = 3;
+}
+message CapabilitiesRequest { uint32 protocol_version = 1; }
+message CapabilitiesResponse {
+  uint32 protocol_version = 1;
+  repeated StandardEncoding supported_standard_encodings = 2;
+  uint64 max_input_bytes = 3;
+  uint64 max_output_bytes = 4;
+  bool private_cix_envelope = 5;
+}
+message TransformRequest {
+  uint32 protocol_version = 1;
+  bytes payload = 2;
+  StandardEncoding input_encoding = 3;
+  StandardEncoding response_encoding = 4;
+  uint64 requested_output_limit = 5;
+}
+message TransformResponse {
+  uint32 protocol_version = 1;
+  bytes payload = 2;
+  StandardEncoding content_encoding = 3;
+  string envelope_media_type = 4;
+}
+service CixTransformService {
+  rpc GetCapabilities(CapabilitiesRequest) returns (CapabilitiesResponse);
+  rpc Encode(TransformRequest) returns (TransformResponse);
+  rpc Decode(TransformRequest) returns (TransformResponse);
+}

@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.21)
+project(cix_installed_consumers LANGUAGES C CXX)
+
+find_package(CIX 0.1 CONFIG REQUIRED)
+add_executable(cix_installed_cpp_consumer cpp_installed_consumer.cpp)
+target_link_libraries(cix_installed_cpp_consumer PRIVATE CIX::native)
+target_compile_features(cix_installed_cpp_consumer PRIVATE cxx_std_17)
+
+add_executable(cix_installed_stream_consumer c_stream_installed_consumer.c)
+target_link_libraries(cix_installed_stream_consumer PRIVATE CIX::native)
+target_compile_features(cix_installed_stream_consumer PRIVATE c_std_11)
+
+add_executable(cix_installed_format_consumer c_format_installed_consumer.c)
+target_link_libraries(cix_installed_format_consumer PRIVATE CIX::native)
+target_compile_features(cix_installed_format_consumer PRIVATE c_std_11)
+
+add_executable(cix_installed_dictionary_consumer ../../../examples/dictionary.c)
+target_link_libraries(cix_installed_dictionary_consumer PRIVATE CIX::native)
+target_compile_features(cix_installed_dictionary_consumer PRIVATE c_std_11)

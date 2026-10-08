@@ -1,0 +1,6 @@
+{
+  global:
+    cix_paq_store_state_process;
+    cix_paq_store_state_bridge_version;
+  local: *;
+};

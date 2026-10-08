@@ -1,0 +1,20 @@
+{
+  "schema": "cix.address-relations.fixture.v1",
+  "provenance": "Synthetic, checked-in compatibility vectors generated from the retained reference implementation. The file digests below are the public source identities; no external dataset or private checkout is needed to run the Rust tests.",
+  "source_sha256": "77634c99d0c781323b7d72fd004b87cbebaad236b62f98240360b8e526516115",
+  "additional_sources": {
+    "pointer_delta_mode5.raw": {
+      "reference_receipt_sha256": "12a0bb82d0a56cad738909148e5a67e864de12286e7c102540fff34690bd975d"
+    }
+  },
+  "files": {
+    "ambiguous_source.bin": "5173c278d8253a6e258fb313470ca636d601f4935b99fdcbb793fa2cb6cbf16c",
+    "ambiguous_symbol_load_mode2.raw": "52c5a267e3701a997cfe227f3da4e1871c9f7ca95bf14040df6009e779554eb3",
+    "pdata_mode1.raw": "ee6767cdc938f0941c9d66a01182f89566d7a45891f936cee353e409a6edb723",
+    "pdata_symbols_mode1.raw": "6bbdeead6845301c322217e3653f40fcfa7911e11eff8d4d2581210b22d027f2",
+    "pointer_delta_mode5.raw": "0dbae4bdcb34175c5f6a869afa691f66a94f20f098bcec70adf88dada35c4c5a",
+    "section_mode4.raw": "6629f4b58e848d41d4b3d146802684f25f200c62cbb0f844afb2750571e70bdc",
+    "source.bin": "77634c99d0c781323b7d72fd004b87cbebaad236b62f98240360b8e526516115",
+    "symbol_load_mode2.raw": "80cef6ab006a30c01c2073751af626ce174c4cf305a86bc7053968a295829734"
+  }
+}

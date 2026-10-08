@@ -1,0 +1,10 @@
+SDFGxcoordinate fixture
+native
+
+  1  0  0  0  0  0            999 V2000
+ C   0  0  0
+M  END
+$$$$
+ordinary literal bytes
+$$$$
+10000,-20000,5000

@@ -1,0 +1,35 @@
+.TH CIXCAT 1 "CIX 0.1.0" "CIX" "User Commands"
+.SH NAME
+cixcat \- restore a CIX archive to standard output
+.SH SYNOPSIS
+.B cixcat
+.RI [ archive ]
+.SH DESCRIPTION
+.B cixcat
+is the streaming-output form of
+.BR uncix .
+It restores ARCHIVE, or standard input when ARCHIVE is omitted or
+.BR \- ,
+to standard output. It is intended for pipelines.
+.PP
+For example:
+.PP
+.EX
+cixcat backup.tar.cix | tar -x
+.EE
+.SH OPTIONS
+.TP
+.BR \-h , " " \-\-help
+Show command usage.
+.TP
+.B \-\-version
+Show the CIX version and supported container identifiers.
+.SH RESOURCE LIMITS
+The decoder starts with a 6 GiB accounted working-memory admission limit unless an explicit limit is supplied. This
+is not an aggregate-process RSS guarantee; apply normal operating-system process limits when using CIX in an automated pipeline.
+.SH EXIT STATUS
+0 indicates success. A nonzero status indicates invalid input, an integrity
+failure, I/O failure, resource admission failure, or interruption.
+.SH SEE ALSO
+.BR cix (1),
+.BR uncix (1)

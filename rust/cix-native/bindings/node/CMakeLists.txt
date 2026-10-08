@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.16)
+project(cix_node LANGUAGES C)
+
+# This is an installed-SDK consumer.  Callers must provide both locations;
+# nothing here downloads, discovers, or builds CIX or Node.
+set(CIX_SDK_INCLUDE_DIR "" CACHE PATH "Absolute directory containing cix.h and cix_stream.h")
+set(CIX_SDK_LIBRARY "" CACHE FILEPATH "Absolute libcix_native library")
+set(NODE_API_INCLUDE_DIR "" CACHE PATH "Absolute directory containing node_api.h")
+if(NOT IS_ABSOLUTE "${CIX_SDK_INCLUDE_DIR}" OR NOT IS_ABSOLUTE "${CIX_SDK_LIBRARY}" OR NOT IS_ABSOLUTE "${NODE_API_INCLUDE_DIR}")
+  message(FATAL_ERROR "CIX_SDK_INCLUDE_DIR, CIX_SDK_LIBRARY, and NODE_API_INCLUDE_DIR must be absolute installed paths")
+endif()
+if(NOT EXISTS "${NODE_API_INCLUDE_DIR}/node_api.h")
+  message(FATAL_ERROR "NODE_API_INCLUDE_DIR must contain node_api.h")
+endif()
+file(READ "${NODE_API_INCLUDE_DIR}/js_native_api.h" CIX_NODE_API_HEADER)
+if(NOT CIX_NODE_API_HEADER MATCHES "napi_type_tag_object")
+  message(FATAL_ERROR "CIX Node binding requires N-API 8 type-tag support")
+endif()
+add_library(cix_node MODULE src/cix_node.c)
+target_include_directories(cix_node PRIVATE "${CIX_SDK_INCLUDE_DIR}" "${NODE_API_INCLUDE_DIR}")
+target_link_libraries(cix_node PRIVATE "${CIX_SDK_LIBRARY}")
+target_compile_definitions(cix_node PRIVATE NAPI_VERSION=8)
+set_target_properties(cix_node PROPERTIES PREFIX "" SUFFIX ".node" C_VISIBILITY_PRESET hidden)

@@ -1,0 +1,6 @@
+{
+  global:
+    cix_paq_v215_process;
+    cix_paq_v215_bridge_version;
+  local: *;
+};

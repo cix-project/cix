@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cix-native"
+version = "0.1.0"
+description = "Optional stdlib ctypes binding for the installed CIX native C ABI"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
