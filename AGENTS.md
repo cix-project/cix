@@ -1,3 +1,12 @@
+# Shared UIF worker directions
+
+At every startup, including independent Foo work, read
+[the shared worker policy](docs/agents/uif-worker-policy.md) and
+[its local version manifest](docs/agents/uif-worker-policy.json).
+Apply them with this repository's project-specific instructions, not instead of them.
+
+Read the existing CIX scaffold and activation restrictions below. This policy does not activate product development or resolve consolidation holds.
+
 # Working on CIX
 
 ## Current state
