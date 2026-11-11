@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.2.1.
+Policy ID: uif-worker-policy. Version: 1.2.2.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -159,9 +159,12 @@ an MCP connector is an alternative interface, not a prerequisite or a replacemen
 for the project's environment. Verify remote and local identity, preserve work,
 and retain the established integration writer.
 
-Coordinate Foo-local execution allocations through Morgan. Within its assigned
-and admitted scope, a project role may independently manage disjoint parallel
-operations through its available authorized Foo MCP interface, including builds,
+The project owner manages its authorized delivery and coordinates directly with
+other project agents on dependencies, ownership and handoffs. Use available
+authorized GitHub interfaces and Foo MCP directly for that work; routine delivery
+does not require Morgan to relay each operation. Within its assigned and admitted
+scope, a project role may independently manage disjoint parallel operations
+through its available authorized Foo MCP interface, including builds,
 tests and long-running deterministic tasks. This does not require renewed
 approval for each routine step of the same allocation. Bind each operation to
 its project, owner, task branch/commit, workspace, input/output contract and
@@ -184,8 +187,8 @@ a cloud checkout alone does not establish the cause of a missing capability.
 If the required session-control interface is unavailable, report that specific
 blocker and continue independent allocated work.
 
-Project roles independently manage the work allocated to them by Morgan,
-within their fixed project scope and established controls. When online and an
+Project roles own delivery and routine continuation within their user-authorized
+project scope and established controls. When online and an
 authorized MCP status interface is available, communicate completion and current
 task state to the Foo coordination surface through that interface. Include the
 existing task/operation identity, exact source/result, completed checks and
@@ -226,14 +229,20 @@ cloud work or routine documentation updates.
 
 ### Coordination, communication and continuation
 
-Morgan coordinates the user-authorized goals, priorities and cross-project
-dependencies, and directs next-task pickup by the cloud durable project roles.
-Cloud work currently follows the existing ledger; the intended next allocation
-surface is Linear. Foo-local workers use Stokowski for issue pickup and delivery
-through its configured Linear state and established project harness controls.
-Preserve those two allocation responsibilities rather than assuming either lane
-automatically manages the other. Review, publication and integration still use
-each project's established controls and owner.
+Morgan coordinates user-authorized goals, priorities, cross-project allocation
+conflicts and Foo Codex session orchestration. Project owners drive their own
+delivery, next eligible task selection, inter-agent coordination and routine
+follow-through within that scope. They do not wait for Morgan to assign every
+step or repeat work their current owner already performs. Escalate a genuine
+scope decision, unresolved ownership/resource conflict or missing capability
+rather than adding a routine approval or coordination gate.
+
+Cloud work follows its existing authorized coordination record; preserve ledger
+identities during the intended move to Linear. Foo-local workers use Stokowski
+for issue pickup and delivery through its configured Linear state and established
+project harness controls. Project-owned continuation does not replace those
+controls or make either lane automatically manage the other. Review, publication
+and integration still use each project's established controls and owner.
 
 Linear is the intended shared coordination surface for allocating work across
 the cloud and Foo lanes. Windmill operation receipts and LangChain/LangGraph
@@ -271,11 +280,23 @@ handoffs. Communicate completion, failures, changed ownership, capacity changes
 and decisions to the coordinating owner promptly, using the interfaces actually
 supported. A sent message is not proof of acceptance or execution.
 
+When reporting status, share already-known verified events and their scope
+immediately; do not delay them while collecting a fresh all-project report.
+Then ask the current project owners for missing or changed status and unresolved
+gaps, rather than starting a parallel delivery effort or repeating their audit.
+Identify what is known, its source/revision and what still awaits an owner reply.
+Distinguish planned, in progress, published, merged, acknowledged and actually
+adopted or executed states. A submitted request is not an acknowledgment, and a
+source merge is not runtime adoption. Reconcile conflicting evidence with the
+responsible owner and report corrections promptly. Keep durable outcomes in the
+existing record, not a new status ledger.
+
 Continue the current authorized outcome and its routine follow-through without
-requiring a new user prompt for every step. After a completed step, Morgan
-coordinates the next eligible cloud task and Stokowski/the established harness
-handles Foo pickup and refill, using the allocation responsibilities above and
-normal admission within the existing resource and ownership limits. Preserve independent work
+requiring a new user prompt for every step. After a completed step, the project
+owner continues the next eligible work in its authorized scope; Stokowski/the
+established harness handles Foo pickup and refill through its existing controls.
+Use normal admission within existing resource and ownership limits, involving
+Morgan for the coordination and session responsibilities above. Preserve independent work
 when one route is unavailable. Stop the affected action on user pause/withdrawal,
 a required confirmation, an access denial, exhausted dependent capacity, an
 uncertain external outcome or a real project-specific hold; report it and
