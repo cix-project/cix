@@ -1,3 +1,13 @@
+## Fixed operating role
+
+This repository belongs to the CIX dedicated project role. Read the fixed project agents and general Cloud role
+section in the local shared worker policy at startup and pass its version/hash to
+children. Project cloud Git, CPU and storage are independent of Foo; optional MCP
+execution must bind the correct host, project, worktree and branch. The general
+Cloud role has no Git configuration or repository binding. Additional Foo Codex sessions require
+restored allowance and current ownership checks. These are operating requirements,
+not proof of provisioning, availability or universal adoption.
+
 # Shared UIF worker directions
 
 At every startup, including independent Foo work, read
@@ -69,3 +79,4 @@ small reviewable implementation over speculative frameworks.
   for changes that affect those properties.
 - Keep findings concrete: affected location, triggering input, consequence, and
   actionable remedy. Distinguish verified failures from uncertainty.
+
