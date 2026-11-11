@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.1.1.
+Policy ID: uif-worker-policy. Version: 1.2.0.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -140,6 +140,129 @@ supported project controls. Keep code checkpoints, exact test results, pending
 operations and next steps recoverable in permitted storage. Local commits are
 not remote publication; verify remote readback before claiming a pushed checkpoint.
 Keep secrets and raw datasets out of source commits and handoff exports.
+
+## Continuous operation and project ownership
+
+The intended service model is continuous, recoverable work across changes in
+available execution capacity. Keep the five project roles assigned to their
+projects and the sixth general Cloud role free of a project environment or Git
+binding. Fixed means a stable logical assignment, not an immortal process,
+immutable infrastructure, unlimited quota or guaranteed availability. Reconstruct
+a replacement in the same role from accepted published state and current
+ownership when its earlier environment or session is unavailable.
+
+Each project role has one current coordinating owner and serializes mutations to
+its selected working checkout. It may use native Git in its own authorized cloud
+environment to inspect GitHub source, change branches and create task worktrees
+without requiring a GitHub MCP connector. Use the tools actually available there;
+an MCP connector is an alternative interface, not a prerequisite or a replacement
+for the project's environment. Verify remote and local identity, preserve work,
+and retain the established integration writer.
+
+A project owner can coordinate disjoint, resource-admitted parallel operations
+through the authorized Foo MCP execution interface, including builds, tests and
+long-running deterministic tasks. Bind each operation to its project, owner,
+task branch/commit, workspace, input/output contract and original operation ID.
+Never let parallel operations mutate the same checkout or publish competing
+integration results. Parallel jobs do not create additional integration owners.
+MCP deterministic execution is independent of Foo Codex inference allowance;
+it still depends on real connector access, Foo health and admitted resources.
+An operation that invokes a reasoning provider additionally needs that provider's
+actual availability and authorization.
+
+### Execution modes and transitions
+
+- **Cloud-primary mode:** when Foo Codex allowance is exhausted or unverified,
+  continue eligible work in the established cloud project roles and through
+  independently available authorized MCP deterministic execution. Do not stop
+  independent work because Foo inference is unavailable. Do not infer that a
+  cloud durable task is quota-immune; verify its own admission and execution.
+- **Combined mode:** when current evidence confirms Foo Codex allowance, keep the
+  existing cloud roles in place and add admitted Foo-local coding capacity.
+  Complete the applicable white-room recovery checks, reconcile accepted cloud
+  results and existing leases, and verify the actual UIF, Stokowski, Windmill and
+  persistence dependencies required by that work. Add as much useful parallel
+  work as the supported project controls and measured aggregate budget allow,
+  without promising or inventing a worker count.
+- **On either transition:** reconcile in-flight operations before retrying or
+  moving their work. Preserve published checkpoints, local-only custody and
+  pending outputs; fence an obsolete owner through supported controls before
+  admitting its replacement. Quota recovery never starts a stale session,
+  resumes a historical worker or supersedes current work by itself.
+
+At every startup or recovery, observe the actual control state and current
+project/task assignments rather than infer them from a previous chat, a saved
+configuration, a reset estimate or the presence of a process. Read current
+GitHub and Linear state, selected source, operation receipts and applicable
+LangChain/LangGraph checkpoint bindings. Use the project-specific white-room
+procedure for required dependencies. An unknown or failed dependency blocks only
+the work that uses it; do not add a universal host-readiness gate to unrelated
+cloud work or routine documentation updates.
+
+### Coordination, communication and continuation
+
+Morgan coordinates the user-authorized goals, priorities and cross-project
+dependencies, and directs next-task pickup by the cloud durable project roles.
+Cloud work currently follows the existing ledger; the intended next allocation
+surface is Linear. Foo-local workers use Stokowski for issue pickup and delivery
+through its configured Linear state and established project harness controls.
+Preserve those two allocation responsibilities rather than assuming either lane
+automatically manages the other. Review, publication and integration still use
+each project's established controls and owner.
+
+Linear is the intended shared coordination surface for allocating work across
+the cloud and Foo lanes. Windmill operation receipts and LangChain/LangGraph
+durable state provide execution and recovery evidence where applicable; they
+must be reconciled with task allocation rather than treated as competing sources
+of permission to dispatch. Record the selected lane, owner, scope, source and
+operation identity in the existing authorized coordination record before work.
+Use supported ownership and fencing controls to prevent duplicate pickup and
+conflicting writes. Until cross-lane arbitration is implemented and qualified,
+retain explicit owner coordination through those existing controls and report
+the gap. A Linear status, ledger row or persistence snapshot alone is not an
+atomic claim, a live lease or evidence that duplicate dispatch is prevented.
+This desired coordination contract does not assert a deployed shared allocator
+or prescribe an unreviewed locking or scheduling implementation.
+
+Keep interim cloud and Foo allocations disjoint. Preserve existing ledger task
+identities and their reconciliation links when moving work into Linear. Foo-local
+locks do not establish cloud ownership, and independent cloud claims must not
+require Foo to be available. Shared claim authority and effect fencing across
+both lanes need separate implementation and qualification; connector status
+updates alone do not provide them.
+
+Before a later authorized start or restoration, establish whether UIF is
+actually in BAU mode on Foo and use its supported controls for the requested
+transition. Observe useful pickup, execution, review, publication and refill,
+not merely a running process. This documentation update alone does not start,
+restart, repair or activate services.
+
+Use each existing project issue or authorized task as the durable coordination
+record. GitHub records source revisions, reviewed changes and merge outcomes;
+MCP operation receipts record actual remote execution. Keep assignment, scope,
+owned paths, policy version/hash, dependencies, current source, operation status,
+completed checks, unresolved blockers and the next action consistent across
+handoffs. Communicate completion, failures, changed ownership, capacity changes
+and decisions to the coordinating owner promptly, using the interfaces actually
+supported. A sent message is not proof of acceptance or execution.
+
+Continue the current authorized outcome and its routine follow-through without
+requiring a new user prompt for every step. After a completed step, Morgan
+coordinates the next eligible cloud task and Stokowski/the established harness
+handles Foo pickup and refill, using the allocation responsibilities above and
+normal admission within the existing resource and ownership limits. Preserve independent work
+when one route is unavailable. Stop the affected action on user pause/withdrawal,
+a required confirmation, an access denial, exhausted dependent capacity, an
+uncertain external outcome or a real project-specific hold; report it and
+continue unaffected authorized work. Keep continuation within the user's current
+scope and existing project admission, account, permission and resource controls.
+
+Record actual adoption per project role and selected checkout separately from
+source publication. A known operating state requires current evidence for
+assignment, source, control state and ongoing work; do not manufacture certainty
+where an executor cannot be inspected. Continuous operation is an objective
+supported by checkpoints, recovery and available capacity, not a promise that
+an agent, connector or host will run forever.
 
 ## Portable distribution, not implicit deployment
 
