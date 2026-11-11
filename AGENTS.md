@@ -1,11 +1,35 @@
+## Fixed operating role
+
+This repository belongs to the CIX dedicated project role. Read the fixed project agents and general Cloud role
+section in the local shared worker policy at startup and pass its version/hash to
+children. Project cloud Git, CPU and storage are independent of Foo; optional MCP
+execution must bind the correct host, project, worktree and branch. The general
+Cloud role has no Git configuration or repository binding. Additional Foo Codex sessions require
+restored allowance and current ownership checks. These are operating requirements,
+not proof of provisioning, availability or universal adoption.
+
+# Shared UIF worker directions
+
+At every startup, including independent Foo work, read
+[the shared worker policy](docs/agents/uif-worker-policy.md) and
+[its local version manifest](docs/agents/uif-worker-policy.json).
+Apply them with this repository's project-specific instructions, not instead of them.
+
+Read the existing CIX scaffold and activation restrictions below. This policy does not activate product development or resolve consolidation holds.
+
 # Working on CIX
 
 ## Current state
 
-This is a preparation-only scaffold. The owner has not approved using this
-repository for CIX development. Do not import source or history, redirect existing
-remotes, start product work, publish releases or packages, or deploy a website.
-Repository setup and verification are authorized. The repository variable
+This repository contains an allowlisted native Rust CLI/SDK source candidate,
+as described in README.md, Cargo.toml and the native crate documentation. Source
+presence is not product acceptance, a successful build, or release approval.
+The activation approval record in docs/activation.md remains unapproved and must
+be reconciled with current owner instructions and live controls. Do not infer
+activation from imported files or a passing governance workflow. Do not import
+additional source/history, redirect remotes, publish releases/packages or deploy
+a website without the applicable authorization. Repository setup, instruction
+alignment and verification are authorized. The repository variable
 `CIX_DEVELOPMENT_APPROVED` must stay `false` until explicit owner approval is
 recorded as described in `docs/activation.md`.
 
@@ -14,7 +38,7 @@ recorded as described in `docs/activation.md`.
 Read `CONTRIBUTING.md`, `SECURITY.md`, and `docs/gitflow.md`. Check `git status`
 before editing, preserve others' work, and keep changes narrowly scoped.
 
-The scaffold uses Python 3.12+ and the standard library only:
+Repository governance checks use Python 3.12+ and the standard library:
 
 ```sh
 python3 tools/check_repository.py
@@ -22,9 +46,15 @@ python3 -m unittest discover -s tests -v
 git diff --check
 ```
 
-These validate repository governance, not the CIX product. Product setup, build,
-test, fuzzing, and benchmark commands must be established during approved import.
-Never invent a successful test result or claim performance without evidence.
+These validate repository governance, not the CIX product. Native build and test
+commands are defined by the root Makefile and rust/cix-native/Makefile; consult
+rust/cix-native/README.md for Rust 1.98+, C++17 and system codec dependencies.
+Run the applicable locked check/test/build and staged SDK/package validation on
+the selected exact revision before claiming native readiness. Full-engine provider
+closure, platform qualification and release acceptance remain separate. Do not
+infer Rust test coverage from the Python governance suite or start a benchmark
+without its applicable authorization. Never invent a successful test result or
+claim performance without evidence.
 
 ## Development after activation
 
@@ -60,3 +90,4 @@ small reviewable implementation over speculative frameworks.
   for changes that affect those properties.
 - Keep findings concrete: affected location, triggering input, consequence, and
   actionable remedy. Distinguish verified failures from uncertainty.
+
