@@ -1249,10 +1249,23 @@ mod tests {
         let (_, descendant) = fixture_processes(&fixture.marker);
         let escaped_writer = fixture_pid(&fixture.root.join("writer"));
         let escaped_writer_guard = EscapedFixtureProcess(escaped_writer);
-        // SAFETY: this pid was written by the running private fixture.
-        assert_eq!(unsafe { libc::getsid(escaped_writer) }, escaped_writer);
-        // SAFETY: this pid was written by the running private fixture.
-        assert_eq!(unsafe { libc::getpgid(escaped_writer) }, escaped_writer);
+        // The shell publishes $! before the child necessarily runs setsid.
+        // Wait for that transition before asserting the escaped-worker setup.
+        let ready_deadline = Instant::now() + Duration::from_secs(2);
+        loop {
+            // SAFETY: this pid was written by the running private fixture.
+            let session = unsafe { libc::getsid(escaped_writer) };
+            // SAFETY: this pid was written by the running private fixture.
+            let group = unsafe { libc::getpgid(escaped_writer) };
+            if session == escaped_writer && group == escaped_writer {
+                break;
+            }
+            assert!(
+                Instant::now() < ready_deadline,
+                "escaped writer did not establish its private session: session={session}, group={group}, pid={escaped_writer}"
+            );
+            thread::sleep(Duration::from_millis(5));
+        }
         cancellation.store(true, Ordering::Release);
         assert!(matches!(
             worker.join().unwrap(),
