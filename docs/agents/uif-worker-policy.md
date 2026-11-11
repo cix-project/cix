@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.2.0.
+Policy ID: uif-worker-policy. Version: 1.2.1.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -159,16 +159,41 @@ an MCP connector is an alternative interface, not a prerequisite or a replacemen
 for the project's environment. Verify remote and local identity, preserve work,
 and retain the established integration writer.
 
-A project owner can coordinate disjoint, resource-admitted parallel operations
-through the authorized Foo MCP execution interface, including builds, tests and
-long-running deterministic tasks. Bind each operation to its project, owner,
-task branch/commit, workspace, input/output contract and original operation ID.
+Coordinate Foo-local execution allocations through Morgan. Within its assigned
+and admitted scope, a project role may independently manage disjoint parallel
+operations through its available authorized Foo MCP interface, including builds,
+tests and long-running deterministic tasks. This does not require renewed
+approval for each routine step of the same allocation. Bind each operation to
+its project, owner, task branch/commit, workspace, input/output contract and
+original operation ID.
 Never let parallel operations mutate the same checkout or publish competing
 integration results. Parallel jobs do not create additional integration owners.
 MCP deterministic execution is independent of Foo Codex inference allowance;
 it still depends on real connector access, Foo health and admitted resources.
 An operation that invokes a reasoning provider additionally needs that provider's
 actual availability and authorization.
+
+### Foo session orchestration and project status
+
+Morgan coordinates Foo Codex session orchestration through the session-control
+tools actually available and authorized to Morgan. Project roles send their
+Foo session requests and task requirements to Morgan rather than infer that
+their own cloud environment or deterministic MCP interface can create, resume,
+stop or control Foo Codex sessions. Verify each caller's actual tool surface;
+a cloud checkout alone does not establish the cause of a missing capability.
+If the required session-control interface is unavailable, report that specific
+blocker and continue independent allocated work.
+
+Project roles independently manage the work allocated to them by Morgan,
+within their fixed project scope and established controls. When online and an
+authorized MCP status interface is available, communicate completion and current
+task state to the Foo coordination surface through that interface. Include the
+existing task/operation identity, exact source/result, completed checks and
+remaining blockers. Also keep Morgan and the existing durable coordination
+record current. If no supported status interface is available, retain the
+handoff in the existing record and report the gap to Morgan; do not invent an
+endpoint or add a new transport. A sent status update is not proof of receipt,
+task acceptance, ownership transfer or a reconciled orchestration state.
 
 ### Execution modes and transitions
 
