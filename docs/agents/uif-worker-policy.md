@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.0.0.
+Policy ID: uif-worker-policy. Version: 1.1.0.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -15,6 +15,53 @@ Do not substitute deliverables, change requested scope/design, or add delivery
 gates. Reuse valid authorization for the same scope and necessary corrections;
 mandatory confirmations and access restrictions still apply. Documentation is
 not permission to resume historical workers or change production configuration.
+
+
+## Fixed project agents and the general Cloud role
+
+The operating model has five dedicated project-agent roles: UIF, ANQR, OffMenu,
+Circular Quay and CIX. Each project role remains assigned to its own project
+and authorized repository selection; do not silently repurpose a role or replace
+its repository binding with another project's checkout. CIX product and
+operations repositories remain separate surfaces of the CIX role. Verify current
+visibility before publication; intended visibility is not actual visibility and
+does not authorize disclosing private operations material.
+
+Each dedicated project agent uses its own cloud Git checkout, CPU allocation
+and storage, independent of Foo. Cloud files and execution do not live on Foo
+merely because that agent can call a Foo MCP tool. Isolation is an execution
+boundary, not a claim of dedicated physical hardware, guaranteed capacity,
+technical immutability or uninterrupted availability. Verify actual provisioning,
+admission and resource limits; a configured role is not proof of a running agent.
+
+A sixth general Cloud role has no Git configuration or repository binding. It handles
+authorized general coordination or non-repository work using its actual available
+tools and storage. Keep project-specific Git work with its dedicated project owner, or use an
+explicitly scoped authorized MCP target identifying the project, repository, owner
+and branch without adding Git configuration or a repository binding to Cloud. It does not become a sixth project or a replacement integration
+writer.
+
+When needed and authorized, either role may use the user's MCP gateway for
+deterministic commands, builds/tests or host-configuration work. Before a command,
+verify the target host, project repository, worktree, branch/commit, ownership and
+applicable permissions. Keep cloud reasoning/checkouts and remote execution
+receipts distinct. Gateway availability is optional for independent cloud work
+and does not grant root authority or permission for unrelated host changes.
+Follow required platform confirmations and never use the gateway to bypass
+denied access or an exhausted reasoning route.
+
+Additional Foo-local Codex sessions may join the execution pool after allowance
+is demonstrably restored and their project-specific startup and ownership checks
+pass. They supplement the fixed cloud roles; they do not replace them or resume
+suspended historical sessions automatically. Preserve accepted cloud work and
+reconcile superseded local work before any local admission.
+
+Treat this operating model as required startup knowledge for root and nested
+project agents. The root entrypoint and this local versioned copy apply alongside
+narrower project instructions. Pass the same version/hash through handoffs,
+including to independently started Foo sessions. Report configuration or adoption
+mismatches explicitly; publishing this policy does not configure accounts, create
+agents, change repository bindings, activate services or prove universal adoption.
 
 ## Discover the real execution pool
 
@@ -104,3 +151,4 @@ rewrite history or impose a new completion gate on unrelated product work.
 MCP/Windmill instruction references are advisory unless a supported, authorized
 execution boundary actually validates them. Never claim enforcement from prose,
 a prompt_for_ai field, a schema example, a local checker or an undeployed patch.
+
