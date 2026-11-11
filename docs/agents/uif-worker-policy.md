@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.1.0.
+Policy ID: uif-worker-policy. Version: 1.1.1.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -33,6 +33,17 @@ merely because that agent can call a Foo MCP tool. Isolation is an execution
 boundary, not a claim of dedicated physical hardware, guaranteed capacity,
 technical immutability or uninterrupted availability. Verify actual provisioning,
 admission and resource limits; a configured role is not proof of a running agent.
+
+For project agents, `develop` is expected when available and is the normal
+merge destination under the project's established review and integration controls.
+After a merge, return the project agent's working checkout to current `develop`
+when available, preserving any unrelated or recoverable work. This keeps the
+integration baseline available for a subagent that needs a new worktree. Create
+that worktree on its own task branch from current `develop` when available.
+If `develop` is unavailable, record the actual project baseline and continue
+permitted work under the project's established Git flow; its absence is not an
+unconditional gate. Do not overwrite divergent work or bypass ownership, review
+or admission controls to establish this working practice.
 
 A sixth general Cloud role has no Git configuration or repository binding. It handles
 authorized general coordination or non-repository work using its actual available
@@ -151,4 +162,3 @@ rewrite history or impose a new completion gate on unrelated product work.
 MCP/Windmill instruction references are advisory unless a supported, authorized
 execution boundary actually validates them. Never claim enforcement from prose,
 a prompt_for_ai field, a schema example, a local checker or an undeployed patch.
-
