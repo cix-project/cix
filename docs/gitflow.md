@@ -24,17 +24,21 @@ history enforcement are incompatible with this chosen Gitflow topology. Automati
 branch deletion is disabled so merging a back-merge cannot delete `main`. Delete
 finished task branches deliberately after checking their work was integrated.
 
-Protected integration and release branches require pull requests, one approval,
-resolved conversations, stale-approval dismissal, and current required checks.
-No force pushes are allowed. Permanent branches cannot be deleted. Reviews are
-required on protected release and hotfix branches once they exist.
+Protected integration and release branches require pull requests, resolved
+conversations, stale-approval dismissal, and current required checks. Use the
+shared project standard of independent review with exact source and validation
+evidence. Do not add a separate owner sign-off or formal GitHub approval when
+the applicable live branch rules require none. Check those rules at integration
+time and satisfy any approvals they actually require. No force pushes are
+allowed, and permanent branches cannot be deleted.
 
-The intended review ruleset allows organization owners a **pull-request-only**
-review bypass for the initial single-maintainer period. It does not bypass the
-separate mandatory-checks, force-push, or deletion rulesets. Use this only for an
-explicitly reviewed solo-maintainer decision and explain it in the PR. Remove the
-exception once a second trusted reviewer is available. Codex must not invoke it
-without explicit authorization for that PR.
+The active review ruleset currently requires zero formal GitHub approvals.
+Its organization-owner bypass allowance is not needed for a normal merge that
+satisfies the rules. Routine independently reviewed work follows the normal
+merge path without a separate CIX-only approval step. This documentation grants
+no permission to weaken protections or invoke a bypass; mandatory platform
+confirmations, required checks, release controls and project-specific scope
+restrictions remain in effect.
 
 After release approval, tag the tested `main` commit as `vX.Y.Z`, then create a
 GitHub Release with compatibility notes, checksums, and provenance for any assets.
