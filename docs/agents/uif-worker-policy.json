@@ -1,10 +1,10 @@
 {
   "schema": "uif-worker-policy-manifest-v1",
   "policy_id": "uif-worker-policy",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "repository": "cix-project/cix",
   "policy_path": "docs/agents/uif-worker-policy.md",
-  "sha256": "48c99b6a473922f16549d4ea70414bfd4b67acab047d655c27749c10e09fb06d",
+  "sha256": "f5ee8222835c8c7ba775c9fc10462c202bc32bc1676e9ca698e29126249f84e5",
   "maintenance_repository": "maldous/uif",
   "maintenance_path": "docs/agents/uif-worker-policy.md",
   "distribution": "reviewed-local-copy",
