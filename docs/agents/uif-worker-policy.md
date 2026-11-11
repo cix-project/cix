@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.2.2.
+Policy ID: uif-worker-policy. Version: 1.2.3.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -76,6 +76,28 @@ agents, change repository bindings, activate services or prove universal adoptio
 
 ## Discover the real execution pool
 
+Retain exactly the existing six durable cloud roles described above. Do not
+create additional durable cloud sessions or threads, replace a project binding,
+or repurpose an owner to obtain parallelism. Bounded assistant analysis inside
+an existing owner is not another durable cloud role. Foo-local Codex session
+orchestration remains with Morgan; verify actual session custody, admission and
+shared capacity before execution.
+
+Choose execution routes by the task's actual costs, dependencies and expected
+benefit. Prefer suitable, actually available and authorized MCP for deterministic
+reads, commands, builds and validation over opening or resuming a Foo-local
+Codex reasoning session for those steps. Use Codex when reasoning or useful
+parallelism warrants it. MCP availability does not prove an operation is free,
+inference-free or feasible, and does not waive ownership, resource, admission,
+review or permission controls.
+
+For new and resumed reasoning work, prefer GPT-6.1 Sol Medium or another
+appropriate economical choice. Explicitly request model and effort where the
+supported interface exposes them; do not inherit Ultra from an earlier task.
+Use higher capability or effort when warranted and record the concrete reason.
+Distinguish requested settings from observed resolution or an unknown effective
+setting. This preference does not change protected runtime or security policy.
+
 Keep these independent dimensions explicit in each task's current routing record:
 
 - Native assistant/cloud subagent availability: actual admission and running
@@ -110,6 +132,28 @@ eligible independent work without bypassing a denied operation through another
 route. Quota recovery alone never revives stale ownership or suspended jobs.
 Use the project's supported admission and aggregate resource rules; do not create
 a parallel scheduler, change limits or introduce a universal new readiness gate.
+
+## Shared parent and product boundaries
+
+UIF is accountable for the shared Stokowski, Windmill, LangChain, GitHub and
+Linear integrations and for their cross-domain BAU across Foo-local and durable
+cloud execution. The product owners retain their project delivery and local
+contracts; UIF owns corrections to shared infrastructure and integration.
+
+UIF must function without requiring OffMenu, ANQR, CIX or Circular Quay product
+assets. Each product must be self-contained for its own operation without UIF
+implementation being mandatory. Preserve the shared parent governance
+relationship, supported optional orchestration and useful project integrations.
+An optional shared operational lane has requirements only when that lane is
+selected; it is not a universal product runtime or build dependency.
+
+Assess actual runtime, build, test and data dependency directions. Distinguish
+active requirements from compatibility names, necessary fixtures, examples and
+historical migration evidence. Preserve data, history and existing custody; do
+not remove assets or optional integrations merely because of an old product
+name. Coordinate current source owners before overlapping corrections. These
+requirements and source observations do not establish deployed independence,
+recovered ownership or demonstrated autonomous BAU.
 
 ## Startup and handoff, including independent Foo sessions
 
