@@ -8,6 +8,15 @@ Cloud role has no Git configuration or repository binding. Additional Foo Codex 
 restored allowance and current ownership checks. These are operating requirements,
 not proof of provisioning, availability or universal adoption.
 
+For the connected Foo Workspace MCP account, verify `list_workspaces` at startup
+and use `workspace_id="foo"`. This is the connected account's workspace binding,
+not a claim that no other historical server workspaces exist. Project identities,
+script paths and historical artifact names are separate from workspace IDs.
+Do not probe another workspace as a fallback or override a fixed wrapper. If a
+wrapper's actual target differs or cannot be inspected, stop only the dependent
+operation and report the mismatch. This grants no CIX operations custody or
+workload activation.
+
 # Shared UIF worker directions
 
 At every startup, including independent Foo work, read
