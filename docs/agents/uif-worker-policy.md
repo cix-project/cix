@@ -1,6 +1,6 @@
 # UIF shared worker policy
 
-Policy ID: uif-worker-policy. Version: 1.2.3.
+Policy ID: uif-worker-policy. Version: 1.2.4.
 Maintained in maldous/uif at docs/agents/uif-worker-policy.md.
 
 ## Scope and precedence
@@ -282,11 +282,34 @@ scope decision, unresolved ownership/resource conflict or missing capability
 rather than adding a routine approval or coordination gate.
 
 Cloud work follows its existing authorized coordination record; preserve ledger
-identities during the intended move to Linear. Foo-local workers use Stokowski
-for issue pickup and delivery through its configured Linear state and established
-project harness controls. Project-owned continuation does not replace those
-controls or make either lane automatically manage the other. Review, publication
-and integration still use each project's established controls and owner.
+identities and reconciliation links whether the work remains in its original
+ledger or moves to Linear. Foo-local workers use the same established Stokowski
+selector, claim, guard, delivery, independent review, publication and refill path.
+Linear-backed tasks retain their configured Linear identity, state and transition
+behaviour. User-authorized original-ledger-only tasks may enter that same path as
+an explicit task type without creating a synthetic Linear issue or claiming a
+Linear Done transition. Project-owned continuation does not replace those
+controls or make either lane automatically manage the other.
+
+Bind each original-ledger task to its existing authoritative store, exact original
+row identity and revision/content digest, current owner and ownership epoch,
+original operation identity and applicable authority. Verify these bindings
+through the supported selector/claim/guard contract; do not invent authority in
+an adapter or treat a row/digest as a lease. Preserve the bindings through
+delivery, independent review, publication, recovery, idempotent completion in the
+original store and refill. Reconcile uncertain outcomes under the original
+operation before retry or reassignment. Record the bounded result and evidence
+against that original task; do not fabricate an issue identity, completion or
+product outcome. Review, publication and integration still use each project's
+established controls and owner.
+
+This typed intake adds no second task store, queue or allocator and grants no
+access, ownership epoch, runtime admission or release of an existing hold. The
+same permission, claim/fencing, resource, review and publication controls apply
+to both task types. Policy publication does not prove that typed intake or shared
+arbitration is implemented, qualified or deployed. A missing supported intake or
+authority interface blocks only its dependent dispatch; independent authorized
+source preparation and review can continue.
 
 Linear is the intended shared coordination surface for allocating work across
 the cloud and Foo lanes. Windmill operation receipts and LangChain/LangGraph
