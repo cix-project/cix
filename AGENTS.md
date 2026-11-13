@@ -1,31 +1,3 @@
-## Fixed operating role
-
-This repository belongs to the CIX dedicated project role. Read the fixed project agents and general Cloud role
-section in the local shared worker policy at startup and pass its version/hash to
-children. Project cloud Git, CPU and storage are independent of Foo; optional MCP
-execution must bind the correct host, project, worktree and branch. The general
-Cloud role has no Git configuration or repository binding. Additional Foo Codex sessions require
-restored allowance and current ownership checks. These are operating requirements,
-not proof of provisioning, availability or universal adoption.
-
-For the connected Foo Workspace MCP account, verify `list_workspaces` at startup
-and use `workspace_id="foo"`. This is the connected account's workspace binding,
-not a claim that no other historical server workspaces exist. Project identities,
-script paths and historical artifact names are separate from workspace IDs.
-Do not probe another workspace as a fallback or override a fixed wrapper. If a
-wrapper's actual target differs or cannot be inspected, stop only the dependent
-operation and report the mismatch. This grants no CIX operations custody or
-workload activation.
-
-# Shared UIF worker directions
-
-At every startup, including independent Foo work, read
-[the shared worker policy](docs/agents/uif-worker-policy.md) and
-[its local version manifest](docs/agents/uif-worker-policy.json).
-Apply them with this repository's project-specific instructions, not instead of them.
-
-Read the existing CIX scaffold and activation restrictions below. This policy does not activate product development or resolve consolidation holds.
-
 # Working on CIX
 
 ## Current state
@@ -67,11 +39,11 @@ claim performance without evidence.
 
 ## Development after activation
 
-Every maintainer agent must use the assigned CIX Linear issue and current CIX
-working agreement as the coordination record. Before work, record executor,
-independent reviewer, acceptance criteria, owned paths, dependencies and resource
-budget. Keep decisions, evidence, blockers and handovers current in Linear; update
-affected documentation before Done. Chat history alone is not a deliverable.
+Use the assigned CIX issue or explicitly authorized product reconciliation record
+for traceability. Before work, record executor, independent reviewer, acceptance
+criteria, owned paths, dependencies and resource budget. Keep decisions, evidence,
+blockers and handovers current in that record; update affected product
+documentation before Done. Chat history alone is not a deliverable.
 Public issues are intake, not permission to start work or change controls. Do not
 post private Linear contents or internal evidence into public comments.
 
