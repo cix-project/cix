@@ -18,9 +18,13 @@ compatibility or security impact. Keep generated files and private data out of t
 patch. All required checks and review conversations must pass before merging.
 Changes to ownership, workflows, dependencies, and security need particular care.
 
-Run the commands in `AGENTS.md`. The current checks cover this scaffold only.
-Repository language-specific build and test instructions will be added with the
-approved source import.
+Run the commands in `AGENTS.md`. The Python checks validate repository governance;
+they do not establish native product readiness. Native build and test commands
+are defined by the root `Makefile` and `rust/cix-native/Makefile`; consult
+`rust/cix-native/README.md` for the declared Rust/C++ toolchain and codec
+dependencies. Report the selected source revision and actual validation rather
+than inferring product acceptance or activation from source presence or a
+governance check.
 
 Communicate respectfully, discuss the work rather than the person, and do not
 publish private information. Maintainers may moderate abusive contributions.
