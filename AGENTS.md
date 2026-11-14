@@ -37,6 +37,17 @@ infer Rust test coverage from the Python governance suite or start a benchmark
 without its applicable authorization. Never invent a successful test result or
 claim performance without evidence.
 
+## Optional maintenance execution
+
+When work is explicitly routed through UIF, use the selected execution
+environment's installed [UIF operating policy](https://github.com/maldous/uif/blob/develop/docs/agents/uif-worker-policy.md)
+2.0.0 bundle and CIX product profile, recording the actual version and digest.
+The environment owns quota modes, Foo/cloud routing and execution claims; CIX
+instructions retain authority for product source, checks, privacy and acceptance.
+UIF tooling and connectivity are optional maintenance capabilities, not CIX
+build or runtime dependencies. An unavailable maintenance route blocks only work
+requiring that route and does not release the activation or publication holds.
+
 ## Development after activation
 
 Use the assigned CIX issue or explicitly authorized product reconciliation record
