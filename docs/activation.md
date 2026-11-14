@@ -1,7 +1,10 @@
 # Owner activation
 
-The repository is reserved and configured only. Its existence is not permission
-to start using it. The owner must explicitly approve activation.
+The repository contains an allowlisted native Rust CLI/SDK source candidate.
+Source presence and the existing build/test commands do not establish product
+acceptance or activation. The approval record below and current owner
+instructions govern activation; repository existence or a passing check is not
+permission to activate or release the product.
 
 1. Record the owner's approval, its scope, and date in this document via a reviewed
    setup change. Never infer approval from elapsed time or completion of setup.
