@@ -81,3 +81,8 @@ Keep shared skills, indexes, private receipts and environment policy outside
 product runtime dependencies. Documentation changes do not install a tool,
 register a skill globally, unpause admissions, transfer a claim, grant access,
 change an approval variable, activate a service or publish a release.
+
+The [documentation inventory and scope map](documentation-map.md) binds the
+canonical documents, interface entry points and known qualification limits to
+an inspected source revision. Use it for navigation, not proof of full semantic
+coverage or a substitute for current task evidence.
