@@ -13,8 +13,9 @@ operations from `cix.h`: option defaults, opaque contexts, encode, decode and
 context diagnostics. Calls on a context are serialized; different contexts may
 be used concurrently. The complete-buffer ABI does not provide incremental process/flush/finish/reset
 calls, callbacks, hard process-RSS limits, cancellation-handle transfer, or
-full-engine/same-CIX worker selection. The package configuration identifies it
-as `native-buffer-v1`.
+full-engine/same-CIX worker selection. The package configuration identifies the
+broader SDK as `native-sdk-v1`; this paragraph describes only the complete-buffer
+interface.
 
 The [complete-buffer C reference](../../docs/NATIVE-BUFFER-C.md) details the
 six entry points, caller storage/count rules, diagnostic lifetime and limits.
@@ -62,6 +63,9 @@ restoration. Dictionary memory admission includes retained allocation capacity,
 the opaque handle, caller output, temporary output and estimated codec state;
 it is not a hard process RSS ceiling. Other codecs do not gain dictionary
 support through this Zstd-specific API.
+
+The [dictionary C reference](../../docs/NATIVE-DICTIONARY-C.md) details all seven
+entry points, ownership, full-call storage, identity and output/resource limits.
 
 A library found through `CIX::native` is not proof that PAQ/JXL bridges,
 historical full-engine decoders, automatic specialist selection, platform
