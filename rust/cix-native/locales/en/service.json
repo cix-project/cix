@@ -1,0 +1,41 @@
+{
+  "schema": "cix-messages-v1",
+  "locale": "en",
+  "messages": {
+    "service.error.invalid_argument": {
+      "context": "Core service request rejection; field is an invariant field identifier, inserted literally and never translated.",
+      "parameters": { "field": "code" },
+      "forms": { "other": "Invalid request field: {field}." }
+    },
+    "service.error.resource_limit": {
+      "context": "Core service resource cap rejection; resource is an invariant resource identifier, inserted literally and never translated.",
+      "parameters": { "resource": "code" },
+      "forms": { "other": "Resource limit exceeded: {resource}." }
+    },
+    "service.error.not_found": {
+      "context": "Core service requested resource is absent; do not expose resource identifiers or infer authorization.",
+      "parameters": {},
+      "forms": { "other": "Resource not found." }
+    },
+    "service.error.revision_conflict": {
+      "context": "Core service revision or uniqueness conflict; no automatic retry or overwrite is implied.",
+      "parameters": {},
+      "forms": { "other": "Revision conflict." }
+    },
+    "service.error.internal": {
+      "context": "Core service internal failure; raw causes and sensitive details are intentionally omitted.",
+      "parameters": {},
+      "forms": { "other": "Internal error." }
+    },
+    "service.error.storage_io": {
+      "context": "Core service storage I/O failure; do not expose paths or promise recovery or automatic retries.",
+      "parameters": {},
+      "forms": { "other": "Storage is unavailable." }
+    },
+    "service.error.metadata_unavailable": {
+      "context": "Core service metadata database failure; do not expose queries or promise recovery or automatic retries.",
+      "parameters": {},
+      "forms": { "other": "Metadata is unavailable." }
+    }
+  }
+}
