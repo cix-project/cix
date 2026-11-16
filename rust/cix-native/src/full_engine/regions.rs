@@ -145,7 +145,7 @@ fn le_i32(data: &[u8], at: usize) -> Option<i32> {
 fn wcstools_spans(data: &[u8]) -> Vec<Region> {
     let mut spans = Vec::new();
     let stop = data.len().saturating_sub(27);
-    for offset in (0..stop).step_by(4) {
+    for offset in 0..stop {
         let count = match le_i32(data, offset + 8) {
             Some(value) => value,
             None => break,
@@ -543,6 +543,57 @@ mod tests {
                 (350, 351, RegionKind::Generic),
             ]
         );
+    }
+
+    // Synthetic predicate fixture: one 28-byte header and one opaque record.
+    // No corpus asset or external fixture is required by these new assertions.
+    fn single_record_wcs() -> Vec<u8> {
+        let mut body = vec![0u8; 56];
+        for (at, value) in [(8, 1i32), (12, 0), (16, 1), (20, -1), (24, 28)] {
+            body[at..at + 4].copy_from_slice(&value.to_le_bytes());
+        }
+        body
+    }
+
+    #[test]
+    fn wcs_regions_accept_every_byte_offset_and_preserve_unknown_gaps() {
+        let body = single_record_wcs();
+        for start in [0usize, 1, 2, 3, 4, MAX_GENERIC_REGION + 1] {
+            let mut input = vec![0xa5; start];
+            input.extend_from_slice(&body);
+            input.extend_from_slice(&[0xff, 0xfe, 0xfd]);
+            assert_eq!(
+                structured_regions(&input),
+                vec![Region::new(start, start + body.len(), RegionKind::WcsToolsSao28)]
+            );
+            let partition = regions(&input);
+            assert_eq!(partition.first().unwrap().start, 0);
+            assert_eq!(partition.last().unwrap().end, input.len());
+            assert!(partition.windows(2).all(|pair| pair[0].end == pair[1].start));
+            assert_eq!(
+                partition.iter().flat_map(|item| input[item.start..item.end].iter().copied()).collect::<Vec<_>>(),
+                input
+            );
+            assert!(partition.iter().filter(|item| item.kind == RegionKind::Generic)
+                .all(|item| item.end - item.start <= MAX_GENERIC_REGION));
+        }
+    }
+
+    #[test]
+    fn wcs_regions_find_interleaved_unaligned_headers_without_losing_coverage() {
+        let body = single_record_wcs();
+        let mut input = vec![0xa5];
+        input.extend_from_slice(&body);
+        input.extend_from_slice(&[0xff, 0xfe]);
+        input.extend_from_slice(&body);
+        input.push(0xfd);
+        assert_eq!(items(&input), vec![
+            (0, 1, RegionKind::Generic),
+            (1, 57, RegionKind::WcsToolsSao28),
+            (57, 59, RegionKind::Generic),
+            (59, 115, RegionKind::WcsToolsSao28),
+            (115, 116, RegionKind::Generic),
+        ]);
     }
 
     #[test]
