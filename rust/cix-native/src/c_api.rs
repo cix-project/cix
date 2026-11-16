@@ -44,7 +44,24 @@ pub struct cix_options_v1 {
 pub struct cix_context {
     options: NativeOptions,
     operation: Mutex<()>,
-    last_error: Mutex<String>,
+    last_error: Mutex<Diagnostic>,
+}
+
+/// One owned diagnostic snapshot. Identity is recorded at the selected setter,
+/// never recovered by matching English presentation text.
+#[derive(Clone, Debug, Default)]
+pub(crate) struct Diagnostic {
+    pub(crate) english: String,
+    pub(crate) message: Option<crate::i18n::Message>,
+}
+
+impl cix_context {
+    pub(crate) fn diagnostic_snapshot(&self) -> Result<Diagnostic, i32> {
+        self.last_error
+            .lock()
+            .map(|diagnostic| diagnostic.clone())
+            .map_err(|_| CIX_STATUS_PANIC)
+    }
 }
 
 const OPTIONS_V1_SIZE: usize = std::mem::size_of::<cix_options_v1>();
@@ -60,13 +77,24 @@ fn bounded_message(message: impl AsRef<str>) -> String {
 
 fn set_error(context: &cix_context, message: impl AsRef<str>) {
     if let Ok(mut error) = context.last_error.lock() {
-        *error = bounded_message(message);
+        *error = Diagnostic {
+            english: bounded_message(message),
+            message: None,
+        };
+    }
+}
+
+fn set_output_too_small_error(context: &cix_context) {
+    let english = bounded_message(output_too_small_message(&crate::i18n::Localizer::english()));
+    let message = crate::i18n::Message::new("sdk.buffer.output_too_small");
+    if let Ok(mut error) = context.last_error.lock() {
+        *error = Diagnostic { english, message: Some(message) };
     }
 }
 
 fn clear_error(context: &cix_context) {
     if let Ok(mut error) = context.last_error.lock() {
-        error.clear();
+        *error = Diagnostic::default();
     }
 }
 
@@ -216,7 +244,7 @@ fn run_buffer(
         Ok(Ok(result)) => {
             *needed = result.len();
             if result.len() > output_bytes.len() {
-                set_error(context, output_too_small_message(&crate::i18n::Localizer::english()));
+                set_output_too_small_error(context);
                 return CIX_STATUS_OUTPUT_TOO_SMALL;
             }
             output_bytes[..result.len()].copy_from_slice(&result);
@@ -294,7 +322,7 @@ pub unsafe extern "C" fn cix_context_create(
         let context = Box::new(cix_context {
             options: native,
             operation: Mutex::new(()),
-            last_error: Mutex::new(String::new()),
+            last_error: Mutex::new(Diagnostic::default()),
         });
         // SAFETY: ownership transfers to the caller.
         unsafe { ptr::write(out_context, Box::into_raw(context)) };
@@ -490,7 +518,7 @@ pub unsafe extern "C" fn cix_context_last_error(
             Ok(value) => value,
             Err(_) => return CIX_STATUS_PANIC,
         };
-        let bytes = error.as_bytes();
+        let bytes = error.english.as_bytes();
         let required = bytes.len() + 1;
         // SAFETY: null was rejected and the caller provides writable storage.
         ptr::write(needed, required);
@@ -548,8 +576,8 @@ mod tests {
             set_error(native_context, &input);
             {
                 let retained = native_context.last_error.lock().unwrap();
-                assert_eq!(retained.as_bytes(), expected.as_bytes());
-                assert!(retained.capacity() < CIX_ERROR_MESSAGE_CAPACITY);
+                assert_eq!(retained.english.as_bytes(), expected.as_bytes());
+                assert!(retained.english.capacity() < CIX_ERROR_MESSAGE_CAPACITY);
             }
             assert_eq!(diagnostic(&context), expected.as_bytes());
         }
@@ -610,7 +638,7 @@ mod tests {
 
 
     // Test consumers own handles through the public API, including cleanup on
-    // assertion unwinding. No private context fields or codec entry points are used.
+    // assertion unwinding. Public codec consumers do not call private codec entry points.
     struct OwnedContext(*mut cix_context);
 
     impl OwnedContext {
@@ -936,5 +964,148 @@ mod tests {
         // diagnostic() independently queries needed, checks the terminating NUL
         // and verifies the byte beyond the advertised capacity remains untouched.
         assert_eq!(diagnostic(&context), b"caller output buffer is too small");
+    }
+
+    #[test]
+    fn diagnostic_origin_is_retained_by_selected_setter_and_removed_by_legacy_or_clear() {
+        let context = OwnedContext::new();
+        let native = unsafe { &*context.0 };
+        set_output_too_small_error(native);
+        let snapshot = native.diagnostic_snapshot().unwrap();
+        assert_eq!(snapshot.english, "caller output buffer is too small");
+        let message = snapshot.message.unwrap();
+        assert_eq!(message.id, "sdk.buffer.output_too_small");
+        assert!(message.args.is_empty());
+        // Identical English from an ordinary setter has no selected origin.
+        set_error(native, "caller output buffer is too small");
+        assert!(native.diagnostic_snapshot().unwrap().message.is_none());
+        set_output_too_small_error(native);
+        clear_error(native);
+        let cleared = native.diagnostic_snapshot().unwrap();
+        assert!(cleared.english.is_empty());
+        assert!(cleared.message.is_none());
+    }
+
+    #[test]
+    fn owned_diagnostic_snapshot_releases_lock_and_survives_later_changes() {
+        let context = OwnedContext::new();
+        let native = unsafe { &*context.0 };
+        set_output_too_small_error(native);
+        let snapshot = native.diagnostic_snapshot().unwrap();
+        assert!(native.last_error.try_lock().is_ok());
+        set_error(native, "later diagnostic");
+        assert_eq!(snapshot.english, "caller output buffer is too small");
+        assert_eq!(snapshot.message.unwrap().id, "sdk.buffer.output_too_small");
+        assert_eq!(native.diagnostic_snapshot().unwrap().english, "later diagnostic");
+    }
+
+    fn presented_bytes(context: &OwnedContext, pattern: &[u8]) -> Vec<u8> {
+        use crate::c_presentation_api::{
+            cix_buffer_presentation_v1, cix_context_last_error_presented_v1,
+            CIX_PRESENTATION_ABI_VERSION_1,
+        };
+        let presentation = cix_buffer_presentation_v1 {
+            abi_version: CIX_PRESENTATION_ABI_VERSION_1,
+            struct_size: std::mem::size_of::<cix_buffer_presentation_v1>() as u32,
+            output_too_small_pattern: pattern.as_ptr().cast(),
+            output_too_small_pattern_len: pattern.len(),
+        };
+        let mut needed = usize::MAX;
+        assert_eq!(unsafe {
+            cix_context_last_error_presented_v1(context.0, &presentation, ptr::null_mut(), 0, &mut needed)
+        }, CIX_STATUS_OUTPUT_TOO_SMALL);
+        let required = needed;
+        let mut bytes = vec![0xa5_u8; required + 1];
+        assert_eq!(unsafe {
+            cix_context_last_error_presented_v1(
+                context.0, &presentation, bytes.as_mut_ptr().cast(), required, &mut needed,
+            )
+        }, CIX_STATUS_OK);
+        assert_eq!(needed, required);
+        assert_eq!(bytes[required - 1], 0);
+        assert_eq!(bytes[required], 0xa5);
+        bytes.truncate(required - 1);
+        bytes
+    }
+
+    #[test]
+    fn presented_getter_preserves_legacy_empty_nul_and_ineligible_message_bytes() {
+        use crate::i18n::{Message, Number, Value};
+        let context = OwnedContext::new();
+        let native = unsafe { &*context.0 };
+        for text in ["", "legacy\0text", "caller output buffer is too small"] {
+            set_error(native, text);
+            assert_eq!(presented_bytes(&context, b"translated"), text.as_bytes());
+            assert_eq!(diagnostic(&context), text.as_bytes());
+        }
+        *native.last_error.lock().unwrap() = Diagnostic {
+            english: "retained English".into(),
+            message: Some(Message::new("sdk.buffer.output_too_small")
+                .arg("needed", Value::Number(Number::Unsigned(18)))),
+        };
+        // An internal typed-argument mismatch falls back through ordinary 0/3.
+        assert_eq!(presented_bytes(&context, b"translated"), b"retained English");
+        assert_eq!(diagnostic(&context), b"retained English");
+    }
+
+    #[test]
+    fn poisoned_diagnostic_getters_return_panic_without_output_or_count_writes() {
+        use crate::c_presentation_api::{
+            cix_buffer_presentation_v1, cix_context_last_error_presented_v1,
+            CIX_PRESENTATION_ABI_VERSION_1,
+        };
+        let context = OwnedContext::new();
+        let native = unsafe { &*context.0 };
+        let _ = catch_unwind(AssertUnwindSafe(|| {
+            let _guard = native.last_error.lock().unwrap();
+            panic!("intentional diagnostic-lock poison");
+        }));
+        let presentation = cix_buffer_presentation_v1 {
+            abi_version: CIX_PRESENTATION_ABI_VERSION_1,
+            struct_size: std::mem::size_of::<cix_buffer_presentation_v1>() as u32,
+            output_too_small_pattern: ptr::null(),
+            output_too_small_pattern_len: 0,
+        };
+        let mut output = [0xa5_u8; 64];
+        let mut needed = 99;
+        assert_eq!(unsafe {
+            cix_context_last_error_presented_v1(
+                context.0, &presentation, output.as_mut_ptr().cast(), output.len(), &mut needed,
+            )
+        }, CIX_STATUS_PANIC);
+        assert_eq!(needed, 99);
+        assert_eq!(output, [0xa5; 64]);
+        assert_eq!(unsafe {
+            cix_context_last_error(context.0, output.as_mut_ptr().cast(), output.len(), &mut needed)
+        }, CIX_STATUS_PANIC);
+        assert_eq!(needed, 99);
+        assert_eq!(output, [0xa5; 64]);
+    }
+
+    #[test]
+    fn concurrent_snapshots_never_mix_english_and_message_origins() {
+        let context = OwnedContext::new();
+        let native = unsafe { &*context.0 };
+        set_output_too_small_error(native);
+        std::thread::scope(|scope| {
+            let writer = scope.spawn(|| {
+                for _ in 0..128 {
+                    set_error(native, "legacy pair");
+                    set_output_too_small_error(native);
+                }
+            });
+            for _ in 0..128 {
+                let snapshot = native.diagnostic_snapshot().unwrap();
+                match snapshot.message {
+                    Some(message) => {
+                        assert_eq!(message.id, "sdk.buffer.output_too_small");
+                        assert!(message.args.is_empty());
+                        assert_eq!(snapshot.english, "caller output buffer is too small");
+                    }
+                    None => assert_eq!(snapshot.english, "legacy pair"),
+                }
+            }
+            writer.join().unwrap();
+        });
     }
 }

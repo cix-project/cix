@@ -84,6 +84,7 @@ configure_file("${CMAKE_CURRENT_LIST_DIR}/cix.pc.in"
 
 install(FILES
     "${CIX_SOURCE_ROOT}/include/cix.h"
+    "${CIX_SOURCE_ROOT}/include/cix_presentation.h"
     "${CIX_SOURCE_ROOT}/include/cix.hpp"
     "${CIX_SOURCE_ROOT}/include/cix_stream.h"
     "${CIX_SOURCE_ROOT}/include/cix_formats.h"
