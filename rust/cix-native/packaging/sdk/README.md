@@ -47,6 +47,9 @@ streaming archive adapter. The installed C stream consumer in
 `packaging/sdk/tests/c_stream_installed_consumer.c` exercises fragmented input
 and output using only public C headers.
 
+The [stream C reference](../../docs/NATIVE-STREAM-C.md) details all eleven
+entry points, progress/lifecycle rules, caller storage and resource boundaries.
+
 `cix_formats.h` provides complete-buffer ordinary gzip, zlib, raw DEFLATE,
 bzip2, XZ, Zstd, Brotli, LZ4 frame and Snappy framed operations. These explicit
 format APIs do not imply incremental standard-format streaming.
