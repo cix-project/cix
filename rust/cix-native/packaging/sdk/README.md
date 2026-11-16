@@ -63,6 +63,9 @@ the opaque handle, caller output, temporary output and estimated codec state;
 it is not a hard process RSS ceiling. Other codecs do not gain dictionary
 support through this Zstd-specific API.
 
+The [dictionary C reference](../../docs/NATIVE-DICTIONARY-C.md) details all seven
+entry points, ownership, full-call storage, identity and output/resource limits.
+
 A library found through `CIX::native` is not proof that PAQ/JXL bridges,
 historical full-engine decoders, automatic specialist selection, platform
 adapters or a full CIX release candidate are present. Full-engine provider
