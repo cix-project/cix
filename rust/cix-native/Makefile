@@ -74,7 +74,7 @@ uninstall: uninstall-sdk
 # CMake has no portable generated uninstall target. Remove only files that
 # this source package installs; leave unrelated prefix contents untouched.
 uninstall-sdk:
-	$(RM) $(DESTDIR)$(PREFIX)/include/cix.h $(DESTDIR)$(PREFIX)/include/cix.hpp $(DESTDIR)$(PREFIX)/include/cix_stream.h $(DESTDIR)$(PREFIX)/include/cix_formats.h $(DESTDIR)$(PREFIX)/include/cix_dictionary.h $(DESTDIR)$(PREFIX)/include/cix_presentation.h
+	$(RM) $(DESTDIR)$(PREFIX)/include/cix.h $(DESTDIR)$(PREFIX)/include/cix.hpp $(DESTDIR)$(PREFIX)/include/cix_stream.h $(DESTDIR)$(PREFIX)/include/cix_formats.h $(DESTDIR)$(PREFIX)/include/cix_dictionary.h $(DESTDIR)$(PREFIX)/include/cix_presentation.h $(DESTDIR)$(PREFIX)/include/cix_presentation.hpp
 	$(RM) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libcix_native.so $(DESTDIR)$(PREFIX)/$(LIBDIR)/libcix_native.dylib $(DESTDIR)$(PREFIX)/$(LIBDIR)/libcix_native.a
 	$(RM) $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/cix-native.pc
 	$(RM) $(DESTDIR)$(PREFIX)/$(LIBDIR)/cmake/CIX/CIXConfig.cmake $(DESTDIR)$(PREFIX)/$(LIBDIR)/cmake/CIX/CIXConfigVersion.cmake

@@ -25,6 +25,20 @@ The caller resolves locale and owns immutable pattern storage for the call;
 the original English getter and status codes remain unchanged. This is not a
 global catalog, a translated locale set or full SDK internationalization.
 
+The header-only C++ wrapper also exposes `Context::encode_into` and
+`decode_into` for one caller-buffer operation, plus `StatusError` message-ID,
+operation and typed parameter accessors. Existing `what()` English and status
+values remain available. These are C++ source additions, not a guarantee of
+unchanged C++ exception object layout; rebuild consumers using the new header.
+The separately installed `cix_presentation.hpp` adds opt-in missing-diagnostic
+capture for `encode_into`. Pair the capture with that call's error and coordinate
+access to a shared context; its host callback must supply a complete validated
+UTF-8 zero-argument leaf or decline it for whole-English fallback. It does not
+translate opaque native diagnostic text. The
+[authored source consumer](tests/missing-diagnostic-presentation-source/main.cpp)
+uses an explicit fake C ABI, so its existing qualification is not real native
+linkage, installed C++/SDK, platform or full internationalization acceptance.
+
 `cix_stream.h` separately exposes the native independent-block `CIXG1` stream
 API: opaque encoder/decoder handles plus process, flush, finish and reset. It
 is not a full-engine route, retained-history decoder, specialist selector, or
@@ -138,7 +152,7 @@ build. A source export contains no build-host paths or historical job receipts,
 and no such receipt is a qualification of a later source revision.
 
 The native Makefile's `uninstall-sdk` target removes its fixed SDK file list,
-including `cix_presentation.h` and the three notice files. Use the same
+including `cix_presentation.h`, `cix_presentation.hpp` and the three notice files. Use the same
 `PREFIX`, `DESTDIR` and `LIBDIR` as its `sdk-configure`/`install-sdk` path, with
 the fixed `include` and `share/doc/cix` destinations. This is not a general
 uninstaller for custom CMake layouts or an ownership/hash verifier. It leaves

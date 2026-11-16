@@ -10,6 +10,30 @@ NATIVE_ROOT = Path(__file__).resolve().parents[3]
 
 
 class SdkUninstallContract(unittest.TestCase):
+    def test_cpp_presentation_header_leaves_unrelated_file(self):
+        with tempfile.TemporaryDirectory(prefix="cix-cpp-uninstall-") as stage:
+            prefix = Path(stage) / "sdk"
+            header = prefix / "include/cix_presentation.hpp"
+            header.parent.mkdir(parents=True)
+            header.write_bytes(b"disposable C++ header removal fixture\n")
+            sentinel = prefix / "unrelated.txt"
+            sentinel.write_bytes(b"keep this unrelated file\n")
+            result = subprocess.run(
+                [
+                    "make", "--no-print-directory", "-f", str(NATIVE_ROOT / "Makefile"),
+                    "uninstall-sdk", "PREFIX=/sdk", f"DESTDIR={stage}",
+                ],
+                cwd=NATIVE_ROOT,
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertFalse(header.exists(), "C++ presentation header remains")
+            self.assertEqual(sentinel.read_bytes(), b"keep this unrelated file\n")
+            self.assertTrue(header.parent.is_dir())
+
     def test_current_header_and_notice_leaves_leave_unrelated_file(self):
         # Only the four newly installed leaves are selected. Do not mirror the
         # entire SDK install list or substitute this for an installed consumer.
