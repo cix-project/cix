@@ -87,7 +87,15 @@ they do not provide a complete hash lock, native library, or qualified wheel.
 | Numcodecs 0.16.3 | Numcodecs config | `CIXNativeCodec` | Limited registration/config and byte restoration evidence |
 | Zarr 3.1.3 | 2 | `CIXNativeCodec` / `CIXNativeV2Codec` | Accepted CIX-250 focused disk case |
 | Zarr 3.1.3 | 3 | `CIXNativeBytesBytesCodec` | Accepted CIX-250 focused disk case |
-| Zarr host major 2 | 2 | Not qualified | Separate compatibility selection remains open |
+| Zarr 2.18.7 / Numcodecs 0.15.2 | 2 | `CIXNativeV2Codec` | Limited positive installed-binding disk/fresh-process proof |
+
+The separate Zarr host-major 2 tuple used Linux, Python 3.12.14 and NumPy
+2.5.5 with the installed pure-Python binding and the same current-source native
+library. Disk write and a separate-process read-only reopen passed all 25
+shuffled chunk reads, full restoration and persisted options. Zarr 2.18.7
+requires Numcodecs <0.16; this qualification does not change the optional
+extras selected above. Missing-registration and corruption cases for this
+host-major 2 tuple remain unqualified.
 
 Provision the selected host dependencies and an explicitly trusted native
 library before using the adapters. No adapter downloads or discovers that
@@ -141,8 +149,7 @@ the four persisted options. That qualification used the source-loaded binding
 and a native library built from the same current product source. Missing
 registration rejected each selected codec; truncating one selected disk chunk
 to one byte raised NativeError while an unmodified chunk still decoded.
-This does not establish arbitrary-corruption detection. Zarr host-major 2 and
-new wheel/sdist/install qualification remain open.
+This does not establish arbitrary-corruption detection. Broader Zarr host-major 2 and broader wheel/sdist/install qualification remain open.
 The accepted historical c950 native component is not a current-main-built
 library. The original CIX-250 external runner exited 1 because of its IntEnum
 result-carrier defect; its two focused pytest cases were independently

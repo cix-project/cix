@@ -107,6 +107,9 @@ receipt. Optional host adapters, including the Squash 0.8 plugin under
 `packaging/squash/`, are source integrations with their declared host SDK and
 separate qualification requirements.
 
+Rust applications can follow the [Rust source-consumer guide](packaging/sdk/RUST.md)
+for matching Cargo inputs, the native-buffer example and bounded standard streams.
+
 A public source export contains only the files required to build, install, and
 package CIX. It projects the maintained Debian recipe to the conventional
 exported `debian/` directory for `dpkg-source`. Release publication and
