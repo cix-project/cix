@@ -1,6 +1,7 @@
 pub mod c_api;
 pub mod c_dictionary_api;
 pub mod c_format_api;
+pub mod c_presentation_api;
 pub mod c_stream_api;
 mod cli;
 mod cli_full_engine;

@@ -19,6 +19,12 @@ as `native-buffer-v1`.
 The [complete-buffer C reference](../../docs/NATIVE-BUFFER-C.md) details the
 six entry points, caller storage/count rules, diagnostic lifetime and limits.
 
+The separately installed [`cix_presentation.h`](../../include/cix_presentation.h)
+adds an opt-in per-call pattern for the selected short-output diagnostic.
+The caller resolves locale and owns immutable pattern storage for the call;
+the original English getter and status codes remain unchanged. This is not a
+global catalog, a translated locale set or full SDK internationalization.
+
 `cix_stream.h` separately exposes the native independent-block `CIXG1` stream
 API: opaque encoder/decoder handles plus process, flush, finish and reset. It
 is not a full-engine route, retained-history decoder, specialist selector, or
