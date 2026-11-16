@@ -16,6 +16,9 @@ calls, callbacks, hard process-RSS limits, cancellation-handle transfer, or
 full-engine/same-CIX worker selection. The package configuration identifies it
 as `native-buffer-v1`.
 
+The [complete-buffer C reference](../../docs/NATIVE-BUFFER-C.md) details the
+six entry points, caller storage/count rules, diagnostic lifetime and limits.
+
 `cix_stream.h` separately exposes the native independent-block `CIXG1` stream
 API: opaque encoder/decoder handles plus process, flush, finish and reset. It
 is not a full-engine route, retained-history decoder, specialist selector, or
