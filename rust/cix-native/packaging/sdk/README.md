@@ -61,6 +61,14 @@ cmake -S packaging/sdk -B sdk-build \
 cmake --install sdk-build
 ```
 
+The install list copies the native root's existing `LICENSE`,
+`THIRD_PARTY_NOTICES.txt` and `THIRD_PARTY_NOTICES_RUST.md` verbatim, with
+unchanged basenames, into `${CMAKE_INSTALL_DOCDIR}` alongside this guide.
+An explicit `-DCMAKE_INSTALL_DOCDIR=...` selects that document destination.
+These source files do not by themselves establish the selected binary's active
+dependency, provider, redistribution or full-engine licence closure; retain the
+artifact-bound notice and rights review for the actual package.
+
 The generated `cix-native.pc` derives `prefix` from `pcfiledir` and the
 configured prefix-relative library directory, so moving a complete staged
 prefix preserves its include and library paths, including multiarch libdirs.
