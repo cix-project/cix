@@ -13,8 +13,9 @@ operations from `cix.h`: option defaults, opaque contexts, encode, decode and
 context diagnostics. Calls on a context are serialized; different contexts may
 be used concurrently. The complete-buffer ABI does not provide incremental process/flush/finish/reset
 calls, callbacks, hard process-RSS limits, cancellation-handle transfer, or
-full-engine/same-CIX worker selection. The package configuration identifies it
-as `native-buffer-v1`.
+full-engine/same-CIX worker selection. The package configuration identifies the
+broader SDK as `native-sdk-v1`; this paragraph describes only the complete-buffer
+interface.
 
 The [complete-buffer C reference](../../docs/NATIVE-BUFFER-C.md) details the
 six entry points, caller storage/count rules, diagnostic lifetime and limits.
