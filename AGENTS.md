@@ -48,6 +48,16 @@ UIF tooling and connectivity are optional maintenance capabilities, not CIX
 build or runtime dependencies. An unavailable maintenance route blocks only work
 requiring that route and does not release the activation or publication holds.
 
+For documentation, language, design and provider assistance, use the
+[capability-routing guide](docs/agent-capabilities.md). Discover relevant skills
+and plugins in the actual executing environment, including repository-local
+`.agents/skills` when present, and read the applicable SKILL.md before use.
+Use the shared repository-docs-review workflow where available. For relevant
+presentation work, use official Impeccable guidance with the selected surface;
+do not introduce a frontend or design dependency into this native product.
+Distinguish readable guidance, catalog discovery, successful execution,
+authentication and authorization. None implies the others or grants new access.
+
 ## Development after activation
 
 Use the assigned CIX issue or explicitly authorized product reconciliation record
