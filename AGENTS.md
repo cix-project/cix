@@ -41,7 +41,7 @@ claim performance without evidence.
 
 When work is explicitly routed through UIF, use the selected execution
 environment's installed [UIF operating policy](https://github.com/maldous/uif/blob/develop/docs/agents/uif-worker-policy.md)
-2.0.0 bundle and CIX product profile, recording the actual version and digest.
+2.0.1 bundle and CIX product profile, recording the actual version and digest.
 The environment owns quota modes, Foo/cloud routing and execution claims; CIX
 instructions retain authority for product source, checks, privacy and acceptance.
 UIF tooling and connectivity are optional maintenance capabilities, not CIX
