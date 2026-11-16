@@ -71,3 +71,77 @@ PYTHONPATH=src CIX_PYTHON_NATIVE_LIBRARY=/absolute/path/to/libcix_native.so \
 
 Without that variable the native integration tests skip; this package does not
 fall back to an arbitrary host library.
+
+## Experimental Numcodecs and Zarr adapters
+
+The optional `numcodecs` extra selects Numcodecs 0.16.3; the `zarr` extra
+selects Numcodecs 0.16.3 and Zarr 3.1.3. These hosts require Python >=3.11.
+The base ctypes binding retains Python >=3.10 and no required host dependency.
+The accepted consumer environment used Python 3.12.3 and NumPy 2.5.3;
+that NumPy version requires Python >=3.12. Other interpreter/dependency
+combinations are not qualified by that evidence. Extras name host versions;
+they do not provide a complete hash lock, native library, or qualified wheel.
+
+| Host | On-disk format | Adapter | Retained qualification |
+| -- | -- | -- | -- |
+| Numcodecs 0.16.3 | Numcodecs config | `CIXNativeCodec` | Limited registration/config and byte restoration evidence |
+| Zarr 3.1.3 | 2 | `CIXNativeCodec` / `CIXNativeV2Codec` | Accepted CIX-250 focused disk case |
+| Zarr 3.1.3 | 3 | `CIXNativeBytesBytesCodec` | Accepted CIX-250 focused disk case |
+| Zarr host major 2 | 2 | Not qualified | Separate compatibility selection remains open |
+
+Provision the selected host dependencies and an explicitly trusted native
+library before using the adapters. No adapter downloads or discovers that
+library. Registration is explicit and process-local; it is not an import side
+effect or automatic entry-point lookup. Register each required format in every
+application process before loading its metadata:
+
+```python
+from cix_native.integrations.numcodecs import CIXNativeCodec, register_numcodecs
+from cix_native.integrations.zarr_v2 import register_zarr_v2
+from cix_native.integrations.zarr_v3 import CIXNativeBytesBytesCodec, register_zarr_v3
+
+library_path = "/absolute/path/to/libcix_native.so"  # application trust decision
+register_numcodecs(library_path)
+register_zarr_v2(library_path)
+register_zarr_v3(library_path)
+options = dict(profile="fast", workers=1, output_limit=1 << 20, memory_limit=8 << 20)
+v2_codec = CIXNativeCodec(library_path, **options)
+v3_codec = CIXNativeBytesBytesCodec(library_path, **options)
+```
+
+Use `v2_codec` as `compressor` with Zarr 3.1.3 `zarr.create(...,
+zarr_format=2)`. For format 3, use `zarr.create_array(..., zarr_format=3,
+serializer=zarr.codecs.BytesCodec(), compressors=[v3_codec])`. The v3 adapter
+is a distinct bytes-to-bytes codec after serialization, not a dtype/shape
+serializer. The adapters accept contiguous chunk bytes and do not implement
+partial chunk reads or writes.
+
+Numcodecs format metadata uses `id="cix-native-experimental-v1"`, whereas
+v3 uses `name="cix-native-experimental"` with a `configuration` object.
+Both persist profile, workers, output_limit and memory_limit. Neither persists
+a native library path. Configure the trusted library before reconstructing
+`numcodecs.get_codec(config)` or loading registered Zarr codec metadata.
+An injected `library_path` key is rejected rather than trusted.
+
+Close the `LocalStore` after use, then reopen it read-only with
+`zarr.open_array(store=store, mode="r", zarr_format=2)` or format 3 as
+appropriate. Keep the process registration/trusted library configured.
+CIX-250 accepted disk write, same-process close/reopen, seeded reads of all
+25 chunks, exact full restoration, all four persisted options, missing codec,
+injected library path, and truncated/malformed chunk failure for the two
+Zarr 3.1.3 formats. Missing registration fails with Numcodecs UnknownCodecError
+(format 2) or KeyError (format 3); malformed native archives raise NativeError.
+Missing host dependencies require explicit provisioning, not a fallback codec.
+
+This is experimental host integration. Fresh-process positive reopening,
+Zarr host-major 2, and new wheel/sdist/install qualification remain open.
+The accepted historical c950 native component is not a current-main-built
+library. The original CIX-250 external runner exited 1 because of its IntEnum
+result-carrier defect; its two focused pytest cases were independently
+accepted (2 passed in 0.47s). CIX-257 subsequently accepted the optional collection/fixture boundaries
+and merged them through PR10 at e0d5c161. It also retained the source-only
+corrected runner successor 620d309953c29942783034726a8d3a41a2de4c549d517a3e662911e31bf0b7a7;
+the original 0398 runner remains retired historical evidence. That successor
+has no new native execution authority. No consumer replay or postmerge suite
+was performed by CIX-257. These instructions and optional metadata add no new
+execution, artifact, platform, full-engine, benchmark or publication qualification.
