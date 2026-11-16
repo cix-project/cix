@@ -10,11 +10,13 @@ contains two Rust crates:
   consumers. It shares selected native core modules by workspace-relative path;
   it is not a substitute for the full native engine.
 
-Build the native executable and SDK from the workspace root:
+Build the native executable and SDK from the workspace root using the selected
+committed `Cargo.lock`; the Makefile invokes Cargo with `--locked`. Prepare the
+toolchain and native dependencies in the [native build guide](rust/cix-native/README.md#build-from-source)
+first. Regenerating the lockfile is a separate source-export/dependency update,
+not a prerequisite for an ordinary build:
 
 ```sh
-# A release export records this workspace lockfile after an offline resolution.
-cargo generate-lockfile --offline
 make PROFILE=release-lto build
 make PREFIX=/usr DESTDIR=/absolute/stage install
 ```
