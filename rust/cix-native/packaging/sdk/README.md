@@ -136,3 +136,12 @@ It should be built only against a staged prefix by the focused RC24 receipt.
 The static-link set must be derived and checked against the selected target
 build. A source export contains no build-host paths or historical job receipts,
 and no such receipt is a qualification of a later source revision.
+
+The native Makefile's `uninstall-sdk` target removes its fixed SDK file list,
+including `cix_presentation.h` and the three notice files. Use the same
+`PREFIX`, `DESTDIR` and `LIBDIR` as its `sdk-configure`/`install-sdk` path, with
+the fixed `include` and `share/doc/cix` destinations. This is not a general
+uninstaller for custom CMake layouts or an ownership/hash verifier. It leaves
+directories and unrelated file names alone, but does not detect replaced files;
+select a dedicated matching prefix rather than treating that as an ownership
+guarantee.
