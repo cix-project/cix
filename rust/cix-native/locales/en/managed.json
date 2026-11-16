@@ -1,0 +1,54 @@
+{
+  "schema": "cix-messages-v1",
+  "locale": "en",
+  "messages": {
+    "managed.error.invalid_configuration": {
+      "context": "Managed SDK configuration rejection; field is an invariant field identifier, never a secret or translated value.",
+      "parameters": {
+        "field": "code"
+      },
+      "forms": {
+        "other": "Invalid configuration field: {field}."
+      }
+    },
+    "managed.error.invalid_argument": {
+      "context": "Managed SDK request rejection; field is an invariant request field identifier.",
+      "parameters": {
+        "field": "code"
+      },
+      "forms": {
+        "other": "Invalid request field: {field}."
+      }
+    },
+    "managed.error.forbidden": {
+      "context": "Managed SDK authorization denied; do not imply a grant or expose credentials.",
+      "parameters": {},
+      "forms": {
+        "other": "Permission denied."
+      }
+    },
+    "managed.error.session_expired": {
+      "context": "Managed SDK session is no longer valid; no automatic renewal is implied.",
+      "parameters": {},
+      "forms": {
+        "other": "Session expired."
+      }
+    },
+    "managed.error.resource_limit": {
+      "context": "Managed SDK resource cap rejection; resource is an invariant cap identifier, not a translated resource name.",
+      "parameters": {
+        "resource": "code"
+      },
+      "forms": {
+        "other": "Resource limit exceeded: {resource}."
+      }
+    },
+    "managed.error.internal": {
+      "context": "Managed SDK internal failure; raw causes and sensitive details are intentionally omitted.",
+      "parameters": {},
+      "forms": {
+        "other": "Internal error."
+      }
+    }
+  }
+}

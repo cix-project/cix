@@ -185,6 +185,12 @@ fn overlaps(left: *const u8, left_len: usize, right: *const u8, right_len: usize
     }
 }
 
+fn output_too_small_message(localizer: &crate::i18n::Localizer<'_>) -> String {
+    localizer
+        .render(&crate::i18n::Message::new("sdk.buffer.output_too_small"))
+        .unwrap_or_else(|_| "caller output buffer is too small".to_owned())
+}
+
 fn run_buffer(
     context: &cix_context,
     input_bytes: &[u8],
@@ -210,7 +216,7 @@ fn run_buffer(
         Ok(Ok(result)) => {
             *needed = result.len();
             if result.len() > output_bytes.len() {
-                set_error(context, "caller output buffer is too small");
+                set_error(context, output_too_small_message(&crate::i18n::Localizer::english()));
                 return CIX_STATUS_OUTPUT_TOO_SMALL;
             }
             output_bytes[..result.len()].copy_from_slice(&result);
@@ -861,5 +867,74 @@ mod tests {
             assert_ne!(results[0].0, results[1].0);
             assert_ne!(results[0].1, results[1].1);
         });
+    }
+
+    struct BufferMessageCatalog {
+        pattern: Option<&'static str>,
+    }
+
+    impl crate::i18n::Catalog for BufferMessageCatalog {
+        fn locale(&self) -> &str { "test" }
+        fn direction(&self) -> crate::i18n::Direction { crate::i18n::Direction::Ltr }
+        fn pattern(&self, id: &str, _: crate::i18n::PluralCategory) -> Option<&str> {
+            if id == "sdk.buffer.output_too_small" { self.pattern } else { None }
+        }
+        fn plural_category(&self, _: &crate::i18n::Number) -> crate::i18n::PluralCategory {
+            crate::i18n::PluralCategory::Other
+        }
+        fn format_number(&self, number: &crate::i18n::Number) -> String { number.to_string() }
+    }
+
+    #[test]
+    fn output_too_small_message_has_no_arguments_and_preserves_english() {
+        use crate::i18n::{definitions, Localizer, Message, Number, RenderError, Value};
+        let definition = definitions().iter()
+            .find(|entry| entry.id == "sdk.buffer.output_too_small")
+            .expect("generated SDK definition");
+        assert!(definition.parameters.is_empty());
+        assert_eq!(definition.other, "caller output buffer is too small");
+        assert!(definition.one.is_none());
+        assert!(definition.plural.is_none());
+        assert_eq!(output_too_small_message(&Localizer::english()), definition.other);
+        let extra = Message::new(definition.id).arg("needed", Value::Number(Number::Unsigned(7)));
+        assert_eq!(Localizer::english().render(&extra), Err(RenderError::InvalidArguments));
+    }
+
+    #[test]
+    fn output_too_small_message_uses_explicit_catalog_or_whole_english_fallback() {
+        use crate::i18n::Localizer;
+        for pattern in [None, Some("incomplete {"), Some("unexpected {needed}")] {
+            let catalog = BufferMessageCatalog { pattern };
+            assert_eq!(output_too_small_message(&Localizer::new(&catalog)),
+                       "caller output buffer is too small");
+        }
+        let catalog = BufferMessageCatalog { pattern: Some("Le tampon est trop petit — µ") };
+        assert_eq!(output_too_small_message(&Localizer::new(&catalog)),
+                   "Le tampon est trop petit — µ");
+        // This pure rendering helper supplies no C ABI locale selection.
+    }
+
+    #[test]
+    fn public_c_short_decode_keeps_status_needed_sentinel_and_diagnostic_nul() {
+        let context = OwnedContext::new();
+        let input = b"CIX buffer diagnostic\0exact";
+        let archive = public_roundtrip(&context, input);
+        let mut output = [0xa5; 3];
+        let mut needed = usize::MAX;
+        assert_eq!(
+            unsafe {
+                cix_decode_buffer(
+                    context.0, archive.as_ptr(), archive.len(),
+                    output.as_mut_ptr(), output.len(), &mut needed,
+                )
+            },
+            CIX_STATUS_OUTPUT_TOO_SMALL,
+        );
+        assert_eq!(CIX_STATUS_OUTPUT_TOO_SMALL, 3);
+        assert_eq!(needed, input.len());
+        assert_eq!(output, [0xa5; 3]);
+        // diagnostic() independently queries needed, checks the terminating NUL
+        // and verifies the byte beyond the advertised capacity remains untouched.
+        assert_eq!(diagnostic(&context), b"caller output buffer is too small");
     }
 }

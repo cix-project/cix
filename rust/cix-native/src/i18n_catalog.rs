@@ -371,6 +371,15 @@ Standard streams: --output-format gzip|zlib|deflate|bzip2|xz|zstd|brotli|lz4|sna
         plural: None,
     },
     Definition {
+        id: r#"sdk.buffer.output_too_small"#,
+        context: r#"C buffer encode/decode succeeded but the caller's output capacity is insufficient. Status 3 and the required byte count are invariant ABI data; no count argument or plural is needed."#,
+        parameters: &[
+        ],
+        other: r#"caller output buffer is too small"#,
+        one: None,
+        plural: None,
+    },
+    Definition {
         id: r#"service.error.internal"#,
         context: r#"Core service internal failure; raw causes and sensitive details are intentionally omitted."#,
         parameters: &[

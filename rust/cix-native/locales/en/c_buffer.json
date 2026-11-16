@@ -1,0 +1,13 @@
+{
+  "schema": "cix-messages-v1",
+  "locale": "en",
+  "messages": {
+    "sdk.buffer.output_too_small": {
+      "context": "C buffer encode/decode succeeded but the caller's output capacity is insufficient. Status 3 and the required byte count are invariant ABI data; no count argument or plural is needed.",
+      "parameters": {},
+      "forms": {
+        "other": "caller output buffer is too small"
+      }
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "schema": "cix-messages-v1",
+  "locale": "en",
+  "messages": {
+    "cli.help.title": {
+      "context": "CLI --help paragraph. Preserve literal CLI commands/options, container names and numeric defaults; translate prose.",
+      "parameters": {},
+      "forms": {
+        "other": "CIX (pronounced six) — automatic lossless stream compression"
+      }
+    },
+    "cli.help.usage": {
+      "context": "CLI --help paragraph. Preserve literal CLI commands/options, container names and numeric defaults; translate prose.",
+      "parameters": {},
+      "forms": {
+        "other": "Usage: cix [--fast|--best] [-c] [-k] [-f] [-o FILE] [FILE ...]\n       uncix [-c] [-k] [-f] [-t|-l] [-o FILE] [FILE ...]\n       cixcat [FILE]"
+      }
+    },
+    "cli.help.files": {
+      "context": "CLI --help paragraph. Preserve literal CLI commands/options, container names and numeric defaults; translate prose.",
+      "parameters": {},
+      "forms": {
+        "other": "FILE defaults to '-' (standard input); use '--' before a dash-prefixed filename. Input files are kept by default. Use '-' for standard input or output. Multiple named files receive their own derived output names; -o FILE and standard-output modes accept one input only. CIX archives are CIX streams, not ZIP or gzip. Tar pipelines support directories."
+      }
+    },
+    "cli.help.effort": {
+      "context": "CLI --help paragraph. Preserve literal CLI commands/options, container names and numeric defaults; translate prose.",
+      "parameters": {},
+      "forms": {
+        "other": "Effort: --fast minimises compression latency; no option is balanced automatic selection; --best searches aggressively for smaller output. Numeric aliases: -1 fast, -6 default, -9 best."
+      }
+    },
+    "cli.help.observability": {
+      "context": "CLI --help paragraph. Preserve literal CLI commands/options, container names and numeric defaults; translate prose.",
+      "parameters": {},
+      "forms": {
+        "other": "Observability: --explain reports per-block candidate costs and decisions; --verbose reports aggregate search statistics."
+      }
+    },
+    "cli.help.advanced": {
+      "context": "CLI help heading for expert options.",
+      "parameters": {},
+      "forms": {
+        "other": "Advanced / expert controls (usually unnecessary):"
+      }
+    },
+    "cli.help.option.format": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Select or constrain the container version"
+      }
+    },
+    "cli.help.option.route": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Override route selection"
+      }
+    },
+    "cli.help.option.backend": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Override nested substream backend"
+      }
+    },
+    "cli.help.option.block_size": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Constrain maximum uncompressed block size"
+      }
+    },
+    "cli.help.option.memory": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Bound accounted working memory (FAST/default 512 MiB; BEST/decode 6 GiB)"
+      }
+    },
+    "cli.help.option.threads": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Bound CPU workers (1..20; default up to 4)"
+      }
+    },
+    "cli.help.option.parallelism": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Choose ordered blocks or within-block trials"
+      }
+    },
+    "cli.help.option.history": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Request retained history"
+      }
+    },
+    "cli.help.option.independent_blocks": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Request model reset boundaries"
+      }
+    },
+    "cli.help.option.stream": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Require streaming operation"
+      }
+    },
+    "cli.help.option.flush_interval": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Flush framed partial blocks after idle time"
+      }
+    },
+    "cli.help.option.profile": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Select external profile or native effort"
+      }
+    },
+    "cli.help.option.portfolio": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Compare CIX and direct external candidates (CIXB1)"
+      }
+    },
+    "cli.help.option.external": {
+      "context": "CLI option and description. The option argument is invariant syntax, never translate it.",
+      "parameters": {
+        "option": "code"
+      },
+      "forms": {
+        "other": "  {option}\n      Explicitly wrap a direct external codec (CIXB1)"
+      }
+    },
+    "cli.help.standard": {
+      "context": "CLI standard-format help paragraph; preserve option spellings and format IDs.",
+      "parameters": {},
+      "forms": {
+        "other": "\nStandard streams: --output-format gzip|zlib|deflate|bzip2|xz|zstd|brotli|lz4|snappy writes a genuine one-shot standard stream. Use --input-format FORMAT with -d, -t or uncix to decode/test it; raw Deflate is never guessed. Standard streams are bounded to 128 MiB input/output and do not accept CIX route, container, portfolio, stream, history or block controls."
+      }
+    },
+    "cli.help.providers": {
+      "context": "CLI provider location help; preserve CLI option spellings and PATH.",
+      "parameters": {},
+      "forms": {
+        "other": "\nInstalled full-engine providers: --private-library-dir names an absolute private CIX provider directory; --temporary-root names an absolute private PAQ worker root. Provider files are never searched through PATH."
+      }
+    },
+    "cli.help.best": {
+      "context": "BEST effort help paragraph; preserve options and wire format identifiers.",
+      "parameters": {},
+      "forms": {
+        "other": "\nBEST compares complete compatible native containers and native-library backend archives within --memory. Ordinary stdin, non-regular and oversized inputs use bounded independent CIXW1 windows when their controls permit it; --stream, history and flush controls retain the framed encoder. Expert controls constrain their specified dimensions. Use --verbose or --explain for evaluated candidates and resource exclusions."
+      }
+    },
+    "cli.archive.ok": {
+      "context": "Successful archive integrity check.",
+      "parameters": {},
+      "forms": {
+        "other": "archive OK"
+      }
+    },
+    "cli.error": {
+      "context": "Top-level error wrapper. The detail may still be untranslated legacy/system text; the wrapper alone does not constitute complete diagnostic coverage.",
+      "parameters": {
+        "detail": "text"
+      },
+      "forms": {
+        "other": "cix: {detail}"
+      }
+    },
+    "cli.file.error": {
+      "context": "Error for a named input. Preserve path bytes in I/O; isolate direction only in display. Legacy detail is tracked separately.",
+      "parameters": {
+        "path": "path",
+        "detail": "text"
+      },
+      "forms": {
+        "other": "cix: {path}: {detail}"
+      }
+    },
+    "cli.interrupt.install": {
+      "context": "Failure installing the executable signal handler. OS detail is separately attributed.",
+      "parameters": {
+        "detail": "text"
+      },
+      "forms": {
+        "other": "cix: could not install interrupt handler: {detail}"
+      }
+    },
+    "cli.files.failed": {
+      "context": "Multi-file failure summary. Plural category follows the total number of input files, not the number of failures.",
+      "parameters": {
+        "failures": "number",
+        "total": "number"
+      },
+      "forms": {
+        "other": "{failures} of {total} input files failed",
+        "one": "{failures} of {total} input file failed"
+      },
+      "plural": "total"
+    },
+    "cli.block.limit": {
+      "context": "Warning when requested frame size is clamped. CIXG1 and numeric limits are invariant technical facts.",
+      "parameters": {},
+      "forms": {
+        "other": "cix: CIXG1 limits frames to 65536 bytes; effective block size is 65536 bytes"
+      }
+    },
+    "cli.output.path": {
+      "context": "Output path display only. The actual filesystem path is never translated or normalized.",
+      "parameters": {
+        "path": "path"
+      },
+      "forms": {
+        "other": "{path}"
+      }
+    }
+  }
+}
