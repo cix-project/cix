@@ -94,8 +94,12 @@ The separate Zarr host-major 2 tuple used Linux, Python 3.12.14 and NumPy
 library. Disk write and a separate-process read-only reopen passed all 25
 shuffled chunk reads, full restoration and persisted options. Zarr 2.18.7
 requires Numcodecs <0.16; this qualification does not change the optional
-extras selected above. Missing-registration and corruption cases for this
-host-major 2 tuple remain unqualified.
+extras selected above. Three separately accepted negative cases on this tuple
+also rejected missing registration with the selected-codec UnknownCodecError,
+raised NativeError status 4 for a copied chunk truncated to one byte after an
+unchanged neighbor decoded, and rejected an injected library_path metadata key
+with ValueError before trusted library configuration or loading. The missing-
+registration process did not import the binding or load its native library.
 
 Provision the selected host dependencies and an explicitly trusted native
 library before using the adapters. No adapter downloads or discovers that
@@ -149,7 +153,11 @@ the four persisted options. That qualification used the source-loaded binding
 and a native library built from the same current product source. Missing
 registration rejected each selected codec; truncating one selected disk chunk
 to one byte raised NativeError while an unmodified chunk still decoded.
-This does not establish arbitrary-corruption detection. Broader Zarr host-major 2 and broader wheel/sdist/install qualification remain open.
+The selected one-byte truncation cases do not establish arbitrary-corruption
+detection. The installed pure-Python binding also has bounded build, offline
+install, fresh-consumer and removal evidence on the selected Linux tuples; no
+native library is bundled. Other Zarr host-major 2 combinations, broader
+wheel/sdist/platform qualification and full CIX-31 acceptance remain open.
 The accepted historical c950 native component is not a current-main-built
 library. The original CIX-250 external runner exited 1 because of its IntEnum
 result-carrier defect; its two focused pytest cases were independently
