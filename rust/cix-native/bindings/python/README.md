@@ -130,11 +130,19 @@ CIX-250 accepted disk write, same-process close/reopen, seeded reads of all
 25 chunks, exact full restoration, all four persisted options, missing codec,
 injected library path, and truncated/malformed chunk failure for the two
 Zarr 3.1.3 formats. Missing registration fails with Numcodecs UnknownCodecError
-(format 2) or KeyError (format 3); malformed native archives raise NativeError.
+(format 2) or Zarr UnknownCodecError wrapping the selected-codec KeyError
+(format 3); malformed native archives raise NativeError.
 Missing host dependencies require explicit provisioning, not a fallback codec.
 
-This is experimental host integration. Fresh-process positive reopening,
-Zarr host-major 2, and new wheel/sdist/install qualification remain open.
+This is experimental host integration. On Linux, Python 3.12.14, NumPy 2.5.5, Numcodecs 0.16.3 and Zarr 3.1.3
+passed disk write and separate-process read-only reopening for formats 2 and 3,
+including all 25 chunks in a seeded random order, exact full restoration and
+the four persisted options. That qualification used the source-loaded binding
+and a native library built from the same current product source. Missing
+registration rejected each selected codec; truncating one selected disk chunk
+to one byte raised NativeError while an unmodified chunk still decoded.
+This does not establish arbitrary-corruption detection. Zarr host-major 2 and
+new wheel/sdist/install qualification remain open.
 The accepted historical c950 native component is not a current-main-built
 library. The original CIX-250 external runner exited 1 because of its IntEnum
 result-carrier defect; its two focused pytest cases were independently
