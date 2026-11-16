@@ -17,6 +17,7 @@ mod paq_worker;
 #[cfg(feature = "server")]
 pub mod service;
 pub mod standard_formats;
+pub mod standard_stream;
 
 /// Retained Squash callback ABI; it is implemented by the native core.
 pub use core::cix_squash_splice;
