@@ -23,6 +23,8 @@ output-handle slot is set to NULL before options are validated. Creation failure
 have no new context from which to retrieve a diagnostic. A successful context
 owns an immutable options snapshot; changing the original options does not
 reconfigure it. Destroy it only after every call using it has finished.
+The options object and output-handle slot must not overlap: creation writes
+NULL to the slot before reading the options.
 
 Defaults are ABI version 1, the current `sizeof(cix_options_v1)`, DEFAULT profile,
 one worker, 128 MiB of codec memory and `usize::MAX` output bytes represented in
@@ -37,6 +39,9 @@ memory valid.
 
 The host must supply valid live handles and readable/writable storage for the
 entire call, with the alignment required by typed output objects and counts.
+Prevent conflicting access to caller input/output/count storage for that entire
+call, including across concurrent calls. The context's operation mutex does not
+protect shared caller storage: checks and count writes also occur outside it.
 The library's NULL/range/overlap checks do not establish pointer provenance,
 allocation lifetime or the actual size of caller memory. Invalid handles,
 double destruction and concurrent destruction are not recoverable validation
