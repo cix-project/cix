@@ -660,7 +660,7 @@ fn execute_standard_to_stdout(o: &Opt) -> Result<(), String> {
 }
 
 fn execute_standard_to_file(o: &Opt, out: &str) -> Result<(), String> {
-    if o.input == out {
+    if o.input != "-" && path_identity(&o.input) == path_identity(out) {
         return Err("input and output paths must differ".into());
     }
     atomic_file(out, o.force, |destination| execute_standard(o, destination))?;
@@ -752,7 +752,7 @@ fn execute_to_file(
     automatic_best: bool,
     automatic_persistent_best: bool,
 ) -> Result<(), String> {
-    if o.input == out {
+    if o.input != "-" && path_identity(&o.input) == path_identity(out) {
         return Err("input and output paths must differ".into());
     }
     atomic_file(out, o.force, |dst| {
