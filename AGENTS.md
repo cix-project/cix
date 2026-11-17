@@ -37,6 +37,25 @@ infer Rust test coverage from the Python governance suite or start a benchmark
 without its applicable authorization. Never invent a successful test result or
 claim performance without evidence.
 
+## Clone-portable source and task handoff
+
+Keep required source, configuration, tests, fixtures, generators and operating
+instructions in this repository, not in `.usf` or an unmanaged local directory.
+Generated assets must identify their tracked inputs and reconstruction command.
+Declare external toolchains, system libraries and optional provider inputs with
+their version, integrity and setup contract; do not make a dated task directory,
+local audit folder or untracked workstation copy the only way to continue from a
+fresh clone. A declared prerequisite is not evidence that it is installed or
+qualified.
+
+Use the assigned repository clone or isolated task worktree for project changes.
+Before finishing a task, retain its reviewed implementation and necessary
+evidence in the agreed repository or managed artifact custody. Identify temporary
+outputs for cleanup only after checking active use, dirty or unique work and
+recoverability, under the owner's applicable cleanup authorization. Do not remove
+unrecovered work or infer permission to delete from these instructions. Dated
+personal or other ad hoc non-project work is not project cleanup material.
+
 ## Optional maintenance execution
 
 When work is explicitly routed through UIF, use the selected execution

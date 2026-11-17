@@ -50,8 +50,10 @@ requires one unsigned unsubsampled gray component and precision 1–16 (2–16
 for JPEG-LS), and rejects a pixel or canonical-u16 output count above the paid
 limits. The frame decoder then requires `width * height * 2 == region_bytes`
 before requesting a decode buffer. The field order and representation behavior
-are cross-referenced to
-[`runtime/cix_runtime/legacy/spatial_image_codec.py`](../../../../runtime/cix_runtime/legacy/spatial_image_codec.py):
+are implemented in the tracked
+[`full_engine/spatial_frames.rs`](../../src/full_engine/spatial_frames.rs).
+The historical `runtime/cix_runtime/legacy/spatial_image_codec.py` reference is
+not included in this source candidate and is not a build or runtime dependency.
 JPEG 2000 retains its significant precision; historical JPEG-LS receives a
 uint16 array and therefore retains 16-bit frame precision.
 The bridge converts any non-little-endian CharLS u16 I/O at its boundary, so
