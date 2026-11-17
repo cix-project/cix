@@ -1,5 +1,5 @@
-# Generated workspace manifest. Edit the maintained source template before
-# producing a new source export.
+# This committed workspace manifest is the maintained source of truth.
+# Keep it and the committed lockfile consistent when changing workspace inputs.
 [workspace]
 members = ["rust/cix-native", "rust/cix-portable"]
 resolver = "2"
